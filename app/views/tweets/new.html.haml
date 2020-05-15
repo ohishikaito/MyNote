@@ -1,0 +1,8 @@
+.new__main
+  .new__main--form
+    = form_for [@tweet] do |f|
+      = f.text_field :title
+      = f.text_area :text
+      = f.label :image do
+        = f.file_field :image
+      = f.submit '投稿する'

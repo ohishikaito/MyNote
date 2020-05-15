@@ -1,0 +1,65 @@
+.contents {
+  height: 100%;
+  width: 100%;
+}
+
+.header {
+  height: 160px;
+  background-color: white;
+  width: 980px;
+  margin: 0 auto;
+  position: relative;
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    &--title {
+      padding: 20px;
+      font-size: 30px;
+    }
+    &__userMenu {
+      display: flex;
+      padding: 20px;
+      &--name {
+        margin-right: 20px;
+      }
+    }
+  }
+  &__menu {
+    // height: 50px;
+    display: flex;
+    justify-content: space-between;
+    &--home {
+      padding-left: 20px;
+    }
+    &--search {
+      padding-right: 20px;
+    }
+  }
+  &__genre {
+    // height: 50px;
+    // line-height: 50px;
+    display: flex;
+    &__item {
+      padding: 16px 14px;
+    }
+  }
+}
+
+.main {
+  // height: calc(100% - 200px);
+  background-color: #ecedf1;
+}
+.tweets {
+  width: 980px;
+  margin: 0 auto;
+  padding: 100px;
+  &__list {
+    width: 100%;
+    &--item {
+      height: 100px;
+      width: 50%;
+      margin: 20px auto;
+      border: 1px solid #000;
+    }
+  }
+}
