@@ -1,0 +1,27 @@
+.contents
+  .header
+    .header__top
+      = link_to "タイトル", root_path, class: 'header__top--title'
+      .header__top__userMenu
+        - if user_signed_in?
+          = link_to current_user.nickname, user_path(current_user.id), class: 'header__top__userMenu--name'
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'header__top__userMenu--logout'
+        - else
+          = link_to '新規登録', new_user_registration_path, class: 'header__top__userMenu--logout'
+          = link_to 'ログイン', new_user_session_path, class: 'header__top__userMenu--logout'
+    .header__menu
+      = link_to "ホーム", root_path, class: 'header__menu--home'
+      = link_to "投稿する（表示よくない", new_tweet_path, class: "header__menu--new"
+      %p.header__menu--search
+        検索する
+    .header__genre
+      .header__genre__item
+        %a.header__genre--a
+          ジャンル
+      .header__genre__item
+        %a.header__genre--b
+          ジャンル
+      .header__genre__item
+        %a.header__genre--c
+          ジャンル
+
