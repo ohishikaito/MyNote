@@ -1,12 +1,13 @@
 .main
   .tweets
     .tweets__list
+      = @nickname 
+      君の投稿一覧だよ
       - @tweets.each do |tweet|
         .tweets__list--item
           タイトル
           = link_to tweet.title, tweet_path(tweet.id)
-          投稿者
-          = link_to tweet.user.nickname, user_path(tweet.user.id)
+          内容
+          = link_to tweet.text, tweet_path(tweet.id)
           投稿日
           = tweet.updated_at
-      = paginate(@tweets)

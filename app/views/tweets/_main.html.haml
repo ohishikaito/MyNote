@@ -1,6 +1,0 @@
-.main
-  .tweets
-    .tweets__list
-      - @tweets.each do |tweet|
-        .tweets__list--item
-          = link_to tweet.title, tweet_path(tweet.id)

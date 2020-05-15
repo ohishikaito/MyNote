@@ -1,8 +1,12 @@
 .title
+  タイトル
   = @tweet.title
 .text
+  内容
   = @tweet.text
-編集
-= link_to '編集', edit_tweet_path(@tweet.id)
-削除
-= link_to '削除', tweet_path(@tweet.id), method: :delete
+.user
+  投稿者はこいつだ！！
+  = link_to @tweet.user.nickname, user_path(@tweet.user.id), class: 'header__top__userMenu--name'
+- if user_signed_in? && current_user.id == @tweet.user_id
+  = link_to '編集', edit_tweet_path(@tweet.id)
+  = link_to '削除', tweet_path(@tweet.id), method: :delete
