@@ -1,0 +1,8 @@
+.title
+  = @tweet.title
+.text
+  = @tweet.text
+編集
+= link_to '編集', edit_tweet_path(@tweet.id)
+削除
+= link_to '削除', tweet_path(@tweet.id), method: :delete
