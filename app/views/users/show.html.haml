@@ -11,3 +11,4 @@
           = link_to tweet.text, tweet_path(tweet.id)
           投稿日
           = tweet.updated_at
+      = paginate(@tweets)
