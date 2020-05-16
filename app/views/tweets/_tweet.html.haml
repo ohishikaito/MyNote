@@ -1,0 +1,15 @@
+.main
+  .tweets
+    .tweets__list
+      = form_with(url: tweets_searches_path, local: true, method: :get) do |f|
+        = f.text_field :keyword, placeholder: 'タイトルを検索する'
+        = f.submit
+      - @tweets.each do |tweet|
+        .tweets__list--item
+          タイトル
+          = link_to tweet.title, tweet_path(tweet.id)
+          投稿者
+          = link_to tweet.user.nickname, user_path(tweet.user.id)
+          投稿日
+          = tweet.updated_at
+      = paginate(@tweets)
