@@ -1,0 +1,2 @@
+module Tweets::SearchesHelper
+end
