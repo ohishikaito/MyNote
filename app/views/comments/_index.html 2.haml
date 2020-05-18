@@ -1,0 +1,11 @@
+-# <div  id="comment_form">
+-#     <%= render "comments/form", tweet: @tweet, comment: @comment %> 
+-# </div>
+
+-# <div id='comment_area'>
+-#     <%= render "comments/comment", comments: @comments %>
+-# </div>
+.div#comment_form
+  = render "comments/form"
+.div#comment_area
+  = render "comments/comment"

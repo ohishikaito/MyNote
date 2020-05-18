@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
   end
 
   def get_all_comments
-    @comments = @tweet.comments.includes(:user).order('created_at asc')
+    @comments = @tweet.comments.includes(:user).order('created_at desc')
   end
 
   def comment_params

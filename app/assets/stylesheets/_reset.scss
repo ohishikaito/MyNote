@@ -127,7 +127,28 @@ legend {
   display: none;
 }
 
-a {
+// a {
+//   text-decoration: none;
+//   color: black;
+// }
+// a:visited {
+//   text-decoration: none;
+//   color: black;
+// }
+// a:focus {
+//   text-decoration: none;
+//   color: black;
+// }
+
+// a:hover {
+//   text-decoration: none;
+//   color: black;
+// }
+
+a,
+a:visited,
+a:focus,
+a:hover {
   text-decoration: none;
   color: black;
 }

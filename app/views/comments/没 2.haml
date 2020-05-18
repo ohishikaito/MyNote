@@ -1,0 +1,17 @@
+%h4 コメント
+#comment_create
+  - if user_signed_in?
+    = form_with(model: [@tweet, @comment], local: true, id: 'new_comment') do |f|
+      = f.text_area :content, placeholder: 'コメント', rows: '3', class: 'textbox'
+      = f.submit "コメントする", class: 'form__submit'
+  - else
+    コメントの投稿には新規登録/ログインが必要です
+#js-table-comment
+  - if @comments
+    - @comments.each do |comment|
+      .comment{ id: "#{comment.id}"}
+        = link_to comment.user.nickname, user_path(comment.user.id)
+        = comment.content
+        = comment.created_at.strftime("%Y-%m-%d %H:%M")
+        -if current_user.id == comment.user_id
+          = link_to "削除", comment_path(comment.id), method: :delete, data: { confirm: '削除してよろしいですか？' }
