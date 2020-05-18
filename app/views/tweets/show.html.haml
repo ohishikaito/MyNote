@@ -1,27 +1,16 @@
-.title
-  タイトル
-  = @tweet.title
-.text
-  内容
-  = @tweet.text
-.user
-  投稿者はこいつだ！！
-  = link_to @tweet.user.nickname, user_path(@tweet.user.id), class: 'header__top__userMenu--name'
-- if user_signed_in? && current_user.id == @tweet.user_id
-  = link_to '編集', edit_tweet_path(@tweet.id)
-  = link_to '削除', tweet_path(@tweet.id), method: :delete
-- if user_signed_in?
-  = form_with(model: [@tweet, @comment]) do |f|
-    = f.text_area :content, placeholder: 'コメントを入力してね！！！', rows: '3'
-    = f.submit "コメントする"
-- else
-  コメントの投稿には新規登録/ログインが必要です
-コメント一覧です
-- if @comments
-  - @comments.each do |comment|
-    コメントした人
-    = link_to comment.user.nickname, user_path(comment.user.id)
-    コメント内容
-    = comment.content
-    投稿日
-    = comment.created_at
+.tweet
+  .title
+    タイトル
+    = @tweet.title
+  .text
+    内容
+    = @tweet.text
+  .user
+    投稿者はこいつだ！
+    = link_to @tweet.user.nickname, user_path(@tweet.user.id), class: 'header__top__userMenu--name'
+
+  - if user_signed_in? && current_user.id == @tweet.user_id
+    = link_to '編集', edit_tweet_path(@tweet.id)
+    = link_to '削除', tweet_path(@tweet.id), method: :delete, data: { confirm: '削除してよろしいですか？' }
+
+= render "comments/index"

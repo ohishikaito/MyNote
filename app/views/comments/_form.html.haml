@@ -1,0 +1,10 @@
+-# <%= form_with(model: [@tweet, @comment]) do |form| %>
+-#     <%= form.text_area :content, class: 'textarea'%>
+-#     <%= form.submit value: "送信" %>
+-# <% end %>
+- if user_signed_in?
+  = form_with(model: [@tweet, @comment]) do |form| 
+    = form.text_area :content, class: 'textarea'
+    = form.submit value: "送信"
+- else
+  コメントの投稿にはログインが必要です。

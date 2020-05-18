@@ -6,8 +6,13 @@ Rails.application.routes.draw do
     resources :searches, only: :index
   end
   resources :tweets do
-    resources :comments, only: :create
+    resources :comments, only: [:create, :edit, :update, :destroy]
   end
   resources :users, only: :show
   
 end
+
+# shallow trueは諦める
+  # ページネーション
+  #きいたにまとめる
+  # escape_javascript省略してるからね
