@@ -1,0 +1,39 @@
+  before_action :set_comment, only: [:destroy]
+
+  def create
+    # @comment = current_user.comments.create(comment_params)
+    # @comment.save!
+    # @tweet = Tweet.find(params[:id])
+    @comment = Comment.create(comment_params)
+    respond_to do |format|
+      format.html { redirect_to tweet_path(params[:tweet_id])  }
+      format.json
+      
+    end
+    
+    # if @comment.save
+    #   redirect_to tweet_path(@comment.tweet_id), notice: 'コメントを投稿しました！'
+    #   else
+    #     # flash.now[:alert] = 'コメントを入力して下さい。'
+    #     redirect_to tweet_path(@comment.tweet_id), notice: 'コメントを入力してください！'
+    #   # render 
+    # end
+  end
+
+  def destroy
+    @comment.destroy
+    # redirect_to tweet_path(params[:tweet_id])
+    redirect_to root_path
+  end
+
+  private
+
+  def set_comment
+  # @comment = Comment.find_by(id: params[:id])
+    @comment = Comment.find(params[:id])
+  end
+
+  def comment_params
+    params.require(:comment).permit(:content).merge(tweet_id: params[:tweet_id], user_id: current_user.id)
+    # params.require(:comment).permit(:content).merge(user_id: current_user.id, tweet_id: params[:tweet_id])
+  end
