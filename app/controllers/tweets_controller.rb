@@ -29,7 +29,7 @@ class TweetsController < ApplicationController
   def update
     @tweet.update(tweet_params)
     if @tweet.save
-      redirect_to root_path, notice: 'ツイートを編集しました！'
+      redirect_to tweet_path(@tweet.id), notice: 'ツイートを編集しました！'
     else
       flash.now[:alert] = 'メッセージを入力して下さい。'
       render :edit
