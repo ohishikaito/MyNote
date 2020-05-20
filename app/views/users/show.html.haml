@@ -1,10 +1,8 @@
 .main
   .tweets
+    %div{id: "#relationships"}
+      = render 'relationships/follow', user: @user
     = link_to "いいね！した投稿", likes_user_path
     投稿一覧
     .tweets__list
       = render 'tweets/tweet'
--# user_likes GET    /users/:user_id/likes(.:format)  likes#index
--# 最終案はcurrent_user.id
--#   = tweet.text
--# likes_users GET    /users/likes(.:format)    users#likes
