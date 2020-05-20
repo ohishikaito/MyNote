@@ -1,0 +1,37 @@
+- if user_signed_in?
+  - if tweet.like_user(current_user.id)
+    = link_to tweet_like_path(tweet.likes, tweet_id: tweet.id), method: :delete, remote: true do
+      %i.fa.fa-heart{"aria-hidden" => "true", style: "color: red;"}
+        = tweet.likes.count
+  - else
+    = link_to tweet_likes_path(tweet.id), method: :post, remote: true do
+      %i.fa.fa-heart{"aria-hidden" => "true", style: "color: #C0C0C0;"}
+        = tweet.likes.count
+- else
+  %i.fa.fa-heart{"aria-hidden" => "true"}
+    = tweet.likes.count
+    
+-# tweet_id: tweet.id ,tweet.likes[0].id　0ってなんだよ
+-# tweet.id ,tweet.likes　これが一番分かりやすい。コメントとも同じ
+-# tweet, tweet.likes　超短い
+-# tweet.likes, tweet_id: tweet.id　王道
+-# tweet_id: tweet.id, tweet.likes　これはダメなんだよなあ
+
+
+-# - if user_signed_in?
+-#   - if current_user.already_liked?(tweet)
+-#     = link_to tweet_like_path(tweet), method: :delete, remote: true do
+-#       %i.fa.fa-heart{"aria-hidden" => "true", style: "color: red;"}
+-#         = tweet.likes.count
+-#   - else
+-#     = link_to tweet_likes_path(tweet), method: :post, remote: true do
+-#       %i.fa.fa-heart{"aria-hidden" => "true", style: "color: #C0C0C0;"}
+-#         = tweet.likes.count
+-# - else
+-#   %i.fa.fa-heart{"aria-hidden" => "true"}
+-#     = tweet.likes.count
+
+-# tweet_like_path(tweet.id)!
+-# tweet_like DELETE /tweets/:tweet_id/likes/:id(.:format) 
+-# tweet_comment_path(@tweet, comment)
+-# tweet_comment_path(comment.tweet.id, comment.id)
