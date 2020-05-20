@@ -2,6 +2,7 @@
   .header
     .header__top
       = link_to "タイトル", root_path, class: 'header__top--title'
+      = link_to "ユーザー一覧 ", users_path, class: 'header__top--title'
       .header__top__userMenu
         - if user_signed_in?
           = link_to current_user.nickname, user_path(current_user.id), class: 'header__top__userMenu--name'

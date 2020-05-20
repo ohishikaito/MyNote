@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = @tweet.comments.create(comment_params)
     if @comment.save
         @comment = Comment.new
-        get_all_comments
+        gets_all_comments
     end
   end
 
@@ -15,14 +15,14 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-        get_all_comments
+        gets_all_comments
     end
   end
 
 
   def destroy
     if @comment.destroy
-        get_all_comments
+        gets_all_comments
     end
   end
 
@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:id])
   end
 
-  def get_all_comments
+  def gets_all_comments
     @comments = @tweet.comments.includes(:user).order('updated_at desc')
   end
 

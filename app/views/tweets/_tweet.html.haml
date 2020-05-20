@@ -1,7 +1,3 @@
-= form_with(url: tweets_searches_path, local: true, method: :get) do |f|
-  = f.text_field :keyword, placeholder: 'タイトルを検索する'
-  = f.submit
-
 - @tweets.each do |tweet|
   .tweets__list--item
     タイトル
@@ -13,4 +9,3 @@
     %div{id: "like_#{tweet.id}"}
       = render 'likes/like', tweet: tweet
 = paginate(@tweets)
--# {tweet: tweet, tweet: @tweet} 

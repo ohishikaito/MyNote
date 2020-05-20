@@ -1,14 +1,10 @@
 .main
   .tweets
+    = link_to "いいね！した投稿", likes_user_path
+    投稿一覧
     .tweets__list
-      = @nickname 
-      君の投稿一覧だよ
-      - @tweets.each do |tweet|
-        .tweets__list--item
-          タイトル
-          = link_to tweet.title, tweet_path(tweet.id)
-          内容
-          = link_to tweet.text, tweet_path(tweet.id)
-          投稿日
-          = tweet.updated_at
-      = paginate(@tweets)
+      = render 'tweets/tweet'
+-# user_likes GET    /users/:user_id/likes(.:format)  likes#index
+-# 最終案はcurrent_user.id
+-#   = tweet.text
+-# likes_users GET    /users/likes(.:format)    users#likes
