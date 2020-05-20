@@ -5,18 +5,14 @@
  * http://yuilibrary.com/license/
  */
 /*
-    TODO will need to remove settings on HTML since we can't namespace it.
-    TODO with the prefix, should I group by selector or property for weight savings?
 */
 html {
   color: #000;
   background: #fff;
 }
 /*
-  TODO remove settings on BODY since we can't namespace it.
 */
 /*
-  TODO test putting a class on HEAD.
       - Fails on FF.
 */
 body,
@@ -56,7 +52,6 @@ img {
   border: 0;
 }
 /*
-  TODO think about hanlding inheritence differently, maybe letting IE6 fail a bit...
 */
 address,
 caption,

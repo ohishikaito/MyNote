@@ -9,9 +9,14 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :edit, :update, :destroy]
   end
-  resources :users, only: :show
+  resources :users, only: [:index, :show] do
+    member do
+      get :likes
+    end
+  end
   
 end
+# resourcesでネストして指定する
 
 # shallow trueは諦める
   # ページネーション
