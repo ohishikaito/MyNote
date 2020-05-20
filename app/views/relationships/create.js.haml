@@ -1,0 +1,5 @@
+$("#relationships").html("#{ j(render partial: 'relationships/follow', locals: { user: @user })}");
+console.log("aa");
+
+-# $('#relationships').html("#{ j(render 'relationships/follow', user: @user) }");
+-# $("#like_#{@tweet.id}").html("#{j(render partial: 'likes/like', locals: { tweet: @tweet })}");

@@ -1,0 +1,18 @@
+-# - unless current_user == user
+-#   - if current_user.following?(user)
+-#     = form_for(current_user.relationships.find_by(follow_id: user.id), html: { method: :delete }, remote: true) do |f|
+-#       = hidden_field_tag :follow_id, user.id
+-#       = f.submit 'Unfollow', class: 'btn btn-danger btn-block'
+-#   - else
+-#     = form_for(current_user.relationships.build) do |f|
+-#       = hidden_field_tag :follow_id, user.id
+-#       = f.submit 'Follow', class: 'btn btn-primary btn-block'
+
+-# relationship DELETE /relationships/:id(.:format)              relationships#destroy
+-# relationships POST   /relationships(.:format)                 relationships#create
+
+- unless current_user == user
+  - if current_user.following?(user)
+    = link_to "フォローを外す", relationship_path(follow_id: user.id), method: :delete
+  - else
+    = link_to "フォローする", relationships_path, method: :post
