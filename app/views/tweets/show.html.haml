@@ -8,6 +8,7 @@
   .user
     投稿者
     = link_to @tweet.user.nickname, user_path(@tweet.user.id), class: 'header__top__userMenu--name'
+  = render "relationships/follow"
   .like
     %div{id: "like_#{@tweet.id}"}
       = render 'likes/like', tweet: @tweet

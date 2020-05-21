@@ -12,28 +12,24 @@ class User < ApplicationRecord
   has_many :likes
   has_many :liked_tweets, through: :likes, source: :tweet
 
-  has_many :relationships
-  has_many :followings, through: :relationships, source: :follow
-  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
-  has_many :followers, through: :reverse_of_relationships, source: :user
+  has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship"
+  has_many :following, through: :following_relationships
+  has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship"
+  has_many :followers, through: :follower_relationships
 
-  def follow(other_user)
-    unless self == other_user
-    # if self != other_user
-      self.relationships.find_or_create_by(follow_id: other_user.id)
-    end
+  #フォローしているかを確認するメソッド
+  def following?(user)
+    following_relationships.find_by(following_id: user.id)
   end
 
-  def unfollow(other_user)
-    relationship = self.relationships.find_by(follow_id: other_user.id)
-    if relationship
-      relationship.destroy
-    end
-      # relationship.destroy if relationship
+  #フォローするときのメソッド
+  def follow(user)
+    following_relationships.create!(following_id: user.id)
   end
 
-  def following?(other_user)
-    self.followings.include?(other_user)
+  #フォローを外すときのメソッド
+  def unfollow(user)
+    following_relationships.find_by(following_id: user.id).destroy
   end
 
   validates :nickname, presence: true, uniqueness: true

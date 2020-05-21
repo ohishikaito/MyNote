@@ -1,0 +1,9 @@
+.main
+  .tweets
+    .follower
+      %div
+        = render "relationships/follow"
+    = link_to "いいね！した投稿", likes_user_path
+    投稿一覧
+    .tweets__list
+      = render 'tweets/tweet'

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :show] do
     member do
-      get :likes
+      get :likes, :following, :followers, :timeline
     end
   end
   resources :relationships, only: [:create, :destroy]

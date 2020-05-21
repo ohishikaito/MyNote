@@ -39,6 +39,7 @@ class TweetsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @tweet.comments.includes(:user).order('created_at asc')
+    @user = @tweet.user
   end
 
   def destroy
