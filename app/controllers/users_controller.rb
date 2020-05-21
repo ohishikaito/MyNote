@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
+  before_action :set_user, except: [:index, :timeline]
 
   def index
     @users = User.all
@@ -7,11 +7,25 @@ class UsersController < ApplicationController
 
   def show
     @tweets = @user.tweets.order('updated_at desc').page(params[:page]).per(5)
-    @liked_tweet = Tweet.joins(:likes).where(likes: { user: @user })
   end
 
   def likes
-    @user = User.find(params[:id])
+  end
+
+  def following
+      @users = @user.following
+  end
+
+  def followers
+      @users = @user.followers
+  end
+
+  def timeline
+    @tweets_all = Tweet.includes(:user)
+    @user = User.find(current_user.id)
+    @following_users = @user.following
+    @tweets = @tweets_all.where(user_id: @following_users).order('updated_at desc').page(params[:page]).per(5)
+    
   end
 
   private

@@ -1,6 +1,4 @@
-$("#relationships").html("#{ j(render partial: 'relationships/follow', locals: { user: @user })}");
-console.log("aa");
+$("#follow_form").html("#{j(render("relationships/follow"))}");
+-# $("#relationships").html("#{ j(render partial: 'relationships/follow', locals: { user: @user })}");
 -# $('#relationships').html("#{ j(render 'relationships/follow', user: @user) }");
-
 -# = render 'relationships/follow', user: @user
--# $('#comment_area').html("#{ j(render 'comments/comment') }");
