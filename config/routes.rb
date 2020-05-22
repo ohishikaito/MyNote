@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  
-  devise_for :users
+
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    sessions: "users/sessions"
+  }
   root to: 'tweets#index'
   namespace :tweets do
     resources :searches, only: :index
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :show, :edit, :update] do
     member do
-      get :likes, :following, :followers, :timeline
+      get :likes, :following, :followers, :timeline, :setting
     end
   end
   resources :relationships, only: [:create, :destroy]
@@ -19,9 +22,4 @@ Rails.application.routes.draw do
   resources :rooms, only: [:index, :show, :create]
   
 end
-# resourcesでネストして指定する
-
 # shallow trueは諦める
-  # ページネーション
-  #きいたにまとめる
-  # escape_javascript省略してるからね

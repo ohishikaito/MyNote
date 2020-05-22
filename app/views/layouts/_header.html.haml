@@ -6,8 +6,16 @@
       = link_to "メッセージ", rooms_path
       .header__top__userMenu
         - if user_signed_in?
-          = link_to current_user.nickname, user_path(current_user.id), class: 'header__top__userMenu--name'
+          = link_to  user_path(current_user.id) do
+            %h3.header__top__userMenu--name
+            = current_user.nickname
+            = image_tag "#{current_user.avatar}", class: "avatar"
           = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'header__top__userMenu--logout'
+          - if current_user.email == "guest@user"
+            あいうえおか
+          - else
+          -# - unless current_user.email == "guest@user"
+            = link_to 'ユーザー編集', edit_user_path(current_user.id)
         - else
           = link_to '新規登録', new_user_registration_path, class: 'header__top__userMenu--logout'
           = link_to 'ログイン', new_user_session_path, class: 'header__top__userMenu--logout'
@@ -16,14 +24,14 @@
       = link_to "投稿する（表示よくない", new_tweet_path, class: "header__menu--new"
       %p.header__menu--search
         検索する
-    .header__genre
-      .header__genre__item
-        %a.header__genre--a
-          ジャンル
-      .header__genre__item
-        %a.header__genre--b
-          ジャンル
-      .header__genre__item
-        %a.header__genre--c
-          ジャンル
+    -# .header__genre
+    -#   .header__genre__item
+    -#     %a.header__genre--a
+    -#       ジャンル
+    -#   .header__genre__item
+    -#     %a.header__genre--b
+    -#       ジャンル
+    -#   .header__genre__item
+    -#     %a.header__genre--c
+    -#       ジャンル
 

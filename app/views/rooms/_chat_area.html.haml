@@ -3,7 +3,7 @@
 - @entries.each do |e|
   .user-name
     %strong
-      -# = image_tag e.user.avatar, class:"user-image"
+      = image_tag "#{e.user.avatar}", class:"avatar"
       %a.rooms-user-link{href: "/users/#{e.user.id}"}
         = e.user.nickname
         さん
@@ -15,7 +15,7 @@
         %div{id: "message_#{m.id}"}
           .chatbox
             .chat-face1
-              -# = image_tag m.user.avatar, class:"user-image"
+              = image_tag "#{m.user.avatar}", class:"avatar"
               .chat-hukidashi
               = m.user.nickname
               %br

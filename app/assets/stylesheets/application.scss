@@ -15,6 +15,13 @@
   border: 1px solid #000;
 }
 
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  object-fit: cover;
+}
+
 // .chatbox {
 //   height: 100px;
 //   width: 900px;

@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:edit, :destroy, :show, :update]
-  before_action :move_to_index, except: [:index, :show, :search]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @tweets = Tweet.includes(:user).order('updated_at desc').page(params[:page]).per(5)
@@ -56,12 +56,6 @@ class TweetsController < ApplicationController
 
   def set_tweet
     @tweet = Tweet.find(params[:id])
-  end
-
-  def move_to_index
-    unless current_user
-    redirect_to root_path, notice: 'アカウント登録またはログインして下さい'
-    end
   end
 
 end

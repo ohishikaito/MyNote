@@ -1,0 +1,7 @@
+%h2 簡単ログイン
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .div
+        = f.hidden_field :email ,value: "guest@user"
+        = f.hidden_field :password, value: "adaadaada"
+    .actions
+        = f.submit "ゲストユーザーでログイン"

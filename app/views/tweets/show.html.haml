@@ -7,7 +7,11 @@
     = @tweet.text
   .user
     投稿者
-    = link_to @tweet.user.nickname, user_path(@tweet.user.id), class: 'header__top__userMenu--name'
+    -# = link_to @tweet.user.nickname, user_path(@tweet.user.id), class: 'header__top__userMenu--name'
+    = link_to  user_path(@tweet.user.id) do
+      %h3
+      = @tweet.user.nickname
+      = image_tag "#{@tweet.user.avatar}", class: "avatar"
   = render "relationships/follow"
   .like
     %div{id: "like_#{@tweet.id}"}

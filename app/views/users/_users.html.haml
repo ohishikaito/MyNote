@@ -1,4 +1,6 @@
 .main
     .tweets
         - @users.each do |user|
-            = link_to user.nickname, user_path(user.id)
+            = link_to user_path(user) do
+                = user.nickname
+                = image_tag "#{user.avatar}", class: "avatar"
