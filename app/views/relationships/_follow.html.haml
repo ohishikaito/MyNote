@@ -8,8 +8,8 @@
         = hidden_field_tag :following_id, @user.id
         = f.submit "フォローする", class: "btn btn-outline-secondary"
         
--# relationship DELETE /relationships/:id(.:format)                                                             relationships#destroy
--# relationships POST   /relationships(.:format)                                                                 relationships#create
+-# relationship DELETE /relationships/:id(.:format)                 relationships#destroy
+-# relationships POST  /relationships(.:format)                    relationships#create
 
 -# - unless current_user == user
 -#   - if current_user.following?(user)

@@ -6,3 +6,30 @@
 @import "modules/new";
 @import "modules/users";
 @import "modules/flash";
+
+.chat__scroll {
+  overflow: scroll;
+  height: 400px;
+  width: 1000px;
+  margin: 0 auto;
+  border: 1px solid #000;
+}
+
+// .chatbox {
+//   height: 100px;
+//   width: 900px;
+//   border: 1px solid #000;
+//   margin: 0 auto;
+// }
+
+// .chat-face1 {
+//   display: flex;
+//   justify-content: right;
+//   float: right;
+// }
+
+// .chat-face2 {
+//   display: flex;
+//   justify-content: left;
+//   float: left;
+// }

@@ -4,6 +4,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
+  validates :nickname, presence: true, uniqueness: true
+  mount_uploader :image, ImagesUploader
   
   has_many :tweets
 
@@ -11,6 +13,10 @@ class User < ApplicationRecord
 
   has_many :likes
   has_many :liked_tweets, through: :likes, source: :tweet
+
+  has_many :messages
+  has_many :entries
+  has_many :rooms, through: :entries
 
   has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship"
   has_many :following, through: :following_relationships
@@ -31,7 +37,5 @@ class User < ApplicationRecord
   def unfollow(user)
     following_relationships.find_by(following_id: user.id).destroy
   end
-
-  validates :nickname, presence: true, uniqueness: true
 
 end

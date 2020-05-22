@@ -1,0 +1,7 @@
+= form_with(model: @message) do |f|
+    = f.text_field :message, placeholder: "メッセージを入力して下さい" , size: 70
+    = f.hidden_field :room_id, value: @room.id
+    = f.submit "投稿"
+-# = form_with(model: current_user, url: relationships_path, method: :post, remote: true) do |f|
+-# = hidden_field_tag :following_id, @user.id
+-# = f.submit "フォローする", class: "btn btn-outline-secondary"

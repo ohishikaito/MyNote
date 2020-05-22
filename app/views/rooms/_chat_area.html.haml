@@ -1,0 +1,40 @@
+.left-button
+%h4.rooms-title 気になる同士
+- @entries.each do |e|
+  .user-name
+    %strong
+      -# = image_tag e.user.avatar, class:"user-image"
+      %a.rooms-user-link{href: "/users/#{e.user.id}"}
+        = e.user.nickname
+        さん
+%hr
+.chats
+  .chat__scroll
+    - if @messages.present?
+      - @messages.each do |m|
+        %div{id: "message_#{m.id}"}
+          .chatbox
+            .chat-face1
+              -# = image_tag m.user.avatar, class:"user-image"
+              .chat-hukidashi
+              = m.user.nickname
+              %br
+              = m.message
+              %br
+              = m.created_at.strftime("%Y-%m-%d %H:%M")
+              -# = link_to "編集", edit_message_path(@room, m.id), remote: true
+              = form_with(model: @message, url: edit_message_path(m.id), remote: true, method: :get) do |f|
+                = f.hidden_field :room_id, value: @room.id
+                = f.submit "編集"
+              -# = link_to "削除", message_path(m.id), remote: true, method: :delete
+              = form_with(model: @message, url: message_path(m.id), remote: true, method: :delete) do |f|
+                = f.hidden_field :room_id, value: @room.id
+                = f.submit "削除"
+-#      messages POST   /messages(.:format)                                                                      messages#create
+-#  edit_message GET    /messages/:id/edit(.:format)                                                             messages#edit
+-#       message PATCH  /messages/:id(.:format)                                                                  messages#update
+-#               PUT    /messages/:id(.:format)                                                                  messages#update
+-#               DELETE /messages/:id(.:format)                                                                  messages#destroy
+-# - if current_user.following?(@user)
+-#   = form_with(model: current_user, url: relationship_path(@user.id), method: :delete, remote: true) do |f|
+-#     = f.submit "フォロー解除", class: "btn btn-outline-secondary"

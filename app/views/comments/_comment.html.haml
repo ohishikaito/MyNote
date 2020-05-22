@@ -12,6 +12,7 @@
         %input{type: "submit", value: "編集"}
       = link_to tweet_comment_path(@tweet, comment.id), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' } do
         %input{type: "submit", value: "削除"}
+
 #collapseExample.collapse
   - @comments.offset(2).each do |comment|
     %div{id: "comment_#{comment.id}"}
