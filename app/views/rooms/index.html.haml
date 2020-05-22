@@ -1,0 +1,11 @@
+- @rooms.each do |r|
+    = link_to room_path(r), class: "empty" do
+        .div
+            %h3.div
+                = opened_user(r)
+        .div
+            %h3.div
+                = most_new_message_preview(r)
+
+        .div
+            = most_new_message_date(r)
