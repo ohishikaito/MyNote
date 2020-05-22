@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     sessions: "users/sessions"
   }
+  
   root to: 'tweets#index'
   namespace :tweets do
     resources :searches, only: :index
