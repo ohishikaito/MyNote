@@ -5,8 +5,11 @@ class CommentsController < ApplicationController
   def create
     @comment = @tweet.comments.create(comment_params)
     if @comment.save
-        @comment = Comment.new
-        gets_all_comments
+      @tweet = @comment.tweet
+      @tweet.create_notification_comment!(current_user, @comment.id)
+        if gets_all_comments
+          @comment = Comment.new
+        end
     end
   end
 
@@ -37,7 +40,7 @@ class CommentsController < ApplicationController
   end
 
   def gets_all_comments
-    @comments = @tweet.comments.includes(:user).order('updated_at desc')
+    @comments = @tweet.comments.includes(:user).order('created_at desc')
   end
 
   def comment_params

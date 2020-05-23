@@ -7,7 +7,11 @@
     = @tweet.text
   .user
     投稿者
-    = link_to @tweet.user.nickname, user_path(@tweet.user.id), class: 'header__top__userMenu--name'
+    -# = link_to @tweet.user.nickname, user_path(@tweet.user.id), class: 'header__top__userMenu--name'
+    = link_to  user_path(@tweet.user.id) do
+      %h3
+      = @tweet.user.nickname
+      = image_tag "#{@tweet.user.avatar}", class: "avatar"
   = render "relationships/follow"
   .like
     %div{id: "like_#{@tweet.id}"}
@@ -15,11 +19,12 @@
   - if user_signed_in? && current_user.id == @tweet.user_id
     = link_to '編集', edit_tweet_path(@tweet.id)
     = link_to '削除', tweet_path(@tweet.id), method: :delete, data: { confirm: '削除してよろしいですか？' }
-  自分の他にいいねした人
   - if @tweet.liked_users.present?
+    自分の他にいいねした人
     -# この機能いる？liked_userの自分以外 TODO
     - @tweet.liked_users.each do |user|
-      - if current_user.id != user.id
+      - if user_signed_in? && current_user.id != user.id
         = link_to user.nickname, user_path(user.id)
+
 
 = render "comments/index"
