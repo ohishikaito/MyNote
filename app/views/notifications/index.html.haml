@@ -1,4 +1,5 @@
 -# 自分の投稿にいいね、コメント通知は表示しない
+= link_to "アクティビティ", activities_path
 - notifications = @notifications.where.not(visitor_id: current_user.id)
 - if notifications.exists?
     = render notifications

@@ -24,13 +24,17 @@
         - else
           %span
             = link_to tweet_path(notification.tweet) do
-              = image_tag "#{visitor.avatar}", class: "avatar"
+              = image_tag "#{notification.tweet.user.avatar}", class: "avatar"
               %strong
                 = notification.tweet.user.nickname + 'さんの投稿'
         = "にコメントしました"
         %p.text-muted.mb-0
           = Comment.find_by(id: notification.comment_id)&.content
-
+      - when 'message'
+        = link_to room_path(notification.room) do
+          あなたにメッセージを送信しました
+          %p.text-muted.mb-0
+            = Message.find_by(id: notification.message_id)&.message
 
 .small.text-muted.text-right
   = time_ago_in_words(notification.created_at).upcase
