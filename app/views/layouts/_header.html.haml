@@ -1,4 +1,6 @@
 .contents
+  = link_to 'ログイン', new_user_session_path, class: 'header__top__userMenu--logout'
+  = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'header__top__userMenu--logout'
   .header
     .header__top
       = link_to "タイトル", root_path, class: 'header__top--title'
@@ -21,7 +23,7 @@
                 -# , style="font-size: 1.5em;" 
           = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'header__top__userMenu--logout'
           - if current_user.email == "guest@user"
-            ゲストだよん
+            ゲストです！
           - else
             = link_to 'ユーザー編集', edit_user_path(current_user.id)
         - else

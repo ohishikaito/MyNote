@@ -5,11 +5,9 @@ class CommentsController < ApplicationController
   def create
     @comment = @tweet.comments.create(comment_params)
     if @comment.save
-      @tweet = @comment.tweet
       @tweet.create_notification_comment!(current_user, @comment.id)
-        if gets_all_comments
-          @comment = Comment.new
-        end
+      gets_all_comments
+      @comment = Comment.new
     end
   end
 

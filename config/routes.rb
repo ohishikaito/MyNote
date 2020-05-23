@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :messages, only: [:create, :edit, :update, :destroy]
   resources :rooms, only: [:index, :show, :create]
   resources :notifications, only: :index
+  resources :activities, only: :index
   
 end
 # shallow trueは諦める
