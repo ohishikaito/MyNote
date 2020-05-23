@@ -1,0 +1,17 @@
+.main
+    = link_to "新着投稿", root_path
+    .tweets
+        .tweets__list
+            - @tweets.each.with_index(1) do |tweet, i|
+                第
+                = i
+                位
+                %i.fa.fa-heart{"aria-hidden" => "true", style: "color: red;"}
+                    = tweet.likes.count
+                .tweets__list--item
+                    タイトル
+                    = link_to tweet.title, tweet_path(tweet.id)
+                    投稿者
+                    = link_to tweet.user.nickname, user_path(tweet.user.id)
+                    投稿日
+                    = tweet.updated_at.strftime("%Y-%m-%d %H:%M")

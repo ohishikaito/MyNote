@@ -22,11 +22,9 @@
               = m.message
               %br
               = m.created_at.strftime("%Y-%m-%d %H:%M")
-              -# = link_to "編集", edit_message_path(@room, m.id), remote: true
               = form_with(model: @message, url: edit_message_path(m.id), remote: true, method: :get) do |f|
                 = f.hidden_field :room_id, value: @room.id
                 = f.submit "編集"
-              -# = link_to "削除", message_path(m.id), remote: true, method: :delete
               = form_with(model: @message, url: message_path(m.id), remote: true, method: :delete) do |f|
                 = f.hidden_field :room_id, value: @room.id
                 = f.submit "削除"

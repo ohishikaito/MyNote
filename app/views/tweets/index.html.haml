@@ -1,4 +1,6 @@
 .main
+  = link_to "いいねランキング", likes_tweets_path
+  -#  likes_tweets GET    /tweets/likes(.:format)  tweets#likes
   .tweets
     = form_with(url: tweets_searches_path, local: true, method: :get) do |f|
       = f.text_field :keyword, placeholder: 'タイトルを検索する'

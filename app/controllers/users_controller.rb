@@ -37,8 +37,6 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      # redirect_to root_path
-      # redirect_back(fallback_location: root_path)
       redirect_to root_path, notice: 'ユーザー情報をしました'
     else 
       render :edit

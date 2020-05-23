@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: {
-    registrations: "users/registrations",
-    sessions: "users/sessions"
+    # registrations: "users/registrations",
+    # sessions: "users/sessions"
   }
-  
+
   root to: 'tweets#index'
   namespace :tweets do
     resources :searches, only: :index
   end
   resources :tweets do
+    collection do
+      get :likes
+    end
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :edit, :update, :destroy]
   end
@@ -21,6 +24,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :messages, only: [:create, :edit, :update, :destroy]
   resources :rooms, only: [:index, :show, :create]
+  resources :notifications, only: :index
   
 end
 # shallow trueは諦める

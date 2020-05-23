@@ -72,3 +72,4 @@ gem 'kaminari'
 gem 'font-awesome-sass', '~> 5.4.1'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'slim-rails'

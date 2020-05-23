@@ -8,6 +8,7 @@ class LikesController < ApplicationController
   def create
     like = Like.create(user_id: current_user.id, tweet_id: @tweet.id)
     like.save
+    @tweet.create_notification_like!(current_user)
     # @likes = Like.where(tweet_id: @tweet.id)
     # @tweet.reload
   end

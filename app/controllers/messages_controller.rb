@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
     before_action :set_message, only: [:edit, :update, :destroy]
 
     def create
-        if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id])
+        if Entry.where(user_id: current_user.id, room_id: @room.id)
             @message = Message.create(message_params)
                 if @message.save
                     @message = Message.new

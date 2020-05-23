@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_050902) do
+ActiveRecord::Schema.define(version: 2020_05_23_015543) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "tweet_id", null: false
@@ -50,6 +50,21 @@ ActiveRecord::Schema.define(version: 2020_05_21_050902) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "tweet_id"
+    t.integer "comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["tweet_id"], name: "index_notifications_on_tweet_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+  end
+
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "follower_id"
     t.bigint "following_id"
@@ -61,10 +76,8 @@ ActiveRecord::Schema.define(version: 2020_05_21_050902) do
   end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
   create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -86,7 +99,6 @@ ActiveRecord::Schema.define(version: 2020_05_21_050902) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname"
-    t.integer "entry_id"
     t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -102,6 +114,5 @@ ActiveRecord::Schema.define(version: 2020_05_21_050902) do
   add_foreign_key "messages", "users"
   add_foreign_key "relationships", "users", column: "follower_id"
   add_foreign_key "relationships", "users", column: "following_id"
-  add_foreign_key "rooms", "users"
   add_foreign_key "tweets", "users"
 end
