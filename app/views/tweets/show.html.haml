@@ -5,6 +5,7 @@
   .text
     内容
     = @tweet.text
+  = render '/tweets/tag_list', tag_list: @tweet.tag_list
   .user
     投稿者
     -# = link_to @tweet.user.nickname, user_path(@tweet.user.id), class: 'header__top__userMenu--name'

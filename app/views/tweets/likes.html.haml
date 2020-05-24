@@ -14,4 +14,6 @@
                     投稿者
                     = link_to tweet.user.nickname, user_path(tweet.user.id)
                     投稿日
-                    = tweet.updated_at.strftime("%Y-%m-%d %H:%M")
+                    = tweet.updated_at.strftime("%Y-%m-%d %H:%M") 
+                    = render 'likes/like', tweet: tweet
+                    = render '/tweets/tag_list', tag_list: tweet.tag_list

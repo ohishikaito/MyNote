@@ -12,18 +12,10 @@
             %h3.header__top__userMenu--name
             = current_user.nickname
             = image_tag "#{current_user.avatar}", class: "avatar"
-            = link_to(notifications_path) do
-              - if unchecked_notifications.any?
-                %span.fa-stack
-                  %i.far.fa-bell.fa-lg.fa-stack-2x
-                  -# , style: "font-size: 1.5em;" 
-                  %i.fas.fa-circle.n-circle.fa-stack-1x
-              - else 
-                %i.far.fa-bell.fa-lg
-                -# , style="font-size: 1.5em;" 
+          = render 'layouts/circle'
           = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'header__top__userMenu--logout'
           - if current_user.email == "guest@user"
-            ゲストです！
+            ゲストです！ 
           - else
             = link_to 'ユーザー編集', edit_user_path(current_user.id)
         - else

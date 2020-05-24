@@ -1,0 +1,17 @@
+= link_to(notifications_path) do
+  - if unchecked_notifications.any?
+    %span.fa-stack
+      %i.far.fa-bell.fa-lg.fa-stack-2x
+      %i.fas.fa-circle.n-circle.fa-stack-1x
+  - else 
+    %i.far.fa-bell.fa-lg
+
+-# = link_to(notifications_path) do
+-#   - if unchecked_notifications.any?
+-#     %span.fa-stack
+-#       %i.far.fa-bell.fa-lg.fa-stack-2x
+-#       -# , style: "font-size: 1.5em;" 
+-#       %i.fas.fa-circle.n-circle.fa-stack-1x
+-#   - else 
+-#     %i.far.fa-bell.fa-lg
+-#     -# , style="font-size: 1.5em;" 

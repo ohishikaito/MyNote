@@ -8,6 +8,9 @@ class UsersController < ApplicationController
 
   def show
     @tweets = @user.tweets.order('updated_at desc').page(params[:page]).per(5)
+    if params[:tag_name]
+      @tweets = @user.tweets.order.order('updated_at desc').page(params[:page]).per(5).tagged_with("#{params[:tag_name]}")
+    end
     
     if user_signed_in?
       @currentUserEntry = Entry.where(user_id: current_user.id)
@@ -44,6 +47,10 @@ class UsersController < ApplicationController
   end
 
   def likes
+    @tweets = @user.liked_tweets.order('updated_at desc').page(params[:page]).per(5)
+    if params[:tag_name]
+      @tweets = @user.liked_tweets.order.order('updated_at desc').page(params[:page]).per(5).tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def following
@@ -55,18 +62,16 @@ class UsersController < ApplicationController
   end
 
   def timeline
-    @tweets_all = Tweet.includes(:user)
     @user = User.find(current_user.id)
     @following_users = @user.following
-    @tweets = @tweets_all.where(user_id: @following_users).order('updated_at desc').page(params[:page]).per(5)
-    
+    @tweets = Tweet.where(user_id: @following_users).order('updated_at desc').page(params[:page]).per(5)
+    if params[:tag_name]
+      @tweets = Tweet.where(user_id: @following_users).order('updated_at desc').page(params[:page]).per(5).tagged_with("#{params[:tag_name]}")
+    end
+
   end
 
   private
-
-  def test_user
-
-  end
 
   def set_user
     @user = User.find(params[:id])

@@ -67,5 +67,7 @@ class Tweet < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-
+# ActAsTaggable-------------------------------------------------------------------
+  acts_as_taggable
+  # validates :tag_list,  length: { maximum: 5 }
 end

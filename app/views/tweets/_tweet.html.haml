@@ -8,4 +8,5 @@
     = tweet.updated_at.strftime("%Y-%m-%d %H:%M")
     %div{id: "like_#{tweet.id}"}
       = render 'likes/like', tweet: tweet
+    = render '/tweets/tag_list', tag_list: tweet.tag_list
 = paginate(@tweets)

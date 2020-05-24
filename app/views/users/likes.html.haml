@@ -2,14 +2,5 @@
   .tweets
     .tweets__list
       = link_to "ユーザーページに戻る", user_path(@user)
-      - @user.liked_tweets.each do |tweet|
-        .tweets__list--item
-          タイトル
-          = link_to tweet.title, tweet_path(tweet.id)
-          投稿者
-          = link_to tweet.user.nickname, user_path(tweet.user.id)
-          投稿日
-          = tweet.updated_at.strftime("%Y-%m-%d %H:%M")
-          %div{id: "like_#{tweet.id}"}
-            = render 'likes/like', tweet: tweet
+      = render 'tweets/tweet'
             

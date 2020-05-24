@@ -5,4 +5,17 @@
       = f.text_area :text
       = f.label :image do
         = f.file_field :image
-      = f.submit '投稿する'
+      .from-group
+        = f.text_field :tag_list, value: @tweet.tag_list.join(','), class: "tag-form"
+        -# = f.text_field :tag_list ,value: "rails"
+        -# %input{ type: "text", value: "う", name: "tweet[tag_list]", id: "tweet_tag_list", class: "tag-form"}
+        -# %input{ type: "text", value: "い", name: "tweet[tag_list]", id: "tweet_tag_list", class: "tag-form"}
+      = f.submit '投稿する', class: "tweets_form"
+
+
+-# - @tags_select.each do |tag|
+-#   = link_to tag, "http://localhost:3000/tweets?tag_name=#{tag}"
+
+-# - @tags.each do |tag|
+-#   = link_to tag.name, "http://localhost:3000/tweets?tag_name=#{tag.name}"
+-#   = tag.count

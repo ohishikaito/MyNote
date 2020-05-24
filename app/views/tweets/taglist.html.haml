@@ -1,0 +1,5 @@
+- @tags.each do |tag|
+  %span.badge.badge-primary.mr-1.p-2
+    = link_to tag.name, tweets_path(tag_name: tag.name), style:  "color: white;"
+  = tag.count
+  件
