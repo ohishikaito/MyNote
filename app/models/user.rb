@@ -7,6 +7,7 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable
   validates :nickname, presence: true, uniqueness: true
   validates :email,  length: { maximum: 50 }
+  validates :nickname,  length: { maximum: 12 }
   mount_uploader :avatar, AvatarUploader
 # tweets-------------------------------------------------------------------
   has_many :tweets

@@ -25,7 +25,7 @@
               = form_with(model: @message, url: edit_message_path(m.id), remote: true, method: :get) do |f|
                 = f.hidden_field :room_id, value: @room.id
                 = f.submit "編集"
-              = form_with(model: @message, url: message_path(m.id), remote: true, method: :delete) do |f|
+              = form_with(model: @message, url: message_path(m.id), remote: true, method: :delete, data: { confirm: '削除してよろしいですか？' }) do |f|
                 = f.hidden_field :room_id, value: @room.id
                 = f.submit "削除"
 -#      messages POST   /messages(.:format)                                                                      messages#create
