@@ -1,0 +1,135 @@
+.room-index-hover{
+  &:hover{
+    background-color: #e6e6e6;
+  }
+}
+
+.room-index{
+  width: 800px;
+  margin: 0 auto;
+  border: 1px solid $header_border;
+  background-color: white;
+  &__title{
+    height: 100px;
+    border-bottom: 1px solid $header_border;
+    text-align: center;
+    line-height: 100px;
+    font-size: 25px;
+    // cursor: pointer;
+  }
+  &__items{
+    &__item{
+      border-top: 1px solid $header_border;
+      height: 100px;
+      width: 798px;
+      color: #333;
+      position: relative;
+      &--icon{
+        height: 60px;
+        width: 60px;
+        border-radius: 100px;
+        float: left; 
+        margin: 20px 20px;
+      }
+      &__content{
+        display: block;
+        padding-left: 90px;
+        &--body{
+          padding: 20px;
+        }
+        &:hover{
+          color: #505050;
+        }
+        &--message{
+          color: $header_tags;
+        }
+        &--date{
+          color: $header_tags;
+          position: absolute;
+          bottom: 5px;
+          right: 5px;
+        }
+      }
+    }
+  }
+}
+
+.room-show{
+  width: 1000px;
+  min-height: 500px;
+  margin: 30px auto;
+  border: 1px solid $header_border;
+  background-color: white;
+  color: #333;
+  &__title{
+    height: 100px;
+    font-size: 25px;
+    text-align: center;
+    line-height: 100px;
+    border-bottom: 1px solid $header_border;
+    &:hover a{
+      color: #505050;
+    }
+  }
+  &__items{
+      overflow: scroll;
+  }
+  &__item{
+    &--message{
+      font-size: 15px;
+      background-color: #F5F5F5;
+      padding: 0.4rem 1rem;
+      border-radius: 1.2rem;
+      display: inline-block;
+      margin: 0.5rem;
+      max-width: 80%;
+    }
+    &--date{
+      padding: 5px 10px;
+      color: $header_tags;
+    }
+    &__right{
+      display: flex;
+      justify-content: flex-end;
+      &--btn{
+        padding-top: 8px;
+      }
+    }
+    &__left{
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+  &__form{
+    height: 70px;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    border-top: 1px solid $header_border;
+    background-color: #bcbcbc;
+    position: fixed;
+    bottom: 0;
+    &__box{
+      position: relative;
+      margin: 0 auto;
+    }
+    &--input{
+      margin-left: 20px;
+      padding-left: 20px;
+      width: 800px;
+      height: 50px;
+      border-radius: 100px;
+      border: 1px solid #ccc;
+      outline: 0;
+    }
+    &--btn{
+      border: none;
+      font-size: 1.3rem;
+      color: #666;
+      background-color: #bcbcbc;
+      position: absolute;
+      bottom: 7px;
+      right: -40px;
+    }
+  }
+}
