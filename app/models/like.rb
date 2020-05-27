@@ -5,7 +5,5 @@ class Like < ApplicationRecord
   belongs_to :tweet
 # users-------------------------------------------------------------------
   belongs_to :user
-# notifications-------------------------------------------------------------------
-  # has_many :notifications, dependent: :destroy
   
 end

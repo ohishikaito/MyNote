@@ -1,6 +1,6 @@
-%h2 Sign up
 = render 'devise/sessions/testuser' 
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+-# = form_for(resource, as: resource_name, url: registration_path(resource_name), id: 'aaa') do |f|
+= form_with(model: resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
     = f.label :nickname, value: 'ニックネーム'

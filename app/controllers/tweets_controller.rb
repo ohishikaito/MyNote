@@ -1,26 +1,18 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:edit, :destroy, :show, :update]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :blocking_edit_tweet, only: [:edit, :update, :destroy]
 
   def index
     @tweets = Tweet.includes(:user).order('updated_at desc').page(params[:page]).per(5)
     if params[:tag_name]
       @tweets = Tweet.includes(:user).order('updated_at desc').page(params[:page]).per(5).tagged_with("#{params[:tag_name]}")
     end
-
-    return nil if params[:keyword] == ""
-    @allTags = Tweet.tag_counts_on(:tags)
-    @tags = @allTags.where(['name LIKE ?', "%#{params[:keyword]}%"])
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   def new
       @tweet = Tweet.new
       @tags= Tweet.tag_counts_on(:tags)
-      @tags_select = ["rails","java"]
   end
 
   def create
@@ -34,16 +26,6 @@ class TweetsController < ApplicationController
   end
 
   def edit
-    if @tweet.user_id != current_user.id
-      redirect_to root_path, notice: "不正な操作です"
-    end
-    return nil if params[:keyword] == ""
-    @allTags = Tweet.tag_counts_on(:tags)
-    @tags = @allTags.where(['name LIKE ?', "%#{params[:keyword]}%"])
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   def update
@@ -63,8 +45,7 @@ class TweetsController < ApplicationController
   end
 
   def destroy
-    tweet = Tweet.find(params[:id])
-    tweet.destroy
+    @tweet.destroy
     redirect_to root_path, notice: '投稿を削除しました'
   end
 
@@ -75,23 +56,26 @@ class TweetsController < ApplicationController
     end
   end
 
-  def taglist
+  def tags
     @tags = Tweet.tag_counts_on(:tags)
   end
-
     
   private
 
   def tweet_params
     params.require(:tweet).permit(:title, :text, :image, :tag_list).merge(user_id: current_user.id)
   end
-  # def tag_params
-  #   params.require(:tweet).pertmit(:nickname, :tag_list)
-  # end
 
   def set_tweet
     @tweet = Tweet.find(params[:id])
   end
 
+  def blocking_edit_tweet
+    unless current_user.admin?
+      if @tweet.user.id != current_user.id
+        redirect_to root_path, notice: "不正な操作です"
+      end
+    end
+  end
 
 end

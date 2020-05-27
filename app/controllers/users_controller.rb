@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index, :timeline]
-  before_action :blocking_test_user, only: [:edit, :update, :destroy]
+  before_action :blocking_edit_user, only: [:edit, :update]
+  before_action :blocking_edit_test_user, only: [:update]
 
   def index
     @users = User.all
@@ -33,14 +34,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if @user.id != current_user.id
-      redirect_to root_path, notice: "不正な操作です"
-    end
-  end
+  end 
 
   def update
     if current_user.update(user_params)
-      redirect_to root_path, notice: 'ユーザー情報をしました'
+      redirect_to root_path, notice: 'ユーザー情報を更新しました'
     else 
       render :edit
     end
@@ -81,8 +79,17 @@ class UsersController < ApplicationController
       params.require(:user).permit(:nickname, :email, :avatar)
     end
 
-  def blocking_test_user
-    if @user.email == "guest@user"
+  def blocking_edit_user
+    unless current_user.admin?
+      if @user.id != current_user.id
+        redirect_back(fallback_location: root_path)
+        flash[:notice] = "不正な操作です"
+      end
+    end
+  end
+
+  def blocking_edit_test_user
+    if current_user.email == "guest@user"
       flash[:notice] = "ゲストユーザーのため編集できません"
       redirect_back(fallback_location: root_path)
     end

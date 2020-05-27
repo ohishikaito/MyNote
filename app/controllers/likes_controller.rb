@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   before_action :set_tweet, only: [:create, :destroy]
-
+  
   def index
     @user = User.find(user_id: params[:user_id])
   end
@@ -12,7 +12,7 @@ class LikesController < ApplicationController
     # @likes = Like.where(tweet_id: @tweet.id)
     # @tweet.reload
   end
-
+ 
   def destroy
     like = Like.find_by(user_id: current_user.id, tweet_id: @tweet.id)
     like.destroy

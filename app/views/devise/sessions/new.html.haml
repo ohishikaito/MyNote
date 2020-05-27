@@ -2,7 +2,7 @@
   .container
     = render 'devise/sessions/testuser' 
     %h2 Log in
-    = form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f|
+    = form_with model: @user, url: user_session_path, local: true do |f|
       .field
         = f.label :email
         %br/
@@ -12,6 +12,7 @@
         %br/
         = f.password_field :password, autocomplete: "off"
       - if devise_mapping.rememberable?
+      
         .field
           = f.label :remember_me
           %br/

@@ -1,41 +1,62 @@
 - visitor = notification.visitor
 - visited = notification.visited
--# .col-md6.mx-auto
-.form-inline
-  %span
-    = link_to user_path(visitor) do
-      = image_tag "#{visitor.avatar}", class: "avatar"
-      %strong
-      = visitor.nickname
-    ='さんが'
+%li
+  - case notification.action
 
-    - case notification.action
-    - when 'follow'
-      = "あなたをフォローしました"
-    - when 'like'
-      = link_to 'あなたの投稿', notification.tweet, style: "font-weight: bold;"
-      = "にいいねしました"
-      = link_to tweet_path(notification.tweet) do
-        タイトル
+  - when 'like'
+    = link_to tweet_path(notification.tweet.id), class: "notification-top__items__item" do
+      .notification-top__items__item--icon
+        %i.fa.fa-heart.fa-2x{"aria-hidden" => "true", style: "color: red;"}
+      .notification-top__items__item--content
+        = image_tag "#{visitor.avatar}", class: "avatar"
+        %strong
+          = visitor.nickname
+        さんがあなたの投稿にいいねしました
+      .notification-top__items__item--message
         = notification.tweet.title
-    - when 'comment'
-      - if notification.tweet.user_id == visited.id
-        = link_to "あなたの投稿", notification.tweet, style: "font-weight: bold;"
-      - else
-        %span
-          = link_to tweet_path(notification.tweet) do
-            = image_tag "#{notification.tweet.user.avatar}", class: "avatar"
-            %strong
-              = notification.tweet.user.nickname + 'さんの投稿'
-      = "にコメントしました"
-      %p.text-muted.mb-0
+      .notification-top__items__item--date
+        = time_ago_in_words(notification.created_at).upcase
+  - when 'comment'
+    = link_to tweet_path(notification.tweet.id), class: "notification-top__items__item" do
+      .notification-top__items__item--icon
+        %i.fa.fa-edit.fa-2x{"aria-hidden" => "true"}
+      .notification-top__items__item--content
+        = image_tag "#{visitor.avatar}", class: "avatar"
+        %strong
+          = visitor.nickname
+        さんが
+        - if notification.tweet.user_id == visited.id
+          あなたの投稿
+        - else
+          = image_tag "#{notification.tweet.user.avatar}", class: "avatar"
+          %strong
+            = notification.tweet.user.nickname + 'さんの投稿'
+        にコメントしました
+      .notification-top__items__item--message
         = Comment.find_by(id: notification.comment_id)&.content
-    - when 'message'
-      = link_to room_path(notification.room) do
-        あなたにメッセージを送信しました
-        %p.text-muted.mb-0
-          = Message.find_by(id: notification.message_id)&.message
-
-.small.text-muted.text-right
-  = time_ago_in_words(notification.created_at).upcase
-%hr
+      .notification-top__items__item--date
+        = time_ago_in_words(notification.created_at).upcase
+  - when 'message'
+    = link_to room_path(notification.room), class: "notification-top__items__item" do
+      .notification-top__items__item--icon
+        %i.fa.fa-envelope-o.fa-2x{"aria-hidden" => "true"}
+      .notification-top__items__item--content
+        = image_tag "#{visitor.avatar}", class: "avatar"
+        %strong
+          = visitor.nickname
+        さんがあなたにメッセージを送信しました
+      .notification-top__items__item--message
+        = Message.find_by(id: notification.message_id)&.message
+      .notification-top__items__item--date
+        = time_ago_in_words(notification.created_at).upcase
+  - when 'follow'
+    = link_to user_path(visitor), class: "notification-top__items__item" do
+      .notification-top__items__item--icon
+        %i.fa.fa-user.fa-2x{"aria-hidden" => "true"}
+      .notification-top__items__item--content
+        = image_tag "#{visitor.avatar}", class: "avatar"
+        %strong
+          = visitor.nickname
+        さんがあなたをフォローしました
+      .notification-top__items__item--date
+        = time_ago_in_words(notification.created_at).upcase

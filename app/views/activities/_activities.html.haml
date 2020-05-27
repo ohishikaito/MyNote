@@ -1,46 +1,66 @@
 - visitor = activity.visitor
 - visited = activity.visited
-.form-inline
-  %span      
-    - case activity.action
-    - when 'follow'
-      = link_to user_path(visited) do
-        = image_tag "#{visited.avatar}", class: "avatar"
-        %strong
-          = visited.nickname
-      = "さんをフォローしました"
-    - when 'like'
-      - if activity.tweet.user_id == visitor.id
-        = link_to "あなたの投稿", activity.tweet, style: "font-weight: bold;"
-      - else
-        %span
-          = link_to tweet_path(activity.tweet) do
-            = image_tag "#{visited.avatar}", class: "avatar"
-            %strong
-              = activity.tweet.user.nickname + 'さんの投稿'
-      = "にいいねしました"
-    - when 'comment'
-      - if activity.tweet.user_id == visitor.id
-        = link_to "あなたの投稿", activity.tweet, style: "font-weight: bold;"
-      - else
-        %span
-          = link_to tweet_path(activity.tweet) do
-            = image_tag "#{activity.tweet.user.avatar}", class: "avatar"
-            %strong
-              = activity.tweet.user.nickname + 'さんの投稿'
-      = "にコメントしました"
-      %p.text-muted.mb-0
-        = Comment.find_by(id: activity.comment_id)&.content
-    - when 'message'
-      = link_to user_path(visited) do
-        = image_tag "#{visited.avatar}", class: "avatar"
-        %strong
-          = visited.nickname
-      = link_to room_path(activity.room.id) do
-        = "さんにメッセージを送信しました"
-        %p.text-muted.mb-0
-          = Message.find_by(id: activity.message_id)&.message
+%li    
+  - case activity.action
 
-.small.text-muted.text-right
-  = time_ago_in_words(activity.created_at).upcase
-%hr
+  - when 'like'
+    = link_to tweet_path(activity.tweet.id), class: "notification-top__items__item" do
+      .notification-top__items__item--icon
+        %i.fa.fa-heart.fa-2x{"aria-hidden" => "true", style: "color: red;"}
+      .notification-top__items__item--content
+        - if activity.tweet.user_id == visitor.id
+          = image_tag "#{visitor.avatar}", class: "avatar"
+          あなたの投稿
+        - else
+          = image_tag "#{visited.avatar}", class: "avatar"
+          %strong
+            = activity.tweet.user.nickname + 'さんの投稿'
+        にいいねしました
+      .notification-top__items__item--message
+        = activity.tweet.title
+      .notification-top__items__item--date
+        = time_ago_in_words(activity.created_at).upcase
+
+  - when 'comment'
+    = link_to tweet_path(activity.tweet.id), class: "notification-top__items__item" do
+      .notification-top__items__item--icon
+        %i.fa.fa-edit.fa-2x{"aria-hidden" => "true"}
+      .notification-top__items__item--content
+        - if activity.tweet.user_id == visitor.id
+          = image_tag "#{visited.avatar}", class: "avatar"
+          あなたの投稿
+        - else
+          = image_tag "#{activity.tweet.user.avatar}", class: "avatar"
+          %strong
+            = activity.tweet.user.nickname + 'さんの投稿'
+        にコメントしました
+      .notification-top__items__item--message
+        = Comment.find_by(id: activity.comment_id)&.content
+      .notification-top__items__item--date
+        = time_ago_in_words(activity.created_at).upcase
+
+  - when 'message'
+    = link_to room_path(activity.room), class: "notification-top__items__item" do
+      .notification-top__items__item--icon
+        %i.fa.fa-envelope-o.fa-2x{"aria-hidden" => "true"}
+      .notification-top__items__item--content
+        = image_tag "#{visited.avatar}", class: "avatar"
+        %strong
+          = visited.nickname
+        さんにメッセージを送信しました
+      .notification-top__items__item--message
+        = Message.find_by(id: activity.message_id)&.message
+      .notification-top__items__item--date
+        = time_ago_in_words(activity.created_at).upcase
+
+  - when 'follow'
+    = link_to user_path(visited), class: "notification-top__items__item" do
+      .notification-top__items__item--icon
+        %i.fa.fa-user.fa-2x{"aria-hidden" => "true"}
+      .notification-top__items__item--content
+        = image_tag "#{visited.avatar}", class: "avatar"
+        %strong
+          = visited.nickname
+        さんをフォローしました  
+      .notification-top__items__item--date
+        = time_ago_in_words(activity.created_at).upcase

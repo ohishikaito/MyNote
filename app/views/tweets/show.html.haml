@@ -17,7 +17,7 @@
   .like
     %div{id: "like_#{@tweet.id}"}
       = render 'likes/like', tweet: @tweet
-  - if user_signed_in? && current_user.id == @tweet.user_id
+  - if user_signed_in? && current_user.id == @tweet.user_id || current_user.admin?
     = link_to '編集', edit_tweet_path(@tweet.id)
     = link_to '削除', tweet_path(@tweet.id), method: :delete, data: { confirm: '削除してよろしいですか？' }
   - if @tweet.liked_users.present?
@@ -26,6 +26,4 @@
     - @tweet.liked_users.each do |user|
       - if user_signed_in? && current_user.id != user.id
         = link_to user.nickname, user_path(user.id)
-
-
 = render "comments/index"

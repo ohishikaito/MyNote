@@ -6,19 +6,35 @@
 @import "modules/new";
 @import "modules/users";
 @import "modules/flash";
+@import "modules/header";
+@import "modules/notifications";
 
-.avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 100px;
-  object-fit: cover;
+.wrapper{
+  height: 100%;
+  width: 100%;
+  background-color: #F5F5F5;
+  margin-top: 5px;
+  padding-top: 30px;
 }
 
-.n-circle {
-  position: absolute;
-  padding-left: 1rem;
-  padding-top: 0rem;
-  color: #efa04c;
+.container{
+  
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.active{
+  display: block;
+}
+
+.hide{
+  display: none;
+}
+
+.text-center{
+  text-align: center;
 }
 
 .chat__scroll {

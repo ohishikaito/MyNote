@@ -11,18 +11,6 @@ class MessagesController < ApplicationController
             end
     end
 
-#        def create
-#         if Entry.where(user_id: current_user.id, room_id: @room.id)
-#             @message = Message.create(message_params)
-#                 if @message.save
-#                     @message = Message.new
-#                     gets_entries_all_messages
-#                 end
-#         else
-#             flash[:alert] = "メッセージの送信に失敗しました"
-#         end
-#     end
-# create_notification_message!
     def edit
     end
 
