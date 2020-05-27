@@ -1,9 +1,15 @@
-- @rooms.each do |room|
-    = link_to room_path(room), class: "empty" do
-        .div
-            = opened_user(room)
-        .div
-            = most_new_message_preview(room)
-
-        .div
-            = most_new_message_date(room)
+.wrapper
+  .container
+    .room-index
+      .room-index__title
+        %ul.room-index__items
+          - @rooms.each do |room|
+            %li.room-index__items__item
+              = link_to user_path(room)
+              = link_to room_path(room), class: "empty" do
+                .div
+                  = opened_user(room)
+                .div
+                  = most_new_message_preview(room)
+                .div
+                  = most_new_message_date(room)

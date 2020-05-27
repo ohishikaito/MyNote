@@ -1,6 +1,5 @@
 
 .account-page__inner--left.account-page__header
-    %h2 Edit Account
     %h5 アカウントの編集
     = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
     = link_to "戻る", :back, class: 'btn'
@@ -22,4 +21,6 @@
             .field-input
             = f.file_field :avatar
         .actions
-            = f.submit "Update", class: 'btn'
+            = f.submit "更新", class: 'btn'
+- if user_signed_in? && current_user.email == "guest@user"
+    ゲストユーザーは編集できません

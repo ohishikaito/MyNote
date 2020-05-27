@@ -1,9 +1,27 @@
-= link_to "アクティビティ", activities_path
-.col-md-6.mx-auto
-- notifications = @notifications.where.not(visitor_id: current_user.id)
-- if notifications.exists?
-    = render notifications
-    = paginate notifications
-- else
-    %p
-        通知はありません
+.wrapper
+  .container
+    .notification-top
+      .notification-top__title
+        .notification-top__title__left.notification-top__title--show
+          %h2.notification-top__title--name
+            通知
+        .notification-top__title__right.notification-top__title--down
+          -# .notification-top__title__right.notification-top__title--hide
+          %h2.notification-top__title--name 自分の活動
+      %ul.notification-top__items
+        - if @notifications.exists?
+          = render @notifications
+          = paginate @notifications
+        - else
+          %p.text-center
+            通知はありません
+      %ul.notification-top__activities
+        - if @activities.exists?
+          -# = render @activities
+          - @activities.each do |activity|
+            = render '/activities/activities', activity: activity
+          .div
+            = paginate @activities, class: "uk-icon-angle-double-left"
+        - else
+          %p.text-center
+            通知はありません

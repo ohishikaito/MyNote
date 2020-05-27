@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
     devise_for :users, controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions'
   }
 
   root to: 'tweets#index'
@@ -11,7 +10,7 @@ Rails.application.routes.draw do
   end
   resources :tweets do
     collection do
-      get :likes, :taglist
+      get :likes, :tags
     end
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :edit, :update, :destroy]

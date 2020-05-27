@@ -1,0 +1,77 @@
+.notification-top{
+  width: 800px;
+  margin: 0  auto;
+  border: 1px solid $header_border;
+  background-color: white;
+  cursor: pointer;
+  &__activities{
+    display: none;
+  }
+  &__title{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    font-size: 20px;
+    &--show{
+      background-color: white;
+      border-top:2px solid red;
+    }
+    &--down{
+      background-color: #EEEEEE;
+    }
+    &--name{
+      text-align: center;
+      line-height: 100px;
+      display: block;
+      font-size: 25px;
+      &:hover{
+        background-color: #f7f7f7;
+        color: #505050;
+      }
+    }
+    &__left{
+      width: 50%;
+    }
+    &__right{
+      width: 50%;
+    }
+  }
+  &__items{
+    display: block;
+    &__item{
+      display: block;
+      height: 100px;
+      width: 798px;
+      border-bottom: 1px solid $header_border;
+      padding: 20px;
+      color: #333;
+      position: relative;
+      &:hover{
+        background-color: #fafafa;
+        color: #505050;
+      }
+      &--icon{
+        padding-top: 14px;
+        height: 60px;
+        width: 60px;
+      }
+      &--content{
+        position: absolute;
+        top: 34px;
+        left: 80px;
+      }
+      &--message{
+        position: absolute;
+        top: 62px;
+        left: 125px;
+        color: $header_tags;
+      }
+      &--date{
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        color: $header_tags;
+      }
+    }
+  }
+}

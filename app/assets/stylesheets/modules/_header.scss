@@ -1,0 +1,124 @@
+.avatar {
+  width: 39px;
+  height: 39px;
+  border-radius: 100px;
+  object-fit: cover;
+  padding-bottom: 5px;
+}
+
+.n-circle {
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
+  color: #ff2f58;
+}
+
+.header{
+  width: 100%;
+  height: 135px;
+  box-shadow:0px 0px 5px !important;
+  &-contents{
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  &-top{
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $header_border;
+    &__left{
+      padding-top: 25px;
+      &--title{
+        font-weight: bold;
+        font-family: serif;
+        &:hover{
+          color: black !important;
+        }
+      }
+    }
+    
+    &__right{
+      padding-top: 30px;
+      display: flex;
+      margin-bottom: 5px;
+      width: 450px;
+      &--search{
+        color: #222;
+        background: white;
+        border: 1px solid #e6e6e6;
+        border-radius: 5px;
+        padding: 0 4px;
+        line-height: 38px;
+        font-size: 14px;
+        outline: none;
+        text-align: center;
+        &:hover{
+          border: 1px solid #a8abb1;
+          outline: none;
+        }
+      }
+      &--box{
+        margin-left: 20px;
+          // outline: 0;
+        &:hover{
+          outline: 0;
+        }
+      }
+      &__user{
+        display: flex;
+        &__info{
+          line-height: 40px;
+          position: relative;
+          &--link{
+            cursor: pointer;
+          }
+          & a:hover{
+            color: black;
+          }
+        }
+      }
+      &--bell{
+        padding: 8px 20px 0;
+      }
+    }
+  }
+  &-bottom{
+    height: 60px;
+    line-height: 60px;
+    &__list{
+    display: flex;
+    font-size: 15px;
+      & a{
+        color: $header_tags;
+        padding: 20px 20px;
+        &:hover{
+          color: black;
+        }
+      }
+      &__tags{
+        margin-left: 119px;
+      }
+    }
+  }
+}
+
+.header-top__box{
+  position: absolute;
+  top: 44px;
+  z-index: 2;
+  width: 220px;
+  border: 1px solid $header_border;
+  background-color: white;
+  font-size: 15px;
+  &--borderTop{
+    border-top: 1px solid #EEEEEE;
+  }
+  &--content{
+    display: block;
+    min-height: 30px;
+    padding: 5px;
+    &:hover{
+      background-color: #c8c8c8;
+    }
+  }
+}

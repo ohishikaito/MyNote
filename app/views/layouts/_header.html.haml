@@ -1,39 +1,43 @@
-.contents
-  = link_to 'ログイン', new_user_session_path, class: 'header__top__userMenu--logout'
-  = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'header__top__userMenu--logout'
-  .header
-    .header__top
-      = link_to "タイトル", root_path, class: 'header__top--title'
-      = link_to "ユーザー一覧 ", users_path, class: 'header__top--title'
-      = link_to "メッセージ", rooms_path
-      .header__top__userMenu
-        - if user_signed_in?
-          = link_to  user_path(current_user.id) do
-            %h3.header__top__userMenu--name
-            = current_user.nickname
-            = image_tag "#{current_user.avatar}", class: "avatar"
-          = render 'layouts/circle'
-          = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'header__top__userMenu--logout'
-          - if current_user.email == "guest@user"
-            ゲストです！ 
+.header
+  .header-contents
+    .header-top
+      .header-top__left
+        = link_to root_path do
+          %h1.header-top__left--title My Note
+      .header-top__right
+        = form_with(url: tweets_searches_path, local: true, method: :get) do |f|
+          = f.text_field :keyword, placeholder: 'タイトルを検索する', placeholder: "検索する", class: "header-top__right--search"
+        .header-top__right__user
+          - if user_signed_in?
+            .header-top__right--bell
+              = render 'layouts/circle'
+            .header-top__right__user__info
+              %label.header-top__right__user__info--link
+                = image_tag "#{current_user.avatar}", class: "avatar"
+                = current_user.nickname
+                %ul.header-top__box
+                  %li
+                    = link_to "マイページを表示", user_path(current_user), class: "header-top__box--content"
+                  %li.header-top__box--borderTop
+                    = link_to "メッセージ", rooms_path, class: "header-top__box--content"
+                  %li.header-top__box--borderTop
+                    = link_to "タイムライン", timeline_user_path(current_user), class: "header-top__box--content"
+                  %li.header-top__box--borderTop
+                    = link_to "いいね！した投稿", likes_user_path(current_user), class: "header-top__box--content"
+                  %li.header-top__box--borderTop
+                    = link_to 'ユーザー編集', edit_user_path(current_user.id), class: "header-top__box--content"
+                  %li.header-top__box--borderTop
+                    = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-top__box--content"
           - else
-            = link_to 'ユーザー編集', edit_user_path(current_user.id)
-        - else
-          = link_to '新規登録', new_user_registration_path, class: 'header__top__userMenu--logout'
-          = link_to 'ログイン', new_user_session_path, class: 'header__top__userMenu--logout'
-    .header__menu
-      = link_to "ホーム", root_path, class: 'header__menu--home'
-      = link_to "投稿する（表示よくない", new_tweet_path, class: "header__menu--new"
-      %p.header__menu--search
-        検索する
-    -# .header__genre
-    -#   .header__genre__item
-    -#     %a.header__genre--a
-    -#       ジャンル
-    -#   .header__genre__item
-    -#     %a.header__genre--b
-    -#       ジャンル
-    -#   .header__genre__item
-    -#     %a.header__genre--c
-    -#       ジャンル
-
+            = link_to new_user_session_path do
+              %input.btn.btn-outline-secondary.header-top__right--box{type: "submit", value: "ログイン"}
+            = link_to new_user_registration_path do
+              %input.btn.btn-outline-secondary.header-top__right--box{type: "submit", value: "新規登録"}
+    .header-bottom
+      %ul.header-bottom__list
+        - @tags = ["テクノロジー","経済","マンガ","ファッション","エンタメ","スポーツ","国際","コラム"]
+        - @tags.each do |tag|
+          %li.header-bottom__list__item
+            = link_to tag, tweets_path(tag_name: tag), class: "header-bottom__list--name"
+        %ul.header-bottom__list__tags
+          = link_to "全てのタグ", tags_tweets_path, class: ".header-bottom__list--name"
