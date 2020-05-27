@@ -8,11 +8,18 @@
 */
 html {
   color: #000;
-  background-color: #F5F5F5;
+  background-color: $body_color;
 }
 body {
-  background-color: #F5F5F5;
-}
+  background-color: $body_color;
+} 
+
+
+* {
+    margin: 0px;
+    padding: 0px; 
+} 
+
 /*
 */
 /*

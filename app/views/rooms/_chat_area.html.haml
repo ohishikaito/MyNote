@@ -1,38 +1,36 @@
-.left-button
-%h4.rooms-title 気になる同士
-- @entries.each do |e|
-  .user-name
-    %strong
-      = image_tag "#{e.user.avatar}", class:"avatar"
-      %a.rooms-user-link{href: "/users/#{e.user.id}"}
-        = e.user.nickname
-        さん
-%hr
-.chats
-  .chat__scroll
-    - if @messages.present?
-      - @messages.each do |m|
-        %div{id: "message_#{m.id}"}
-          .chatbox
-            .chat-face1
-              = image_tag "#{m.user.avatar}", class:"avatar"
-              .chat-hukidashi
-              = m.user.nickname
-              %br
-              = m.message
-              %br
-              = m.created_at.strftime("%Y-%m-%d %H:%M")
-              = form_with(model: @message, url: edit_message_path(m.id), remote: true, method: :get) do |f|
-                = f.hidden_field :room_id, value: @room.id
-                = f.submit "編集"
-              = form_with(model: @message, url: message_path(m.id), remote: true, method: :delete, data: { confirm: '削除してよろしいですか？' }) do |f|
-                = f.hidden_field :room_id, value: @room.id
-                = f.submit "削除"
--#      messages POST   /messages(.:format)                                                                      messages#create
--#  edit_message GET    /messages/:id/edit(.:format)                                                             messages#edit
--#       message PATCH  /messages/:id(.:format)                                                                  messages#update
--#               PUT    /messages/:id(.:format)                                                                  messages#update
--#               DELETE /messages/:id(.:format)                                                                  messages#destroy
--# - if current_user.following?(@user)
--#   = form_with(model: current_user, url: relationship_path(@user.id), method: :delete, remote: true) do |f|
--#     = f.submit "フォロー解除", class: "btn btn-outline-secondary"
+.wrapper
+  .room-show
+    .room-show__title
+      - @entries.each do |e|
+        - if e.user.id != current_user.id
+          = link_to user_path(e.user.id) do
+            = image_tag "#{e.user.avatar}", class:"avatar"
+            = e.user.nickname
+            さんとのメッセージ
+    .room-show__items
+      - if @messages.present?
+        - @messages.each do |m|
+          %div.room-show__item{id: "message_#{m.id}"}
+            -# 右側にくるように
+            - if current_user.id == m.user.id
+              .room-show__item__right
+                = form_with(model: @message, url: message_path(m.id), class: " room-show__item__right--btn", remote: true, method: :delete, data: { confirm: '削除してよろしいですか？' }) do |f|
+                  = f.hidden_field :room_id, value: @room.id
+                  = f.submit "削除", class: "btn rounded-pill"
+                %span.room-show__item--message
+                  = m.message
+              .room-show__item__right
+                .room-show__item--date
+                  = m.created_at.strftime("%Y-%m-%d %H:%M")
+              -# 左側に来る処理
+            - else
+              .room-show__item__left
+                = link_to user_path(m.user.avatar) do
+                  = image_tag "#{m.user.avatar}", class:"avatar"
+                %span.room-show__item--message
+                  = m.message
+              .room-show__item__left
+                .room-show__item--date
+                  = m.created_at.strftime("%Y-%m-%d %H:%M")
+#chat_form
+  = render "/rooms/chat_form"

@@ -2,23 +2,18 @@ module RoomsHelper
 
     def opened_user(room)
         entry = room.entries.where.not(user_id: current_user)
-        nickname = entry[0].user.nickname
-        tag.p "#{nickname}"
+        user = entry[0].user
     end
 
-    def most_new_message_preview(room)
+
+    def get_most_new_message(room)
         lastMessage = room.messages.order(created_at: :desc).limit(1)
-        @message = lastMessage[0]
-        @message.present?
-        tag.p "#{@message.message}", class: "empty"
+        message = lastMessage[0]
     end
 
-    def most_new_message_date(room)
-        lastMessage = room.messages.order(created_at: :desc).limit(1)
-        @message = lastMessage[0]
-        @message.present?
-        tag.p "#{@message.updated_at.strftime("%Y-%m-%d %H:%M")}"
+    def get_joinUser(entry)
+        entry = Entry.where.not(user_id: current_user)
+        user = entry[0].user
     end
-
 
 end

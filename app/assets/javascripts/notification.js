@@ -20,4 +20,16 @@ $(function () {
     nt_left.removeClass('notification-top__title--show');
     nt_left.addClass('notification-top__title--down');
   });
+  // $("#room-show__form").submit(function () {
+  //   console.log("aa");
+  //   $(".room-show__items").animate({ scrollTop: $(".room-show__items")[0].scrollHeight });
+  // });
+  // $("#room-show__form").submit(function () {
+  //   // $(".room-show__items").animate({ scrollTop: $(".room-show__items")[0].scrollHeight });
+  //   $(".room-show__items").scrollTop($(".room-show__items")[0].scrollHeight);
+  // });
+  var element = document.getElementById("room-show__form");
+  var positionY = element.offsetTop; // 変更点
+  element.scrollTo(0, positionY);
+
 });
