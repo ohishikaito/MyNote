@@ -4,9 +4,9 @@ class TweetsController < ApplicationController
   before_action :blocking_edit_tweet, only: [:edit, :update, :destroy]
 
   def index
-    @tweets = Tweet.includes(:user).order('updated_at desc').page(params[:page]).per(5)
+    @tweets = Tweet.includes(:user).order('updated_at desc').page(params[:page]).per(12)
     if params[:tag_name]
-      @tweets = Tweet.includes(:user).order('updated_at desc').page(params[:page]).per(5).tagged_with("#{params[:tag_name]}")
+      @tweets = Tweet.includes(:user).order('updated_at desc').page(params[:page]).per(12).tagged_with("#{params[:tag_name]}")
     end
   end
 
@@ -42,6 +42,8 @@ class TweetsController < ApplicationController
     @comment = Comment.new
     @comments = @tweet.comments.includes(:user).order('created_at desc')
     @user = @tweet.user
+    @donation = Donation.new
+    @donations = @tweet.donations.sum(:amount)
   end
 
   def destroy
@@ -50,12 +52,12 @@ class TweetsController < ApplicationController
   end
 
   def likes
-    @tweets = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').pluck(:tweet_id))
+    @tweets = Tweet.find(Like.group(:tweet_id).limit(12).order('count(tweet_id) desc').pluck(:tweet_id))
     if params[:tag_name]
-      @tweets = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').pluck(:tweet_id).tagged_with("#{params[:tag_name]}"))
+      @tweets = Tweet.find(Like.group(:tweet_id).limit(12).order('count(tweet_id) desc').pluck(:tweet_id).tagged_with("#{params[:tag_name]}"))
     end
   end
-
+# .page(params[:page]).per(12)
   def tags
     @tags = Tweet.tag_counts_on(:tags)
   end

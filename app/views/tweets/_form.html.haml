@@ -1,21 +1,30 @@
-.new__main
-  .new__main--form
-    = form_with(model: @tweet, local: true) do |f|
-      = f.text_field :title
-      = f.text_area :text
-      = f.label :image do
-        = f.file_field :image
-      .from-group
-        = f.text_field :tag_list, value: @tweet.tag_list.join(','), class: "tag-form"
-        -# = f.text_field :tag_list ,value: "rails"
-        -# %input{ type: "text", value: "う", name: "tweet[tag_list]", id: "tweet_tag_list", class: "tag-form"}
-        -# %input{ type: "text", value: "い", name: "tweet[tag_list]", id: "tweet_tag_list", class: "tag-form"}
-      = f.submit '投稿する', class: "tweets_form"
+.wrapper
+  = form_with(model: @tweet, local: true) do |f|
+    .tweet-form
+      .tweet-form__title
+        = f.text_field :title, class: "tweet-form__title--body", placeholder: "タイトルを入力して下さい(30文字以内)"
+      .tweet-form__text
+        = f.label "内容", for: "md-textarea"
+        = f.text_area :text, class: "tweet-form__text--body materialize-textarea", placeholder: "本文を入力して下さい", id: "md-textarea"
+        = f.label :image do
+          %i.fa.fa-image.fa-2x.tweet-form__text--image
+          = f.file_field :image, class: "hide"
+        -# = f.file_field :image, id: :tweet_img
+      .tweet-form__bonus
+        = f.label :tag_list, "タグを追加"
+        = f.text_field :tag_list, value: @tweet.tag_list.join(','), class: "tweet-form__bonus__tags", placeholder: "1つのタグは10文字まで"
+        .tweet-form__bonus__preview
+          -# - if @tweet.image.present?
+          -#   = image_tag @tweet.image,id: :img_prev, class: "tweet-form__bonus__preview--image"
+      .tweet-form__submit
+        = f.submit '投稿する', class: "btn btn-success"
+      .field
+        %ul#article-tags
+:javascript
+  $(function(){
+    var simplemde = new SimpleMDE();
+    $('.tweet-form__bonus__tags').tagit()
+  
+  })
+  
 
-
--# - @tags_select.each do |tag|
--#   = link_to tag, "http://localhost:3000/tweets?tag_name=#{tag}"
-
--# - @tags.each do |tag|
--#   = link_to tag.name, "http://localhost:3000/tweets?tag_name=#{tag.name}"
--#   = tag.count

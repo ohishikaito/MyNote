@@ -1,29 +1,83 @@
-.tweet
-  .title
-    タイトル
-    = @tweet.title
-  .text
-    内容
-    = @tweet.text
-  = render '/tweets/tag_list', tag_list: @tweet.tag_list
-  .user
-    投稿者
-    -# = link_to @tweet.user.nickname, user_path(@tweet.user.id), class: 'header__top__userMenu--name'
-    = link_to  user_path(@tweet.user.id) do
-      %h3
-      = @tweet.user.nickname
-      = image_tag "#{@tweet.user.avatar}", class: "avatar"
-  = render "relationships/follow"
-  .like
-    %div{id: "like_#{@tweet.id}"}
-      = render 'likes/like', tweet: @tweet
-  - if user_signed_in? && current_user.id == @tweet.user_id || current_user.admin?
-    = link_to '編集', edit_tweet_path(@tweet.id)
-    = link_to '削除', tweet_path(@tweet.id), method: :delete, data: { confirm: '削除してよろしいですか？' }
-  - if @tweet.liked_users.present?
-    自分の他にいいねした人
-    -# この機能いる？liked_userの自分以外 TODO
+.wrapper
+  .tweet-show
+    .tweet-show__title
+      .tweet-show__title__top
+        = link_to  user_path(@tweet.user.id), class: "tweet-show__title__top__user" do
+          = image_tag "#{@tweet.user.avatar}", class: "avatar"
+          %strong
+            = @tweet.user.nickname
+        .tweet-show__title__top--edit
+          - if user_signed_in? && current_user.id == @tweet.user_id || current_user.admin?
+            = link_to '編集', edit_tweet_path(@tweet.id)
+            = link_to '削除', tweet_path(@tweet.id), method: :delete, data: { confirm: '削除してよろしいですか？' }
+      %h1.tweet-show__title--body
+        = @tweet.title
+      .tweet-show__title--date
+        = @tweet.updated_at.strftime("%Y-%m-%d %H:%M")
+    .tweet-show__content
+      .tweet-show__content--text
+        %span
+          = markdown(@tweet.text)
+      .tweet-show__content--tags
+        = render '/tweets/tag_list', tag_list: @tweet.tag_list
+      .tweet-show__content__donation
+        #donation_area
+          = render "donations/donation"
+      .tweet-show__content__like
+        %div{id: "like_#{@tweet.id}"}
+          = render 'likes/like', tweet: @tweet
+        .tweet-show__content__like--link
+          - if @tweet.liked_users.present?
+            この記事にいいねした人を見る
+      .tweet-show__content__user
+        = link_to  user_path(@tweet.user.id), class: "tweet-show__content__user--top" do
+          = image_tag "#{@tweet.user.avatar}", class: "tweet-show__content__user--avatar"
+          .tweet-show__content__user--names
+            %strong
+              = @tweet.user.nickname
+          .tweet-show__content__user--follow
+            = render "relationships/follow"
+    .tweet-show__comment
+      #comment_form
+        = render "comments/form"
+      #comment_area
+        = render "comments/comment"
+    -#   .tweet-show__comment--count
+    -#   %ul.tweet-show__comment__items
+    -#       %li.tweet-show__comment__item
+    -#         .tweet-show__comment__item__top
+    -#         .tweet-show__comment__item__top--avatar
+    -#         .tweet-show__comment__item__top--nickname 
+    -#         .tweet-show__comment__item__top--date
+    -#         .tweet-show__comment__item--text
+    -#       .tweet-show__comment__item--text もっと読むボタン
+
+    -# .tweet-show__form
+    -#   .tweet-show__form--avatar
+    -#   .tweet-show__form--text
+    -#   .tweet-show__form--submit
+
+.tweet-show__content__like--bgc
+  %ul.tweet-show__content__like__modal
     - @tweet.liked_users.each do |user|
-      - if user_signed_in? && current_user.id != user.id
-        = link_to user.nickname, user_path(user.id)
-= render "comments/index"
+      %li
+        = link_to  user_path(user.id), class: "tweet-show__content__like--user" do
+          = image_tag "#{user.avatar}", class: "avatar"
+          .tweet-show__content__like--user--name
+            = user.nickname
+            さん
+    .tweet-show__content__like--close
+      %i.btn.btn-dark
+        閉じる
+
+.donation
+  .donation-modal
+    .donation-modal--header
+      %strong
+        = @tweet.user.nickname
+      さんに寄付をする
+    #donation_form
+      = render "donations/form"
+    .donation-modal--close
+      %i.btn.btn-dark
+        閉じる

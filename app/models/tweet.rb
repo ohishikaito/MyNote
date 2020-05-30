@@ -17,7 +17,8 @@ class Tweet < ApplicationRecord
   end
 # tweets-------------------------------------------------------------------
   mount_uploader :image, ImageUploader
-  validates :title, :text, presence: true, length: { maximum: 65_535 }
+  validates :text, presence: true, length: { maximum: 65_535 }
+  validates :title, presence: true, length: { maximum: 40 }
 # users-------------------------------------------------------------------
   belongs_to :user
 # comments-------------------------------------------------------------------
@@ -69,5 +70,6 @@ class Tweet < ApplicationRecord
   end
 # ActAsTaggable-------------------------------------------------------------------
   acts_as_taggable
-  # validates :tag_list,  length: { maximum: 5 }
+# donations-------------------------------------------------------------------
+  has_many :donations, dependent: :destroy
 end

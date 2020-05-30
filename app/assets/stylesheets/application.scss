@@ -28,6 +28,9 @@
   border-radius: 100px;
   object-fit: cover;
   padding-bottom: 5px;
+  &--text:hover{
+    color: #505050;
+  }
 }
 
 .pagination {
@@ -44,6 +47,10 @@
 
 .text-center{
   text-align: center;
+}
+
+.color-black{
+  color: black;
 }
 
 // .chat__scroll {

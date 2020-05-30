@@ -1,3 +1,4 @@
 - tag_list.each do |tag|
-  %span.badge.badge-primary.mr-1.p-2
-    = link_to tag, tweets_path(tag_name: tag), style:  "color: white;"
+  = link_to tweets_path(tag_name: tag) do
+    %i.btn.btn-outline-dark.tags
+      = tag

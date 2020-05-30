@@ -28,6 +28,9 @@
                     = link_to 'ユーザー編集', edit_user_path(current_user.id), class: "header-top__box--content"
                   %li.header-top__box--borderTop
                     = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-top__box--content"
+                  - if current_user.admin?
+                    %li.header-top__box--borderTop
+                      = link_to 'ユーザー一覧', users_path, class: "header-top__box--content"
           - else
             = link_to new_user_session_path do
               %input.btn.btn-outline-secondary.header-top__right--box{type: "submit", value: "ログイン"}

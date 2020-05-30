@@ -1,4 +1,16 @@
-.main
-  .tweets
-    .tweets__list
-      = render '/tweets/tweet'
+.wrapper
+  %ul.tweet-index
+    .tweet-index__title
+      = link_to root_path, class: "tweet-index__title__left tweet-index__active" do
+        %p.tweet-index__title--text 新着
+      = link_to likes_tweets_path, class: "tweet-index__title__right tweet-index__hide" do
+        %p.tweet-index__title--text 人気
+    - @tweets.each do |tweet|
+      = render 'tweets/tweet', tweet: tweet
+    = paginate @tweets
+= link_to new_tweet_path, class: "new-tweet" do
+  .new-tweet__btn
+    %p.new-tweet__text
+      投稿
+    .new-tweet__icon
+      %i.fas.fa-plus
