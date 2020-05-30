@@ -8,7 +8,9 @@
     = link_to "いいね！した投稿", likes_user_path
     投稿一覧
     .tweets__list
-      = render 'tweets/tweet'
+      -# = render 'tweets/tweet', tweet: @user.tweet
+      = render @tweets
+      = paginate @tweets
     = link_to "フォロー", following_user_path(@user)
     = @user.following.count
     = link_to "フォロワー", followers_user_path(@user)

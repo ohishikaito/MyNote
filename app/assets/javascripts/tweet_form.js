@@ -1,8 +1,13 @@
 $(function () {
-  $(".tag-submit").on("click", function () {
-    let input = $("#tag").val();
-    window.location.href = `http://localhost:3000/tweets?tag_name=${input}`
-  });
+  // $(".tag-submit").on("click", function () {
+  //   let input = $("#tag").val();
+  //   window.location.href = `http://localhost:3000/tweets?tag_name=${input}`
+  // });
+  //     .tag_search
+  // タグ検索
+  //   % input{ type: "text", id: "tag" }
+  //       % input{ type: "submit", class: 'tag-submit' }
+
   //   let tags = ["aa", "bb", "cc"];
   //   let list = $(".tag-form");
   //   function appendList(input) {
@@ -24,4 +29,19 @@ $(function () {
   //     //   });
   //     // });
   //   });
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#tweet_img").change(function () {
+    console.log("aaa");
+    readURL(this);
+  });
+
 });

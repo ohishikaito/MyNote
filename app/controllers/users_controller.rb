@@ -62,9 +62,9 @@ class UsersController < ApplicationController
   def timeline
     @user = User.find(current_user.id)
     @following_users = @user.following
-    @tweets = Tweet.where(user_id: @following_users).order('updated_at desc').page(params[:page]).per(5)
+    @tweets = Tweet.where(user_id: @following_users).order('updated_at desc').page(params[:page]).per(12)
     if params[:tag_name]
-      @tweets = Tweet.where(user_id: @following_users).order('updated_at desc').page(params[:page]).per(5).tagged_with("#{params[:tag_name]}")
+      @tweets = Tweet.where(user_id: @following_users).order('updated_at desc').page(params[:page]).per(12).tagged_with("#{params[:tag_name]}")
     end
 
   end

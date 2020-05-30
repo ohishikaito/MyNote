@@ -1,5 +1,6 @@
 - if user_signed_in?
   = form_with(model: [@tweet, @comment]) do |form| 
+    = image_tag "#{current_user.avatar}", class: "avatar"
     = form.text_area :content, class: 'textarea'
     = form.submit value: "送信"
 - else

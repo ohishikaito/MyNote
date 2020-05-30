@@ -14,6 +14,7 @@ class LikesController < ApplicationController
   end
  
   def destroy
+    # like = Like.find(params[:id])
     like = Like.find_by(user_id: current_user.id, tweet_id: @tweet.id)
     like.destroy
     # @likes = Like.where(tweet_id: @tweet.id)

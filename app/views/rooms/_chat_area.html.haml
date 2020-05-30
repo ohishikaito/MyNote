@@ -14,7 +14,7 @@
             -# 右側にくるように
             - if current_user.id == m.user.id
               .room-show__item__right
-                = form_with(model: @message, url: message_path(m.id), class: " room-show__item__right--btn", remote: true, method: :delete, data: { confirm: '削除してよろしいですか？' }) do |f|
+                = form_with(model: @message, url: message_path(m.id), class: "room-show__item__right--btn", remote: true, method: :delete, data: { confirm: '削除してよろしいですか？' }) do |f|
                   = f.hidden_field :room_id, value: @room.id
                   = f.submit "削除", class: "btn rounded-pill"
                 %span.room-show__item--message
@@ -32,5 +32,3 @@
               .room-show__item__left
                 .room-show__item--date
                   = m.created_at.strftime("%Y-%m-%d %H:%M")
-#chat_form
-  = render "/rooms/chat_form"

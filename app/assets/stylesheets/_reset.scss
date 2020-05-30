@@ -14,6 +14,18 @@ body {
   background-color: $body_color;
 } 
 
+a,
+a:visited,
+a:focus,
+a:hover {
+  text-decoration: none !important;
+  color: black;
+}
+
+li{
+  text-decoration: none;
+}
+
 
 * {
     margin: 0px;
@@ -130,34 +142,4 @@ legend {
 /* YUI CSS Detection Stamp */
 #yui3-css-stamp.cssreset {
   display: none;
-}
-
-// a {
-//   text-decoration: none;
-//   color: black;
-// }
-// a:visited {
-//   text-decoration: none;
-//   color: black;
-// }
-// a:focus {
-//   text-decoration: none;
-//   color: black;
-// }
-
-// a:hover {
-//   text-decoration: none;
-//   color: black;
-// }
-
-a,
-a:visited,
-a:focus,
-a:hover {
-  text-decoration: none !important;
-  color: black;
-}
-
-li{
-  text-decoration: none;
 }

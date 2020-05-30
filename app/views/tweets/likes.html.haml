@@ -1,19 +1,16 @@
-.main
-    = link_to "新着投稿", root_path
-    .tweets
-        .tweets__list
-            - @tweets.each.with_index(1) do |tweet, i|
-                第
-                = i
-                位
-                %i.fa.fa-heart{"aria-hidden" => "true", style: "color: red;"}
-                    = tweet.likes.count
-                .tweets__list--item
-                    タイトル
-                    = link_to tweet.title, tweet_path(tweet.id)
-                    投稿者
-                    = link_to tweet.user.nickname, user_path(tweet.user.id)
-                    投稿日
-                    = tweet.updated_at.strftime("%Y-%m-%d %H:%M") 
-                    = render 'likes/like', tweet: tweet
-                    = render '/tweets/tag_list', tag_list: tweet.tag_list
+.wrapper
+  %ul.tweet-index
+    .tweet-index__title
+      = link_to root_path, class: "tweet-index__title__left tweet-index__hide" do
+        %p.tweet-index__title--text 新着
+      = link_to likes_tweets_path, class: "tweet-index__title__right tweet-index__active" do
+        %p.tweet-index__title--text 人気
+    = render @tweets
+    -# = paginate @tweets
+= link_to new_tweet_path, class: "new-tweet" do
+  .new-tweet__btn
+    %p.new-tweet__text
+      投稿
+    .new-tweet__icon
+      %i.fas.fa-plus
+

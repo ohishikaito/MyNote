@@ -1,9 +1,12 @@
-
 .n-circle {
   position: absolute;
   padding-left: 1rem;
   padding-top: 0rem;
   color: #ff2f58;
+}
+
+.fa-bell:hover{
+  color: $header-tags;
 }
 
 .header{

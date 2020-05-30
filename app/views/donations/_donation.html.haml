@@ -1,0 +1,32 @@
+.tweet-show__content__donation--text
+  この記事への寄付額
+  %strong
+    = @donations.to_s(:delimited)
+  円
+.tweet-show__content__donation--submit
+  -# - if user_signed_in? && current_user.id != @tweet.user_id
+  %button.btn.btn-info.rounded-pill.donation-btn
+    寄付する
+  
+  -# :javascript
+  -#   $(function(){
+  -#     $('.donaion').on('click', function () {
+  -#       $('.donation-modal').fadeIn(500);
+  -#       $('.wrapper').addClass('donation-bgc');
+  -#     });
+  -#     $('.donation-close').unbind().click(function () {
+  -#       $(this).parents('.donation-modal').fadeOut(500);
+  -#       $('.wrapper').removeClass('donaion-bgc');
+  -#     });
+
+  -#   $('.form--submit').on('click', function () {
+  -#     $('.modal').fadeIn(500);
+  -#     $('.wrapper').addClass('back-ground');
+  -#     return false;
+  -#   })
+  -#   $('.send-btn').click(function () {
+  -#     $("#new_post").submit();
+  -#     $('.modal').fadeOut(500);
+  -#     $('.wrapper').removeClass('back-ground');
+  -#   })
+  -# });

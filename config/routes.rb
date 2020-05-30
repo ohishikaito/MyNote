@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   }
 
   root to: 'tweets#index'
-  namespace :tweets do
-    resources :searches, only: :index
-  end
-  resources :tweets do
+    namespace :tweets do
+      resources :searches, only: :index
+    end
+    resources :tweets do
     collection do
       get :likes, :tags
     end
+    resources :donations, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :edit, :update, :destroy]
   end
@@ -24,7 +25,8 @@ Rails.application.routes.draw do
   resources :messages, only: [:create, :edit, :update, :destroy]
   resources :rooms, only: [:index, :show, :create]
   resources :notifications, only: :index
-  resources :activities, only: :index
+    namespace :api, format: 'json' do
+      get 'tweets/preview'
+    end
   
 end
-# shallow trueは諦める

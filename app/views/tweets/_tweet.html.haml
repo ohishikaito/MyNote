@@ -1,12 +1,23 @@
-- @tweets.each do |tweet|
-  .tweets__list--item
-    タイトル
-    = link_to tweet.title, tweet_path(tweet.id)
-    投稿者
-    = link_to tweet.user.nickname, user_path(tweet.user.id)
-    投稿日
-    = tweet.updated_at.strftime("%Y-%m-%d %H:%M")
-    %div{id: "like_#{tweet.id}"}
-      = render 'likes/like', tweet: tweet
-    = render '/tweets/tag_list', tag_list: tweet.tag_list
-= paginate(@tweets)
+%li.tweet-index__item
+  .tweet-index__item__user
+    %span
+      = link_to user_path(tweet.user.id), class: "avatar--text" do
+        = image_tag "#{tweet.user.avatar}", class: "avatar"
+        .tweet-index__item__user--nickname
+          = tweet.user.nickname
+    .tweet-index__item--sub
+      = tweet.updated_at.strftime("%Y-%m-%d")
+  = link_to  tweet_path(tweet.id) do
+    %p.tweet-index__item--title
+      = tweet.title
+    = image_tag "#{tweet.image}", class: "tweet-index__item--image"
+    .tweet-index__item--tags
+      = render '/tweets/tag_list', tag_list: tweet.tag_list
+  .tweet-index__item__footer
+    .tweet-index__item--like
+      %div{id: "like_#{tweet.id}"}
+        = render 'likes/like', tweet: tweet
+    = link_to "もっと見る", tweet_path(tweet.id), class: "tweet-index__item--show"
+
+
+

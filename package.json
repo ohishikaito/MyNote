@@ -1,5 +1,8 @@
 {
   "name": "my_app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "marked": "^1.1.0",
+    "simplemde": "^1.11.2"
+  }
 }

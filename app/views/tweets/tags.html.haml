@@ -1,5 +1,14 @@
-- @tags.each do |tag|
-  %span.badge.badge-primary.mr-1.p-2
-    = link_to tag.name, tweets_path(tag_name: tag.name), style:  "color: white;"
-  = tag.count
-  件
+.wrapper
+  .tweet-tags
+    .tweet-tags__title
+      %p.tweet-tags__title--body
+        = "人気タグ"
+    %ul.tweet-tags__items
+      - @tags.each do |tag|
+        %li.tweet-tags__item
+          = link_to  tweets_path(tag_name: tag.name), class: "tweet-tags__item--link" do
+            %i.btn.btn-outline-dark.tweet-tags__item--btn
+              = tag.name
+            .tweet-tags__item--body
+              = tag.count
+              = "件"
