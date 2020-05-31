@@ -52,3 +52,6 @@ production:
   database: my_app_production
   username: my_app
   password: <%= ENV['MY_APP_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
