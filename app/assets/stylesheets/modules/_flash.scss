@@ -3,11 +3,13 @@
     background-color: $light_blue;
     color: white;
     text-align: center;
+    box-shadow: none;
   }
 
   .alert {
     background-color: $alert_orange;
     color: white;
     text-align: center;
+    box-shadow: none;
   }
 }

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index, :timeline]
   before_action :blocking_edit_user, only: [:edit, :update]
-  before_action :blocking_edit_test_user, only: [:update]
+  before_action :blocking_edit_test_user, only: [:edit, :update]
   before_action :user_joinRoom, only: [:show, :likes]
 
   def index
@@ -10,28 +10,7 @@ class UsersController < ApplicationController
 
   def show
     #投稿一覧
-    @tweets = @user.tweets.order('updated_at desc').page(params[:page]).per(12)
-    #メッセージへのリンク
-    # user_joinRoom
-
-    # if user_signed_in?
-    #   @currentUserEntry = Entry.where(user_id: current_user.id)
-    #   @userEntry = Entry.where(user_id: @user.id)
-    #   unless @user.id == current_user.id
-    #     @currentUserEntry.each do |cu|
-    #       @userEntry.each do |u|
-    #         if cu.room_id == u.room_id
-    #           @haveRoom = true
-    #           @roomId = cu.room_id
-    #         end
-    #       end
-    #     end
-    #     unless @haveRoom
-    #       @room = Room.new
-    #       @entry = Entry.new
-    #     end
-    #   end
-    # end
+    @tweets = @user.tweets.order('created_at desc').page(params[:page]).per(10)
   end
 
   def edit
@@ -46,11 +25,7 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @tweets = @user.liked_tweets.order('updated_at desc').page(params[:page]).per(12)
-    if params[:tag_name]
-      @tweets = @user.liked_tweets.order.order('updated_at desc').page(params[:page]).per(12).tagged_with("#{params[:tag_name]}")
-    end
-    # user_joinRoom
+    @tweets = @user.liked_tweets.order('updated_at desc').page(params[:page]).per(10)
   end
 
   def following
@@ -64,11 +39,7 @@ class UsersController < ApplicationController
   def timeline
     @user = User.find(current_user.id)
     @following_users = @user.following
-    @tweets = Tweet.where(user_id: @following_users).order('updated_at desc').page(params[:page]).per(12)
-    if params[:tag_name]
-      @tweets = Tweet.where(user_id: @following_users).order('updated_at desc').page(params[:page]).per(12).tagged_with("#{params[:tag_name]}")
-    end
-
+    @tweets = Tweet.where(user_id: @following_users).order('created_at desc').page(params[:page]).per(10)
   end
 
   private

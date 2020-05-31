@@ -3,7 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  before_action :forbid_test_user
+  # before_action :forbid_test_user
   # before_action :forbid_test_user, only: %i[:edit, :update, :destroy]
   
 
@@ -18,9 +18,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  def edit
-    super
-  end
+  # def edit
+  #   super
+  # end
 
   # PUT /resource
   # def update
@@ -65,12 +65,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
   
-  def forbid_test_user
-      # if resource.email == "guest@user"
-      # if resource.email
-        flash[:notice] = "テストユーザーのため変更できません"
-        redirect_to root_path
-      # end
-  end
+  # def forbid_test_user
+  #     # if resource.email == "guest@user"
+  #     # if resource.email
+  #       flash[:notice] = "テストユーザーのため変更できません"
+  #       redirect_to root_path
+  #     # end
+  # end
 
 end

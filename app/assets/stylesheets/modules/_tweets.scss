@@ -31,6 +31,10 @@
     &--text{
       font-size: 15px;
     }
+    &--timeline{
+      font-size: 20px;
+      border-bottom: 1px solid $header_border;
+    }
   }
   &__active{
     background-color: white;
@@ -110,6 +114,9 @@
       }
     }
   }
+  &--footer{
+    padding: 0 400px;
+  }
 }
 
 .new-tweet{
@@ -177,32 +184,51 @@
       border: 1px solid #e6e6e6;
       border-radius: 5px;
     }
-    &--image{
-      position: absolute;
-      bottom: 65px;
-      right: 17px;
-      z-index: 1;
-    }
   }
   &__bonus{
-    height: 200px;
-    width: 100%;
+    margin: 0 auto;
+    width: 600px;
     display: flex;
     line-height: 50px;
-    justify-content: space-between;
     &__tags{
+      margin-left: 10px;
       height: 50px;
       width: 500px;
       outline: none;
-      padding: 3px;
+      padding: 5px;
       border: 1px solid #e6e6e6;
       border-radius: 5px;
     }
     &__preview{
-      height: 200px;
-      width: 200px;
-      background-color: red;
+      margin: 10px auto;
+      background-color: white;
+      border: solid 1px #eee;
+      color: #666;
+      position: relative;
+      border-radius: 5px;
+      cursor: pointer;
+      height: 300px;
+      width: 400px;
+      object-fit: cover;
+      transition: 0.3s ease-out;
+      text-align: center;
+      &:hover{
+        background-color: gray;
+        color: white;
+      }
+      &--title{
+        text-align: center;
+      }
       &--image{
+        border-radius: 5px;
+        height: 300px;
+        width: 400px;
+        object-fit: cover;
+      }
+      &--icon{
+        position: absolute;
+        top: 32%;
+        left: 39%;
       }
     }
   }
@@ -211,7 +237,6 @@
     margin-bottom: 30px;
   }
 }
-
 
 .tweet-tags{
   width: 1000px;
@@ -270,6 +295,7 @@
         color: #333;
       }
       &--edit a{
+        color: black;
         font-size: 13px;
       }
     }
@@ -300,8 +326,8 @@
       margin: 0 auto;
     }
     &--image{
-      width: 600px;
-      height: 400px;
+      object-fit: cover;
+      max-width: 600px;
       margin: 0 auto;
     }
     &--tags{

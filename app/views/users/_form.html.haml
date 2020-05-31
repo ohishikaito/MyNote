@@ -1,0 +1,59 @@
+.login__field
+  .text-center
+    = f.label :nickname, value: 'ニックネーム'
+  .center
+    = f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "login--input"
+.login__field
+  .text-center
+    = f.label :email 
+  .center
+    = f.email_field :email, autofocus: true, class: "login--input"
+.login__field
+  .text-center
+    = f.label :password
+  .center
+    = f.password_field :password, autocomplete: "off", class: "login--input"
+.login__field
+  .text-center
+    = f.label :password_confirmation, "パスワード（確認）"
+  .center
+    = f.password_field :password_confirmation, autocomplete: "new-password", class: "login--input"
+.login__field
+  .text-center
+    = f.label :avatar
+  .center
+    .lofin__preview
+      .field.image
+      // id "file"で、fileとdivを紐付けクリック時に連動
+      #img_field{:onclick => "$('#file').click()"}
+        // 画像があるときは画像を表示する
+        - if @user.avatar.present?
+          = image_tag(@user.avatar.url)
+        - else
+          %i.fas.fa-camera.fa-3x
+      // id "file"をつけ、「display:none;」で隠す
+      = f.file_field :avatar, class: "avatar", style: "display:none;", id: "file"
+      
+  :javascript
+    $(function(){
+      $fileField = $('#file')
+
+      // 選択された画像を取得し表示
+      $($fileField).on('change', $fileField, function(e) {
+        file = e.target.files[0]
+        reader = new FileReader(),
+        $preview = $("#img_field");
+    
+        reader.onload = (function(file) {
+          return function(e) {
+            $preview.empty();
+            $preview.append($('<img>').attr({
+              src: e.target.result,
+              class: "avatar",
+              title: file.name
+            }));
+          };
+        })(file);
+        reader.readAsDataURL(file);
+      });
+    });

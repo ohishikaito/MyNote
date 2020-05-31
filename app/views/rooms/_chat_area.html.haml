@@ -8,7 +8,7 @@
             = e.user.nickname
             さんとのメッセージ
       .room-show__title--btn
-        = link_to :back do
+        = link_to rooms_path do
           %i.fas.fa-angle-left.cursor-pointer
     .room-show__items
       - if @messages.present?

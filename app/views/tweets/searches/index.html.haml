@@ -2,7 +2,8 @@
   %ul.tweet-index
     - @tweets.each do |tweet|
       = render 'tweets/tweet', tweet: tweet
-    = paginate @tweets
+    .tweet-index--footer
+      = paginate @tweets
 = link_to new_tweet_path, class: "new-tweet" do
   .new-tweet__btn
     %p.new-tweet__text

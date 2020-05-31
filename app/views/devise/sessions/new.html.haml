@@ -1,21 +1,21 @@
-.contents.row
-  .container
-    = render 'devise/sessions/testuser' 
-    %h2 Log in
+.wrapper
+  .login
+    .login__field
+      .center
+        = render 'devise/sessions/testuser'
     = form_with model: @user, url: user_session_path, local: true do |f|
-      .field
-        = f.label :email
-        %br/
-        = f.email_field :email, autofocus: true
-      .field
-        = f.label :password
-        %br/
-        = f.password_field :password, autocomplete: "off"
-      - if devise_mapping.rememberable?
-      
-        .field
-          = f.label :remember_me
-          %br/
-          = f.check_box :remember_me
-      .actions
-        = f.submit "Log in"
+      .login__title
+        ログイン
+      .login__field
+        .text-center
+          = f.label :email 
+        .center
+          = f.email_field :email, autofocus: true, class: "login--input"
+      .login__field
+        .text-center
+          = f.label :password
+        .center
+          = f.password_field :password, autocomplete: "off", class: "login--input"
+      .login__field
+        .center
+          = f.submit "ログインする", class: "btn btn-success"

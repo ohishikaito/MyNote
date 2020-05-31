@@ -1,1 +1,7 @@
-= render "tweets/list"
+.wrapper
+  %ul.tweet-index
+    .tweet-index__title
+      %p.tweet-index__title--timeline タイムライン
+    = render @tweets
+    .tweet-index--footer
+      = paginate @tweets

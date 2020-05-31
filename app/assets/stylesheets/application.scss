@@ -3,12 +3,12 @@
 // @import "font-awesome-sprockets";
 // @import "font-awesome";
 @import "modules/tweets";
-@import "modules/new";
 @import "modules/users";
 @import "modules/flash";
 @import "modules/header";
 @import "modules/notifications";
 @import "modules/rooms";
+@import "modules/session";
 
 .wrapper{
   height: 100%;

@@ -29,4 +29,8 @@ $(function () {
   //   $(".room-show__items").scrollTop($(".room-show__items")[0].scrollHeight);
   // });
 
+  $('.notification').fadeIn("slow", function () {
+    $(this).delay(3000).fadeOut("slow");
+  });
+
 });

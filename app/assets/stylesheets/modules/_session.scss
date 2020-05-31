@@ -1,0 +1,30 @@
+.login{
+  width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: white;
+  border: 1px solid $header_border;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px #ccc;
+  display: flex;
+  flex-direction: column;
+  &__title{
+    text-align: center;
+    font-size: 23px;
+    font-weight: bold;
+    padding: 10px;
+  }
+  &__field{
+    padding: 10px;
+  }
+  &--input{
+    width: 200px;
+    color: #222;
+    background: white;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    padding: 0 4px;
+    line-height: 38px;
+    font-size: 14px;
+  }
+}

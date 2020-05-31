@@ -4,10 +4,18 @@ class TweetsController < ApplicationController
   before_action :blocking_edit_tweet, only: [:edit, :update, :destroy]
 
   def index
-    @tweets = Tweet.includes(:user).order('updated_at desc').page(params[:page]).per(12)
+    @tweets = Tweet.includes(:user).order('created_at desc').page(params[:page]).per(10)
     if params[:tag_name]
-      @tweets = Tweet.includes(:user).order('updated_at desc').page(params[:page]).per(12).tagged_with("#{params[:tag_name]}")
+      @tweets = @tweets.tagged_with("#{params[:tag_name]}")
     end
+    # ids = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').pluck(:tweet_id))
+    # # ids = Tweet.where(id: Like.group(:tweet_id).limit(10).order('count(tweet_id) desc').pluck(:tweet_id))
+    # @tweets = ids
+    # @tweets = @tweets
+    
+    # @tweets = Tweet.where(id: ids)
+    # if params[:tag_nane]
+      # @tweets = @tweets.page(params[:page]).per(12)
   end
 
   def new
@@ -52,12 +60,17 @@ class TweetsController < ApplicationController
   end
 
   def likes
-    @tweets = Tweet.find(Like.group(:tweet_id).limit(10).order('count(tweet_id) desc').pluck(:tweet_id))
-    if params[:tag_name]
-      @tweets = Tweet.find(Like.group(:tweet_id).limit(10).order('count(tweet_id) desc').pluck(:tweet_id).tagged_with("#{params[:tag_name]}"))
-    end
+    @tweets = Tweet.create_all_ranks
+    # if params[:tag_nane]
+    # @tweets = Tweet.find(Like.group(:tweet_id).limit(10).order('count(tweet_id) desc').pluck(:tweet_id))
+      # @tweets = @tweets.tagged_with("#{params[:tag_name]}")
+    # end
+    # ids = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').pluck(:tweet_id))
+    # # ids = Tweet.where(id: Like.group(:tweet_id).limit(10).order('count(tweet_id) desc').pluck(:tweet_id))
+    # @tweets = ids
+    # @tweets = @tweets.page(params[:page]).per(12)
   end
-# .page(params[:page]).per(12)
+  
   def tags
     @tags = Tweet.tag_counts_on(:tags)
   end

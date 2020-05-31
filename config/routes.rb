@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-    devise_for :users, controllers: {
-    registrations: 'users/registrations',
-  }
-
+  devise_for :users
   root to: 'tweets#index'
     namespace :tweets do
       resources :searches, only: :index

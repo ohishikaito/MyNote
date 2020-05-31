@@ -6,23 +6,49 @@
       .tweet-form__text
         = f.label "内容", for: "md-textarea"
         = f.text_area :text, class: "tweet-form__text--body materialize-textarea", placeholder: "本文を入力して下さい", id: "md-textarea"
-        = f.label :image do
-          %i.fa.fa-image.fa-2x.tweet-form__text--image
-          = f.file_field :image, class: "hide"
-        -# = f.file_field :image, id: :tweet_img
       .tweet-form__bonus
         = f.label :tag_list, "タグを追加"
         = f.text_field :tag_list, value: @tweet.tag_list.join(','), class: "tweet-form__bonus__tags", placeholder: "1つのタグは10文字まで"
-        .tweet-form__bonus__preview
-          -# - if @tweet.image.present?
-          -#   = image_tag @tweet.image,id: :img_prev, class: "tweet-form__bonus__preview--image"
+      .tweet-form__bonus__preview--title
+        イメージ写真
+      .tweet-form__bonus__preview
+        .field.image
+        // id "file"で、fileとdivを紐付けクリック時に連動
+        #img_field{:onclick => "$('#file').click()"}
+          // 画像があるときは画像を表示する
+          - if @tweet.image.present?
+            = image_tag(@tweet.image.url)
+          - else
+            %i.fas.fa-camera.fa-6x.tweet-form__bonus__preview--icon
+        // id "file"をつけ、「display:none;」で隠す
+        = f.file_field :image, class: "image", style: "display:none;", id: "file"
       .tweet-form__submit
         = f.submit '投稿する', class: "btn btn-success"
-      .field
-        %ul#article-tags
 :javascript
   $(function(){
     var simplemde = new SimpleMDE();
-  })
+
+    $fileField = $('#file')
+
+    // 選択された画像を取得し表示
+    $($fileField).on('change', $fileField, function(e) {
+      file = e.target.files[0]
+      reader = new FileReader(),
+      $preview = $("#img_field");
+  
+      reader.onload = (function(file) {
+        return function(e) {
+          $preview.empty();
+          $preview.append($('<img>').attr({
+            src: e.target.result,
+            width: "100%",
+            class: "tweet-form__bonus__preview--image",
+            title: file.name
+          }));
+        };
+      })(file);
+      reader.readAsDataURL(file);
+    });
+  });
   
 

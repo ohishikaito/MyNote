@@ -15,6 +15,11 @@ class Tweet < ApplicationRecord
   def like_user(user_id)
     likes.find_by(user_id: user_id)
   end
+
+  #ランキングメソッド
+  def self.create_all_ranks
+    Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(10).pluck(:tweet_id))
+  end
 # tweets-------------------------------------------------------------------
   mount_uploader :image, ImageUploader
   validates :text, presence: true, length: { maximum: 65_535 }
