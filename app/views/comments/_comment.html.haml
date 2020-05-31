@@ -1,35 +1,13 @@
-= @comments.count
-件コメント
-%h6.more{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample", "data-toggle" => "collapse"} 全件表示
-- @comments.first(2).each do |comment|
-  -# = render "comments/body_comment", comment: comment
-  %div{id: "comment_#{comment.id}"}
-    = link_to comment.user.nickname, user_path(comment.user_id)
-    = comment.content
-    = comment.updated_at.strftime("%Y-%m-%d %H:%M")
-  .list-inline-item
-    - if user_signed_in? && comment.user_id == current_user.id || current_user.admin?
-      = link_to edit_tweet_comment_path(@tweet.id, comment),remote: true do
-        %input{type: "submit", value: "編集"}
-      = link_to tweet_comment_path(@tweet, comment.id), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' } do
-        %input{type: "submit", value: "削除"}
-
-#collapseExample.collapse
-  - @comments.offset(2).each do |comment|
-    -# = render "comments/body_comment", comment: comment
-    %div{id: "comment_#{comment.id}"}
-      = link_to comment.user.nickname, user_path(comment.user_id)
-      = comment.content
-      = comment.updated_at.strftime("%Y-%m-%d %H:%M")
-    .list-inline-item
-      - if user_signed_in? && comment.user_id == current_user.id || current_user.admin?
-        = link_to edit_tweet_comment_path(comment.tweet_id, comment.id),remote: true do
-          %input{type: "submit", value: "編集"}
-        = link_to tweet_comment_path(comment.id, comment), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' } do
-          %input{type: "submit", value: "削除"}
--# tweet.id, tweet.comments[0].id
--# comment.tweet_id, comment.id
--# comment.id, comment
--# @tweet.id, @tweet.comments
--# @tweet.id, comment.id
--# @tweet.id, comment
+.tweet-show__comment__title
+  .tweet-show__comment--count
+    コメント(
+    = @comments.count
+    )
+%ul.tweet-show__comment__items
+  - @comments.first(2).each do |comment|
+    = render "comments/comment_area", comment: comment
+  .center
+    %i.fas.fa-angle-down.more.cursor-pointer.center{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample", "data-toggle" => "collapse"}
+  #collapseExample.collapse
+    - @comments.offset(2).each do |comment|
+      = render "comments/comment_area", comment: comment

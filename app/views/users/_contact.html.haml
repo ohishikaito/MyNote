@@ -1,9 +1,11 @@
 - if user_signed_in?
     - unless @user.id == current_user.id
         - if @haveRoom == true
-            = link_to "ダイレクトメッセージ", room_path(@roomId)
+            = link_to room_path(@roomId) do
+                %i.btn.btn-info.user-show__top--contact--btn
+                    メッセージを送る
         - else
             = form_with(model:@room, local: true) do |f|
                 = fields_for @entry do |e|
                     = e.hidden_field :user_id, value: @user.id
-                = f.submit "ダイレクトメッセージ"
+                = f.submit "メッセージ送る", class: "btn btn-info user-show__top--contact--btn"

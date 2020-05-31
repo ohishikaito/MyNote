@@ -33,9 +33,9 @@
                       = link_to 'ユーザー一覧', users_path, class: "header-top__box--content"
           - else
             = link_to new_user_session_path do
-              %input.btn.btn-outline-secondary.header-top__right--box{type: "submit", value: "ログイン"}
+              %input.btn.btn-success.header-top__right--box{type: "submit", value: "ログイン"}
             = link_to new_user_registration_path do
-              %input.btn.btn-outline-secondary.header-top__right--box{type: "submit", value: "新規登録"}
+              %input.btn.btn-success.header-top__right--box{type: "submit", value: "新規登録"}
     .header-bottom
       %ul.header-bottom__list
         - @tags = ["テクノロジー","経済","マンガ","ファッション","エンタメ","スポーツ","国際","コラム"]

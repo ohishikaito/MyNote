@@ -1,7 +1,7 @@
 @import "config/colors";
 @import "reset";
-@import "font-awesome-sprockets";
-@import "font-awesome";
+// @import "font-awesome-sprockets";
+// @import "font-awesome";
 @import "modules/tweets";
 @import "modules/new";
 @import "modules/users";
@@ -49,8 +49,28 @@
   text-align: center;
 }
 
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}
+
 .color-black{
   color: black;
+}
+
+.a-hover{
+  color: black;
+  &:hover{
+    color: #555;
+  }
+}
+
+.display-flex{
+  display: flex;
 }
 
 // .chat__scroll {

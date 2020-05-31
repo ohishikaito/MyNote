@@ -21,7 +21,7 @@
           - @activities.each do |activity|
             = render '/activities/activities', activity: activity
           .div
-            = paginate @activities, class: "uk-icon-angle-double-left"
+            = paginate @activities
         - else
           %p.text-center
             通知はありません

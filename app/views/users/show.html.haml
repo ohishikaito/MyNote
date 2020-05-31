@@ -1,19 +1,12 @@
-.main
-  .tweets
-    = link_to user_path(@user) do
-      = @user.nickname
-      = image_tag "#{@user.avatar}", class: "avatar"
-    = render "relationships/follow"
-    = render "/users/contact"
-    = link_to "いいね！した投稿", likes_user_path
-    投稿一覧
-    .tweets__list
-      -# = render 'tweets/tweet', tweet: @user.tweet
-      = render @tweets
-      = paginate @tweets
-    = link_to "フォロー", following_user_path(@user)
-    = @user.following.count
-    = link_to "フォロワー", followers_user_path(@user)
-    = @user.followers.count
-    - if current_user == @user 
-      = link_to "タイムライン", timeline_user_path(@user)
+.wrapper
+  = render "/users/info"
+  .tweet-index
+    .user-show__select
+      .user-show__select__left
+        .user-show__select--active
+          最近の投稿
+      .user-show__select__right
+        = link_to "いいね！した投稿", likes_user_path, class: "a-hover"
+    = render @tweets
+    = paginate @tweets
+

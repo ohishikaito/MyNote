@@ -4,8 +4,7 @@
       .tweet-show__title__top
         = link_to  user_path(@tweet.user.id), class: "tweet-show__title__top__user" do
           = image_tag "#{@tweet.user.avatar}", class: "avatar"
-          %strong
-            = @tweet.user.nickname
+          = @tweet.user.nickname
         .tweet-show__title__top--edit
           - if user_signed_in? && current_user.id == @tweet.user_id || current_user.admin?
             = link_to '編集', edit_tweet_path(@tweet.id)
@@ -18,8 +17,19 @@
       .tweet-show__content--text
         %span
           = markdown(@tweet.text)
+          - if @tweet.image?
+            .tweet-show__content--imageBox
+              = image_tag "#{@tweet.image}", class: "tweet-show__content--image"
       .tweet-show__content--tags
         = render '/tweets/tag_list', tag_list: @tweet.tag_list
+      .tweet-show__content__user
+        = link_to  user_path(@tweet.user.id), class: "tweet-show__content__user--top" do
+          = image_tag "#{@tweet.user.avatar}", class: "tweet-show__content__user--avatar"
+          .tweet-show__content__user--names
+            %strong
+              = @tweet.user.nickname
+          .tweet-show__content__user--follow
+            = render "relationships/follow"
       .tweet-show__content__donation
         #donation_area
           = render "donations/donation"
@@ -29,33 +39,11 @@
         .tweet-show__content__like--link
           - if @tweet.liked_users.present?
             この記事にいいねした人を見る
-      .tweet-show__content__user
-        = link_to  user_path(@tweet.user.id), class: "tweet-show__content__user--top" do
-          = image_tag "#{@tweet.user.avatar}", class: "tweet-show__content__user--avatar"
-          .tweet-show__content__user--names
-            %strong
-              = @tweet.user.nickname
-          .tweet-show__content__user--follow
-            = render "relationships/follow"
     .tweet-show__comment
       #comment_form
         = render "comments/form"
       #comment_area
         = render "comments/comment"
-    -#   .tweet-show__comment--count
-    -#   %ul.tweet-show__comment__items
-    -#       %li.tweet-show__comment__item
-    -#         .tweet-show__comment__item__top
-    -#         .tweet-show__comment__item__top--avatar
-    -#         .tweet-show__comment__item__top--nickname 
-    -#         .tweet-show__comment__item__top--date
-    -#         .tweet-show__comment__item--text
-    -#       .tweet-show__comment__item--text もっと読むボタン
-
-    -# .tweet-show__form
-    -#   .tweet-show__form--avatar
-    -#   .tweet-show__form--text
-    -#   .tweet-show__form--submit
 
 .tweet-show__content__like--bgc
   %ul.tweet-show__content__like__modal
