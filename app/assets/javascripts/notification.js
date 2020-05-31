@@ -12,6 +12,7 @@ $(function () {
     nt_right.removeClass('notification-top__title--show');
     nt_right.addClass('notification-top__title--down');
   });
+
   nt_right.click(function () {
     nt_items.fadeOut(0);
     nt_activities.fadeIn(0);
