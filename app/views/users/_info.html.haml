@@ -1,0 +1,30 @@
+.wrapper
+  .user-show
+    .user-show__top
+      .user-show__top--icon
+        = image_tag "#{@user.avatar}", class: "user-show__top--avatar"
+      - if current_user.id == @user.id
+        .user-show__top__body
+          .user-show__top--follow
+            = link_to 'ユーザー編集', edit_user_path(current_user.id), class: "user-show__top--btn"
+          .user-show__top--contact
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "user-show__top--btn"
+      - else
+        .user-show__top__body
+          .user-show__top--follow
+            = render "/relationships/follow"
+          .user-show__top--contact
+            = render "/users/contact"
+    .user-show__bottom
+      .user-show__bottom--name
+        %strong
+          = @user.nickname
+      .user-show__bottom__follow
+        .user-show__bottom--following
+          = link_to following_user_path(@user) do
+            = @user.following.count
+            フォロー
+        .user-show__bottom--followers
+          = link_to followers_user_path(@user) do
+            = @user.followers.count
+            フォロワー

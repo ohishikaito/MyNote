@@ -269,6 +269,9 @@
       &:hover a{
         color: #333;
       }
+      &--edit a{
+        font-size: 13px;
+      }
     }
     &--body{
       display: block;
@@ -288,11 +291,18 @@
   &__content{
     padding: 30px 0;
     &--text{
-      display: flex;
-      flex-wrap: wrap;
       font-size: 18px;
       padding: 30px 0;
       border-bottom: 1px solid $header_border;
+    }
+    &--imageBox{
+      width: 600px;
+      margin: 0 auto;
+    }
+    &--image{
+      width: 600px;
+      height: 400px;
+      margin: 0 auto;
     }
     &--tags{
       padding: 40px 0;
@@ -311,7 +321,7 @@
     }
     &__like{
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       padding: 30px 0;
       &--link{
         padding-left: 20px;
@@ -357,10 +367,13 @@
     }
     &__user{
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       padding: 30px 0;
       &--top{
         display: flex;
+        &:hover{
+          color: #505050;
+        }
       }
       &--avatar{
         height: 60px;
@@ -379,11 +392,88 @@
   }
   &__comment{
     border-top: 1px solid $header_border;
-    padding: 40px 0;
+    padding: 20px 0;
     width: 600px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    &--text{
+      text-align: center;
+    }
+    &__form{
+      display: flex;
+      flex-direction: column;
+      &__top{
+        display: flex;
+        justify-content: center;
+      }
+      &--title{
+        padding: 10px 10px;
+      }
+      &--body{
+        margin: 20px;
+        height: 100px;
+        width: 100%;
+        color: #222;
+        background: white;
+        border: 1px solid #a8abb1;
+        border-radius: 5px;
+        padding: 5px;
+        outline: none;
+      }
+      &--submit{
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+      }
+    }
+    &__title{
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+    }
+    &--text{
+      padding-left: 50px;
+      padding-top: 3px;
+    }
+    &__items{
+      padding: 0px 20px;
+    }
+    &__item{
+      padding: 20px;
+      &__top{
+        display: flex;
+        justify-content: space-between;
+        &--user{
+          display: flex;
+          &:hover{
+            color: #505050;
+          }
+        }
+        &--nickname{
+          padding: 5px 10px;
+        }
+        &--date{
+        color: $header_tags;
+        font-size: 13px;
+        }
+      }
+      &--text{
+        padding: 10px;
+        font-size: 19px;
+      }
+      &--edit{
+        display: flex;
+        justify-content: flex-end;
+        font-size: 13px;
+        &--left{
+          padding-right: 10px;
+        }
+        & a, &:hover a{
+          color: #333;
+        }
+      }
+    }
   }
 }
 

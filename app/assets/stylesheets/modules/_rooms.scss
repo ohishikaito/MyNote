@@ -15,7 +15,6 @@
     text-align: center;
     line-height: 100px;
     font-size: 25px;
-    // cursor: pointer;
   }
   &__items{
     &__item{
@@ -61,18 +60,22 @@
   border: 1px solid $header_border;
   background-color: white;
   color: #333;
+  overflow: scroll;
   &__title{
     height: 100px;
     font-size: 25px;
     text-align: center;
     line-height: 100px;
     border-bottom: 1px solid $header_border;
+    position: relative;
+    &--btn{
+      position: absolute;
+      top: 0;
+      left: 10px;
+    }
     &:hover a{
       color: #505050;
     }
-  }
-  &__items{
-      overflow: scroll;
   }
   &__item{
     &--message{

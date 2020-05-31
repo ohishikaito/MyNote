@@ -2,35 +2,36 @@ class UsersController < ApplicationController
   before_action :set_user, except: [:index, :timeline]
   before_action :blocking_edit_user, only: [:edit, :update]
   before_action :blocking_edit_test_user, only: [:update]
+  before_action :user_joinRoom, only: [:show, :likes]
 
   def index
     @users = User.all
   end
 
   def show
-    @tweets = @user.tweets.order('updated_at desc').page(params[:page]).per(5)
-    if params[:tag_name]
-      @tweets = @user.tweets.order.order('updated_at desc').page(params[:page]).per(5).tagged_with("#{params[:tag_name]}")
-    end
-    
-    if user_signed_in?
-      @currentUserEntry = Entry.where(user_id: current_user.id)
-      @userEntry = Entry.where(user_id: @user.id)
-      unless @user.id == current_user.id
-        @currentUserEntry.each do |cu|
-          @userEntry.each do |u|
-            if cu.room_id == u.room_id
-              @haveRoom = true
-              @roomId = cu.room_id
-            end
-          end
-        end
-        unless @haveRoom
-          @room = Room.new
-          @entry = Entry.new
-        end
-      end
-    end
+    #投稿一覧
+    @tweets = @user.tweets.order('updated_at desc').page(params[:page]).per(12)
+    #メッセージへのリンク
+    # user_joinRoom
+
+    # if user_signed_in?
+    #   @currentUserEntry = Entry.where(user_id: current_user.id)
+    #   @userEntry = Entry.where(user_id: @user.id)
+    #   unless @user.id == current_user.id
+    #     @currentUserEntry.each do |cu|
+    #       @userEntry.each do |u|
+    #         if cu.room_id == u.room_id
+    #           @haveRoom = true
+    #           @roomId = cu.room_id
+    #         end
+    #       end
+    #     end
+    #     unless @haveRoom
+    #       @room = Room.new
+    #       @entry = Entry.new
+    #     end
+    #   end
+    # end
   end
 
   def edit
@@ -45,10 +46,11 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @tweets = @user.liked_tweets.order('updated_at desc').page(params[:page]).per(5)
+    @tweets = @user.liked_tweets.order('updated_at desc').page(params[:page]).per(12)
     if params[:tag_name]
-      @tweets = @user.liked_tweets.order.order('updated_at desc').page(params[:page]).per(5).tagged_with("#{params[:tag_name]}")
+      @tweets = @user.liked_tweets.order.order('updated_at desc').page(params[:page]).per(12).tagged_with("#{params[:tag_name]}")
     end
+    # user_joinRoom
   end
 
   def following
@@ -92,6 +94,27 @@ class UsersController < ApplicationController
     if current_user.email == "guest@user"
       flash[:notice] = "ゲストユーザーのため編集できません"
       redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def user_joinRoom
+    if user_signed_in?
+      @currentUserEntry = Entry.where(user_id: current_user.id)
+      @userEntry = Entry.where(user_id: @user.id)
+      unless @user.id == current_user.id
+        @currentUserEntry.each do |cu|
+          @userEntry.each do |u|
+            if cu.room_id == u.room_id
+              @haveRoom = true
+              @roomId = cu.room_id
+            end
+          end
+        end
+        unless @haveRoom
+          @room = Room.new
+          @entry = Entry.new
+        end
+      end
     end
   end
 

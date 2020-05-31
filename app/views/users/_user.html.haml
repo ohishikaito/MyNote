@@ -1,0 +1,5 @@
+%li
+  = link_to user_path(user), class: "users__item" do
+    = image_tag "#{user.avatar}", class: "avatar"
+    .users__item--nickname
+      = user.nickname

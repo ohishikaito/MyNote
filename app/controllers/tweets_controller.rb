@@ -52,9 +52,9 @@ class TweetsController < ApplicationController
   end
 
   def likes
-    @tweets = Tweet.find(Like.group(:tweet_id).limit(12).order('count(tweet_id) desc').pluck(:tweet_id))
+    @tweets = Tweet.find(Like.group(:tweet_id).limit(10).order('count(tweet_id) desc').pluck(:tweet_id))
     if params[:tag_name]
-      @tweets = Tweet.find(Like.group(:tweet_id).limit(12).order('count(tweet_id) desc').pluck(:tweet_id).tagged_with("#{params[:tag_name]}"))
+      @tweets = Tweet.find(Like.group(:tweet_id).limit(10).order('count(tweet_id) desc').pluck(:tweet_id).tagged_with("#{params[:tag_name]}"))
     end
   end
 # .page(params[:page]).per(12)

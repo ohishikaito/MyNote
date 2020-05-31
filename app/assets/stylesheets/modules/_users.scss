@@ -1,0 +1,140 @@
+.user-show{
+  width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid $header_border;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px #ccc;
+  &__top{
+    height: 200px;
+    padding: 20px;
+    display: flex;
+    &--icon{
+      height: 200px;
+      width: 200px;
+    }
+    &--avatar{
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid $header_border;
+    }
+    &__body{
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      &:hover a{
+        color: #555;
+      }
+    }
+    &--follow{
+      padding: 30px;
+    }
+    &--contact{
+      padding: 30px;
+      &--btn{
+        width: 154px;
+      }
+    }
+    &--btn{
+      text-align: center;
+      color: #555;
+      font-weight: bold;
+      background-color: #ccc;
+      padding: 0.5rem 0;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+  &__bottom{
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    &--name{
+      width: 200px;
+      text-align: center;
+      font-size: 25px;
+    }
+    &__follow{
+      padding-top: 5px;
+      display: flex;
+    }
+    &--following{
+      padding-right: 20px;
+      & a{
+        color: black;
+      }
+      &:hover a{
+        color: #505050;
+      }
+    }
+    &--followers{
+      & a{
+        color: black;
+      }
+      &:hover a{
+        color: #505050;
+      }
+    }
+  }
+  &__select{
+    display: flex;
+    width: 1000px;
+    border-top: 1px solid $header_border;
+    text-align: center;
+    font-size: 18px;
+    margin: 30px 0px;
+    &--active{
+      font-weight: bold;
+    }
+    &__left{
+      width: 50%;
+      border-right: 1px solid $header_border;
+      padding-top: 30px;
+      &:hover a{
+        color: #505050;
+      }
+    }
+    &__right{
+      width: 50%;
+      padding-top: 30px;
+      &:hover a{
+        color: #505050;
+      }
+    }
+  }
+}
+
+.users{
+  width: 600px;
+  margin: 0 auto;
+  border: 1px solid $header_border;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px #ccc;
+  &__title{
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    font-size: 22px;
+  }
+  &__item{
+    height: 80px;
+    width: 100%;
+    display: flex;
+    padding: 30px;
+    border-bottom: 1px solid $header_border;
+    &:hover{
+      color: black;
+      background-color: $header_border;
+    }
+    &--nickname{
+      padding: 5px 15px;
+    }
+  }
+}
