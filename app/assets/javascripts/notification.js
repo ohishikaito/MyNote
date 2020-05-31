@@ -1,8 +1,8 @@
 $(function () {
-  let nt_left = $('.notification-top__title__left');
-  let nt_right = $('.notification-top__title__right');
-  let nt_items = $('.notification-top__items');
-  let nt_activities = $('.notification-top__activities');
+  var nt_left = $('.notification-top__title__left');
+  var nt_right = $('.notification-top__title__right');
+  var nt_items = $('.notification-top__items');
+  var nt_activities = $('.notification-top__activities');
 
   nt_left.click(function () {
     nt_items.fadeIn(0);
@@ -12,6 +12,7 @@ $(function () {
     nt_right.removeClass('notification-top__title--show');
     nt_right.addClass('notification-top__title--down');
   });
+
   nt_right.click(function () {
     nt_items.fadeOut(0);
     nt_activities.fadeIn(0);
