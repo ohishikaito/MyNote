@@ -81,3 +81,7 @@ gem 'slim-rails'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'redcarpet'
 gem 'jquery-ui-rails'
+
+group :development, :production, :test do
+  gem 'devise'
+end
