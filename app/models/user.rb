@@ -5,9 +5,8 @@ class User < ApplicationRecord
     # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
-  validates :nickname, presence: true, uniqueness: true
-  validates :email,  length: { maximum: 50 }
-  validates :nickname,  length: { maximum: 10 }
+  validates :nickname, presence: true, uniqueness: true,  length: { maximum: 10 }
+  validates :email,  length: { maximum: 50 }, presence: true, uniqueness: true
   mount_uploader :avatar, AvatarUploader
 # tweets-------------------------------------------------------------------
   has_many :tweets

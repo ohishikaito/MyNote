@@ -1,8 +1,8 @@
 $(function () {
-  // $(".tag-submit").on("click", function () {
-  //   let input = $("#tag").val();
-  //   window.location.href = `http://localhost:3000/tweets?tag_name=${input}`
-  // });
+  $("#tag-submit").on("click", function () {
+    let input = $("#tag-input").val();
+    window.location.href = `http://localhost:3000/tweets?tag_name=${input}`
+  });
   //     .tag_search
   // タグ検索
   //   % input{ type: "text", id: "tag" }

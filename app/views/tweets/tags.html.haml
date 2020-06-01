@@ -1,8 +1,16 @@
 .wrapper
   .tweet-tags
     .tweet-tags__title
-      %p.tweet-tags__title--body
-        = "人気タグ"
+      -# .tweet-tags__title__left
+        -# %input{ type: "text", class: "header-top__right--search", id: "tag-input", placeholder: "検索するタグを入力してください"}
+        -# -# %input{ type: "submit", id: "tag-submit"}
+        -# #makeImg.searchArea
+        -#   %input#inText.searchText{type: "text"}
+        -#   .searchButton
+        -#     %img.searchImg{src: "search30.png"}
+      .tweet-tags__title__right
+        %p.tweet-tags__title--body
+          = "人気タグ"
     %ul.tweet-tags__items
       - @tags.each do |tag|
         %li.tweet-tags__item

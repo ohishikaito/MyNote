@@ -249,11 +249,16 @@
     line-height: 70px;
     color: $header_tags;
     border-bottom: 1px solid $header_border;
+    // display: flex;
     &--body{
       font-size: 19px;
       &:hover{
         color: black;
       }
+    }
+    &__left{
+      // padding-right: 260px;
+      // padding-left: 20px;
     }
   }
   &__items{

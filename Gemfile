@@ -40,6 +40,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :production do
@@ -74,7 +76,7 @@ gem 'mini_magick'
 gem 'pry-rails'
 gem 'devise'
 gem 'kaminari'
-gem 'font-awesome-sass', '~> 5.4.1'
+# gem 'font-awesome-sass', '~> 5.4.1'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'slim-rails'
