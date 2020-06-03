@@ -1,4 +1,47 @@
+
+$(document).on('ready page:load', function () {
+  var i, len, ref, results, tag;
+
+  $('#tweet-tags').tagit({
+    fieldName: 'tweet[tag_list]',
+    singleField: true,
+    availableTags: gon.available_tags
+  });
+  if (gon.tweet_tags != null) {
+    ref = gon.tweet_tags;
+    results = [];
+    for (i = 0, len = ref.length; i < len; i++) {
+      tag = ref[i];
+      results.push($('#tweet-tags').tagit('createTag', tag));
+    }
+    return results;
+  }
+});
+
 $(function () {
+  $fileField = $('#file')
+
+  // 選択された画像を取得し表示
+  $($fileField).on('change', $fileField, function (e) {
+    file = e.target.files[0]
+    reader = new FileReader(),
+      $preview = $("#img_field");
+
+    reader.onload = (function (file) {
+      return function (e) {
+        $preview.empty();
+        $preview.append($('<img>').attr({
+          src: e.target.result,
+          width: "100%",
+          class: "tweet-form__bonus__preview--image",
+          title: file.name
+        }));
+      };
+    })(file);
+    reader.readAsDataURL(file);
+  });
+
+  var simplemde = new SimpleMDE();
   $("#tag-submit").on("click", function () {
     let input = $("#tag-input").val();
     window.location.href = `http://localhost:3000/tweets?tag_name=${input}`
@@ -43,5 +86,4 @@ $(function () {
     console.log("aaa");
     readURL(this);
   });
-
 });

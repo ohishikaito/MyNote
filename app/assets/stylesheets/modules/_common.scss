@@ -1,0 +1,62 @@
+.wrapper{
+  height: 100%;
+  width: 100%;
+  background-color: #F5F5F5;
+  margin-top: 5px;
+  padding: 30px 0;
+}
+
+.container{
+  
+}
+
+.avatar {
+  width: 39px;
+  height: 39px;
+  border-radius: 100px;
+  object-fit: cover;
+  padding-bottom: 5px;
+  &--text:hover{
+    color: #505050;
+  }
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.active{
+  display: block;
+}
+
+.hide{
+  display: none;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}
+
+.color-black{
+  color: black;
+}
+
+.a-hover{
+  color: black;
+  &:hover{
+    color: #555;
+  }
+}
+
+.display-flex{
+  display: flex;
+}

@@ -1,23 +1,52 @@
 
 /* Optional scoped theme for tag-it which mimics the zendesk widget. */
 
+    // color: #343a40;
+    // border-color: #343a40;
+
+    // display: inline-block;
+    // font-weight: 400;
+    // color: #212529;
+    // text-align: center;
+    // vertical-align: middle;
+    // -webkit-user-select: none;
+    // -moz-user-select: none;
+    // -ms-user-select: none;
+    // user-select: none;
+    // background-color: transparent;
+    // border: 1px solid transparent;
+    // padding: .375rem .75rem;
+    // font-size: 1rem;
+    // line-height: 1.5;
+    // border-radius: .25rem;
+    // transition: color .15s
+
 
 ul.tagit {
     border-style: solid;
     border-width: 1px;
-    border-color: #C6C6C6;
-    background: inherit;
+    border-color: #ddd;
+    background: white;
+    border-radius: 5px;
+    width: 100%;
+    height: 60px;
+    padding: 10px;
 }
 ul.tagit li.tagit-choice {
     -moz-border-radius: 6px;
     border-radius: 6px;
     -webkit-border-radius: 6px;
-    border: 1px solid #CAD8F3;
+    border: 1px solid #343a40;
 
     background: none;
-    background-color: #DEE7F8;
+    background-color: white;
 
     font-weight: normal;
+    transition: 300ms;
+    cursor: pointer;
+    // &:hover{
+    //     color: white;
+    // }
 }
 ul.tagit li.tagit-choice .tagit-label:not(a) {
     color: #555;
@@ -39,8 +68,10 @@ ul.tagit li.tagit-choice .tagit-close .text-icon {
     color: #777;
 }
 ul.tagit li.tagit-choice:hover, ul.tagit li.tagit-choice.remove {
+    // background-color: #343a40;
+    // border-color: #343a40;
     background-color: #bbcef1;
-    border-color: #6d95e0;
+    border-color: #343a40;
 }
 ul.tagit li.tagit-choice a.tagLabel:hover,
 ul.tagit li.tagit-choice a.tagit-close .text-icon:hover {

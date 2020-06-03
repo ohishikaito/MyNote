@@ -28,7 +28,8 @@
       #img_field{:onclick => "$('#file').click()"}
         // 画像があるときは画像を表示する
         - if @user.avatar.present?
-          = image_tag(@user.avatar.url)
+          = image_tag "#{@user.avatar.url}", class: "avatar"
+          -# = image_tag(@user.avatar.url)
         - else
           %i.fas.fa-camera.fa-3x
       // id "file"をつけ、「display:none;」で隠す

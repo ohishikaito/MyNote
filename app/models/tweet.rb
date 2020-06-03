@@ -77,4 +77,5 @@ class Tweet < ApplicationRecord
   acts_as_taggable
 # donations-------------------------------------------------------------------
   has_many :donations, dependent: :destroy
+
 end
