@@ -185,20 +185,10 @@
       border-radius: 5px;
     }
   }
+  &--tags{
+    padding-bottom: 10px;
+  }
   &__bonus{
-    margin: 0 auto;
-    width: 600px;
-    display: flex;
-    line-height: 50px;
-    &__tags{
-      margin-left: 10px;
-      height: 50px;
-      width: 500px;
-      outline: none;
-      padding: 5px;
-      border: 1px solid #e6e6e6;
-      border-radius: 5px;
-    }
     &__preview{
       margin: 10px auto;
       background-color: white;

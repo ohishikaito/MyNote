@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
-//= require activestorage
+//= require tag-it
 //= require_tree .

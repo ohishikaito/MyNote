@@ -2,6 +2,9 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only: [:edit, :destroy, :show, :update]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :blocking_edit_tweet, only: [:edit, :update, :destroy]
+  before_action :set_tweet_tags_to_gon, only: [:edit]
+  # before_action :set_available_tags_to_gon, only: [:new, :edit]
+  before_action :set_available_tags_to_gon
 
   def index
     @tweets = Tweet.includes(:user).order('created_at desc').page(params[:page]).per(10)
@@ -91,6 +94,14 @@ class TweetsController < ApplicationController
         redirect_to root_path, notice: "不正な操作です"
       end
     end
+  end
+
+  def set_tweet_tags_to_gon
+    gon.tweet_tags = @tweet.tag_list
+  end
+
+  def set_available_tags_to_gon
+    gon.available_tags = Tweet.tags_on(:tags).pluck(:name)
   end
 
 end
