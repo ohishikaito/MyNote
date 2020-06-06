@@ -43,21 +43,9 @@ describe User do
     end
 
     it "重複したemailが存在する場合登録できないこと" do
-      user = create(:user)
-      another_user = build(:user, email: user.email)
-      another_user.valid?
-      expect(another_user.errors[:email]).to include("はすでに存在します")
-    end
-
-    it "passwordが6文字以上であれば登録できること" do
-      user = build(:user, password: "123456")
+      user = build(:user, email: "guest@user")
       user.valid?
-    end
-
-    it " passwordが5文字以下であれば登録できないこと " do
-      user = build(:user, password: "00000", password_confirmation: "00000")
-      user.valid?
-      expect(user.errors[:password]).to include("は6文字以上で入力してください")
+      expect(user.errors[:email]).to include("はすでに存在します")
     end
 
   end

@@ -10,17 +10,16 @@ class LikesController < ApplicationController
     like.save
     @tweet.create_notification_like!(current_user)
   end
-
+ 
   def destroy
     # like = Like.find(params[:id])
     like = Like.find_by(user_id: current_user.id, tweet_id: @tweet.id)
     like.destroy
   end
 
-  private
-    def set_tweet
-      # @tweet = Tweet.find_by(id: params[:tweet_id])
-      @tweet = Tweet.find(params[:tweet_id])
-    end
+  def set_tweet
+    # @tweet = Tweet.find_by(id: params[:tweet_id])
+    @tweet = Tweet.find(params[:tweet_id])
+  end
   
 end

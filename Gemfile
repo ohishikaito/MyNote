@@ -68,9 +68,6 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-
-# gem 'font-awesome-sass', '~> 5.4.1'
-# Use jquery as the JavaScript library
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
 gem 'erb2haml'
@@ -79,8 +76,9 @@ gem 'mini_magick'
 gem 'pry-rails'
 gem 'devise'
 gem 'kaminari'
+# gem 'font-awesome-sass', '~> 5.4.1'
+# Use jquery as the JavaScript library
 gem 'jquery-rails'
-
 gem 'slim-rails'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'redcarpet'
