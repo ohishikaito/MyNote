@@ -54,11 +54,8 @@ class TweetsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @tweet.comments.includes(:user).order('created_at desc')
-    # @comments = @tweet.comments.order('created_at desc')
-    # @user = @tweet.user
     @user = @tweet.user
     @donation = Donation.new
-    # @donations = @tweet.donations.includes(:user).sum(:amount)
     @donations = @tweet.donations.includes(:user).sum(:amount)
   end
 
