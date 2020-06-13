@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     #投稿一覧
-    @tweets = @user.tweets.order('created_at desc').page(params[:page]).per(10)
+    @tweets = @user.tweets.includes(:taggings).order('created_at desc').page(params[:page]).per(10)
   end
 
   def edit
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def likes
-    @tweets = @user.liked_tweets.order('updated_at desc').page(params[:page]).per(10)
+    @tweets = @user.liked_tweets.includes([:taggings, :user]).order('updated_at desc').page(params[:page]).per(10)
   end
 
   def following
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def timeline
     @user = User.find(current_user.id)
     @following_users = @user.following
-    @tweets = Tweet.where(user_id: @following_users).order('created_at desc').page(params[:page]).per(10)
+    @tweets = Tweet.includes([:taggings, :user]).where(user_id: @following_users).order('created_at desc').page(params[:page]).per(10)
   end
 
   private

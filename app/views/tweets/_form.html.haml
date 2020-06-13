@@ -16,17 +16,37 @@
       .tweet-form__bonus__preview--title
         イメージ写真
       .tweet-form__bonus__preview
-        .field.image
-        // id "file"で、fileとdivを紐付けクリック時に連動
-        #img_field{:onclick => "$('#file').click()"}
-          // 画像があるときは画像を表示する
-          - if @tweet.image.present?
-            = image_tag "#{@tweet.image.url}", class: "tweet-form__bonus__preview--image"
-            -# = image_tag(@tweet.image.url)
-          - else
-            %i.fas.fa-camera.fa-6x.tweet-form__bonus__preview--icon
-        // id "file"をつけ、「display:none;」で隠す
-        = f.file_field :image, class: "image", style: "display:none;", id: "file"
+        %label.label-form
+          .field.image
+          // id "file"で、fileとdivを紐付けクリック時に連動
+          #img_field{:onclick => "$('#file').click()"}
+            // 画像があるときは画像を表示する
+            - if @tweet.image.present?
+              = image_tag "#{@tweet.image.url}", class: "tweet-form__bonus__preview--image"
+              -# = image_tag(@tweet.image.url)
+            - else
+              %i.fas.fa-camera.fa-6x.tweet-form__bonus__preview--icon
+          // id "file"をつけ、「display:none;」で隠す
+          = f.file_field :image, class: "image", style: "display:none;", id: "file"
       .tweet-form__submit
         = f.submit '投稿する', class: "btn btn-success"
 
+:javascript
+  $(function () {
+    var i, len, ref, results, tag;
+
+    $('#tweet-tags').tagit({
+      fieldName: 'tweet[tag_list]',
+      singleField: true,
+      availableTags: gon.available_tags
+    });
+    if (gon.tweet_tags != null) {
+      ref = gon.tweet_tags;
+      results = [];
+      for (i = 0, len = ref.length; i < len; i++) {
+        tag = ref[i];
+        results.push($('#tweet-tags').tagit('createTag', tag));
+      }
+      return results;
+    }
+  });

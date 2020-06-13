@@ -15,8 +15,7 @@ $(function () {
   });
   $('#donation-form').on('submit', function () {
     // $(document).on('submit', '#donation-form', function () {
-    console.log("aa");
-    // $('.donation').fadeOut(500);
+    $('.donation').fadeOut(500);
     // $('.donation').fadeToggle();
     // $('.donation-modal').fadeOut(500);
     // $('.donation').hide();

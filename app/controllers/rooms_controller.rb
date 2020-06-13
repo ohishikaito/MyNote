@@ -19,7 +19,7 @@ class RoomsController < ApplicationController
         if Entry.where(user_id: current_user.id, room_id: @room.id).present?
             @messages = @room.messages.includes(:user).order("created_at asc")
             @message = Message.new
-            @entries = @room.entries
+            @entries = @room.entries.includes(:user)
         else
             redirect_back(fallback_location: root_path)
         end
