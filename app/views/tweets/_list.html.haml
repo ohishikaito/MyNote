@@ -3,12 +3,12 @@
     .tweet-index__title
       = link_to root_path, class: "tweet-index__title__left tweet-index__active" do
         %p.tweet-index__title--text 新着
-      = link_to likes_tweets_path, class: "tweet-index__title__right tweet-index__hide" do
+      = link_to likes_tweets_path, class: "tweet-index__title__right tweet-index__hide color-black" do
         %p.tweet-index__title--text 人気
     = render @tweets
     .tweet-index--footer
       = paginate @tweets
-= link_to new_tweet_path, class: "new-tweet" do
+= link_to new_tweet_path, class: "new-tweet color-black" do
   .new-tweet__btn
     %p.new-tweet__text
       投稿
