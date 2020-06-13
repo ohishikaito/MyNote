@@ -42,10 +42,18 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+    gem 'pry-rails'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-rails-console'
 end
 
 group :production do
   gem 'pg'
+  gem 'unicorn'
 end
 
 group :development do
@@ -76,7 +84,6 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'pry-rails'
 gem 'devise'
 gem 'kaminari'
 gem 'jquery-rails'

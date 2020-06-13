@@ -50,8 +50,9 @@ test:
 production:
   <<: *default
   database: my_app_production
-  username: my_app
-  password: <%= ENV['MY_APP_DATABASE_PASSWORD'] %>
+  username: root            #rootに変更
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
   
 production:
 #半角スペース２個分の空白を開ける
