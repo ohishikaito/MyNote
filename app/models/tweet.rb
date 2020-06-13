@@ -18,7 +18,7 @@ class Tweet < ApplicationRecord
 
   #ランキングメソッド
   def self.create_all_ranks
-    Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(10).pluck(:tweet_id))
+    Tweet.includes([:taggings, :user]).find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(10).pluck(:tweet_id))
   end
 # tweets-------------------------------------------------------------------
   mount_uploader :image, ImageUploader

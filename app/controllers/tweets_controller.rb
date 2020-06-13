@@ -2,12 +2,10 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only: [:edit, :destroy, :show, :update]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :blocking_edit_tweet, only: [:edit, :update, :destroy]
-  before_action :set_tweet_tags_to_gon, only: [:edit]
-  # before_action :set_available_tags_to_gon, only: [:new, :edit]
-  before_action :set_available_tags_to_gon
+  before_action :set_available_tags_to_gon, only: [:new, :edit]
 
   def index
-    @tweets = Tweet.includes(:user).order('created_at desc').page(params[:page]).per(10)
+    @tweets = Tweet.includes([:taggings, :user]).order('created_at desc').page(params[:page]).per(10)
     if params[:tag_name]
       @tweets = @tweets.tagged_with("#{params[:tag_name]}")
     end
@@ -23,11 +21,13 @@ class TweetsController < ApplicationController
 
   def new
       @tweet = Tweet.new
-      @tags= Tweet.tag_counts_on(:tags)
+      @tags = Tweet.includes([:taggings]).tag_counts_on(:tags)
+      # @tags = Tweet.tag_counts_on(:tags)
   end
 
   def create
     @tweet = Tweet.create(tweet_params)
+    gon.tweet_tags = @tweet.tag_list
     if @tweet.save
       redirect_to root_path, notice: 'ツイートを投稿しました！'
     else
@@ -37,10 +37,12 @@ class TweetsController < ApplicationController
   end
 
   def edit
+    gon.tweet_tags = @tweet.tag_list
   end
 
   def update
     @tweet.update(tweet_params)
+    gon.tweet_tags = @tweet.tag_list
     if @tweet.save
       redirect_to tweet_path(@tweet.id), notice: 'ツイートを編集しました！'
     else
@@ -52,9 +54,12 @@ class TweetsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @tweet.comments.includes(:user).order('created_at desc')
+    # @comments = @tweet.comments.order('created_at desc')
+    # @user = @tweet.user
     @user = @tweet.user
     @donation = Donation.new
-    @donations = @tweet.donations.sum(:amount)
+    # @donations = @tweet.donations.includes(:user).sum(:amount)
+    @donations = @tweet.donations.includes(:user).sum(:amount)
   end
 
   def destroy
@@ -75,7 +80,7 @@ class TweetsController < ApplicationController
   end
   
   def tags
-    @tags = Tweet.tag_counts_on(:tags)
+    @tags = Tweet.includes(:taggings).tag_counts_on(:tags)
   end
     
   private
@@ -96,12 +101,8 @@ class TweetsController < ApplicationController
     end
   end
 
-  def set_tweet_tags_to_gon
-    gon.tweet_tags = @tweet.tag_list
-  end
-
   def set_available_tags_to_gon
-    gon.available_tags = Tweet.tags_on(:tags).pluck(:name)
+    gon.available_tags = Tweet.includes(:taggings).tags_on(:tags).pluck(:name)
   end
 
 end
