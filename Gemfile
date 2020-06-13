@@ -87,12 +87,12 @@ gem 'mini_magick'
 gem 'devise'
 gem 'kaminari'
 gem 'jquery-rails'
-
 gem 'slim-rails'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'redcarpet'
 gem 'jquery-ui-rails'
 gem 'gon'
+gem 'fog-aws'
 
 group :development, :production, :test do
   gem 'devise'
