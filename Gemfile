@@ -42,7 +42,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-    gem 'pry-rails'
+  gem 'pry-rails'
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
