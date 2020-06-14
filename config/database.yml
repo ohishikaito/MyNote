@@ -50,6 +50,6 @@ test:
 production:
   <<: *default
   database: my_app_production
-  username: root            #rootに変更
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  username: root
+  password: 
   socket: /var/lib/mysql/mysql.sock
