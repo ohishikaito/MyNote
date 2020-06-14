@@ -9,8 +9,17 @@ class NotificationsController < ApplicationController
         # @activities = current_user.active_notifications.includes([:visitor, :tweet, :room, :visited]).page(params[:page]).per(20)
         @activities = current_user.active_notifications.includes([:visitor, :tweet, :room, :visited]).page(params[:page]).per(20)
     end
-# has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id'
-# has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id'
-# belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id', optional: true
-# belongs_to :visited, class_name: 'User', foreign_key: 'visited_id', optional: true
+
+    # bulletを無効にするメソッド---------------------------------------------------------------------------------------
+    around_action :skip_bullet, if: -> { defined?(Bullet) }
+
+    def skip_bullet
+        previous_value = Bullet.enable?
+        Bullet.enable = false
+        yield
+    ensure
+        Bullet.enable = previous_value
+    end
+    # -------------------------------------------------------------------------------------------------------------------------
+
 end
