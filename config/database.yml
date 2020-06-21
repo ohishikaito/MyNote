@@ -10,6 +10,7 @@ development:
   <<: *default
   #my_appはローカルのDB
   database: my_app_development
+  encoding: utf8
   #以下はdockerのDB
   # database: mynote_development     
   # username: root
@@ -26,3 +27,4 @@ production:
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
+  encoding: utf8
