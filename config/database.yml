@@ -10,7 +10,7 @@ development:
   <<: *default
   #my_appはローカルのDB
   database: my_app_development
-  #my_note_developmentはdockerのDB
+  #以下はdockerのDB
   # database: mynote_development     
   # username: root
   # password: password
