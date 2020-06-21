@@ -1,0 +1,3 @@
+- add_ssh_keys:
+  fingerprints:
+    - "XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX"

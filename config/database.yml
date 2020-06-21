@@ -8,15 +8,17 @@ default: &default
 
 development:
   <<: *default
-  # database: my_app_development
-  username: root
-  password: password
-  database: mynote_development     
-  host: db
+  #my_appはローカルのDB
+  database: my_app_development
+  #my_note_developmentはdockerのDB
+  # database: mynote_development     
+  # username: root
+  # password: password
+  # host: db
 
-# test:
-#   <<: *default
-#   database: my_app_test
+test:
+  <<: *default
+  database: my_app_test
 
 production:
   <<: *default
