@@ -1,8 +1,8 @@
-- add_ssh_keys:
-    fingerprints:
-      - "54:1c:6c:63:fb:78:34:85:0e:51:59:aa:98:b4:15:6a"
-
-- deploy:
-    name: Capistrano deploy
-    command:
-      bundle exec cap production deploy
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A first hello"
