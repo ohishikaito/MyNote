@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_06_03_052105) do
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "tweet_id", null: false
     t.bigint "user_id", null: false
     t.text "content", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_052105) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "donations", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "donations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "tweet_id", null: false
     t.bigint "user_id", null: false
     t.integer "amount", null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_052105) do
     t.index ["user_id"], name: "index_donations_on_user_id"
   end
 
-  create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "room_id"
     t.datetime "created_at", null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_052105) do
     t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
-  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "tweet_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_052105) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "room_id"
     t.text "message", null: false
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_052105) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "visitor_id", null: false
     t.integer "visited_id", null: false
     t.integer "tweet_id"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_052105) do
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
-  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "follower_id"
     t.bigint "following_id"
     t.datetime "created_at", null: false
@@ -89,12 +89,12 @@ ActiveRecord::Schema.define(version: 2020_06_03_052105) do
     t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
-  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
     t.integer "taggable_id"
@@ -113,14 +113,14 @@ ActiveRecord::Schema.define(version: 2020_06_03_052105) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
-  create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", collation: "utf8_bin"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
   end
 
-  create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "text", null: false
     t.string "image"
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_052105) do
     t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
