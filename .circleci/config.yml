@@ -32,11 +32,11 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-      - run: mv config/database.yml.ci config/database.yml 
+      # - run: mv config/database.yml.ci config/database.yml 
 
       # Database setup
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      # - run: bundle exec rake db:create
+      # - run: bundle exec rake db:schema:load
 
       # - run:
       #     name: Rubocop
