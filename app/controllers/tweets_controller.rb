@@ -29,9 +29,10 @@ class TweetsController < ApplicationController
     @tweet = Tweet.create(tweet_params)
     gon.tweet_tags = @tweet.tag_list
     if @tweet.save
-      redirect_to root_path, notice: 'ツイートを投稿しました！'
+      redirect_to root_path, notice: '投稿しました！'
     else
-      flash.now[:alert] = 'メッセージを入力して下さい。'
+      flash.now[:alert] = "入力内容に誤りがあります。入力漏れ、文字数をご確認ください。"
+      # flash.now[:alert] = @tweet.errors.full_messages
       render :new
     end
   end
@@ -44,9 +45,9 @@ class TweetsController < ApplicationController
     @tweet.update(tweet_params)
     gon.tweet_tags = @tweet.tag_list
     if @tweet.save
-      redirect_to tweet_path(@tweet.id), notice: 'ツイートを編集しました！'
+      redirect_to tweet_path(@tweet.id), notice: '投稿を編集しました！'
     else
-      flash.now[:alert] = 'メッセージを入力して下さい。'
+      flash.now[:alert] = "入力内容に誤りがあります。入力漏れ、文字数をご確認ください。"
       render :edit
     end
   end

@@ -12,6 +12,13 @@ module MyApp
     config.load_defaults 5.2
     config.i18n.default_locale = :ja
     config.time_zone = 'Tokyo'
+    # 不要なファイルを作成しない
+    config.generators do |g|
+      g.stylesheets false
+      g.javascripts false
+      g.helper false
+      g.test_framework false
+    end
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
