@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: %i[index timeline]
   before_action :blocking_edit_user, only: %i[edit update]
   before_action :blocking_edit_test_user, only: %i[edit update]
-  before_action :user_join_room, only: %i[show likes]
+  before_action :join_room, only: %i[show likes]
 
   def index
     @users = User.all
@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     if current_user.update(user_params)
       redirect_to root_path, notice: 'ユーザー情報を更新しました'
     else
+      flash.now[:alert] = "入力内容に誤りがあります。入力漏れ、文字数をご確認ください。"
       render :edit
     end
   end
@@ -67,20 +68,20 @@ class UsersController < ApplicationController
     end
   end
 
-  def user_join_room
+  def join_room
     if user_signed_in?
-      @currentUserEntry = Entry.where(user_id: current_user.id)
-      @userEntry = Entry.where(user_id: @user.id)
       unless @user.id == current_user.id
-        @currentUserEntry.each do |cu|
-          @userEntry.each do |u|
+        @current_user_entry = Entry.where(user_id: current_user.id)
+        @user_entry = Entry.where(user_id: @user.id)
+        @current_user_entry.each do |cu|
+          @user_entry.each do |u|
             if cu.room_id == u.room_id
-              @haveRoom = true
-              @roomId = cu.room_id
+              @have_room = true
+              @room_id = cu.room_id
             end
           end
         end
-        unless @haveRoom
+        unless @have_room
           @room = Room.new
           @entry = Entry.new
         end

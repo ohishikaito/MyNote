@@ -5,8 +5,8 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.create
-    @joinCurrentUser = Entry.create(user_id: current_user.id, room_id: @room.id)
-    @joinUser = Entry.create(join_room_params)
+    @join_current_user = Entry.create(user_id: current_user.id, room_id: @room.id)
+    @join_user = Entry.create(join_room_params)
     @first_message = @room.messages.create(user_id: current_user.id, message: "初めまして！")
     redirect_to room_path(@room.id)
   end

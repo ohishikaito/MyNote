@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
       @room.create_notification_message!(current_user, @message.id)
       gets_entries_all_messages
       @message = Message.new
-      end
+    end
   end
 
   def edit; end
