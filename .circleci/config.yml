@@ -12,7 +12,7 @@ executors:
       - MYSQL_ROOT_PASSWORD: <%= ENV['DATABASE_PASSWORD'] %>
       - RAILS_ENV: 'test'
       - BUNDLER_VERSION: 2.1.4
-
+      
 commands:
   setup:
     steps:
