@@ -11,6 +11,7 @@ AllCops:
     - 'vendor/**/*'
     - 'config/**/*'
     - 'script/**/*'
+    - 'test/**'
   # Rails向けのRails copsを実行。"rubocop -R"と同じ
   Rails:
     enabled: true
@@ -23,9 +24,6 @@ Style/Documentation:
 AsciiComments:
   Enabled: false
 
-  ClassAndModuleChildren:
-  Enabled: false
-
 # "Prefer single-quoted strings when you don't need string interpolation or special symbols."を無効
 Style/StringLiterals:
   Enabled: false
@@ -34,11 +32,34 @@ Style/StringLiterals:
 Metrics/LineLength:
   Enabled: false
 
+# join_roomの記述が引っかかる為。省略は難しい
+Etrics/MethodLength:
+  Enabled: true
+  Max: 18
+
 #'frozen_string_literal: true'を無効
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# tweet_searchやtestのnamespaceが引っかかるため
+Style/ClassAndModuleChildren:
   Enabled: false
 
 # 線が多い長いブロックは避けてください
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+
+# NotificationsControllerが22文字の為
+Metrics/AbcSize:
+  Enabled: true
+  Max: 23
+
+# if~else~endの方がひと目で分かりやすいと思うためfalse。詳細は以下を参照
+# https://docs.rubocop.org/rubocop/cops_style.html#styleguardclause
+Style/GuardClause:
+  Enabled: false
+
+# devise_helperの関係のため
+Naming/HeredocDelimiterNaming:
+  Enabled: false

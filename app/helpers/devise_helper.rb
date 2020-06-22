@@ -3,7 +3,7 @@ module DeviseHelper
     return "" if resource.errors.empty?
 
     html = ""
-    messages = resource.errors.full_messages.each do |errmsg|
+    resource.errors.full_messages.each do |errmsg|
       html += <<-EOF
       <div class="alert alert-danger alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert">
