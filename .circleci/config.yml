@@ -5,6 +5,8 @@ executors:
     working_directory: ~/repo
     docker:
       - image: circleci/ruby:2.5.1-node-browsers
+        # environment:
+          # - BUNDLER_VERSION: 2.1.4
       - image: circleci/mysql:5.7
     environment:
       - MYSQL_USER: root
@@ -12,6 +14,8 @@ executors:
       - MYSQL_ROOT_PASSWORD: <%= ENV['DATABASE_PASSWORD'] %>
       - RAILS_ENV: 'test'
       - BUNDLER_VERSION: 2.1.4
+      # - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+      # - MYSQL_ROOT_HOST: '%'
 
 commands:
   setup:

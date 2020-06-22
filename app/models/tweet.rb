@@ -1,5 +1,5 @@
 class Tweet < ApplicationRecord
-  # search-------------------------------------------------------------------
+# search-------------------------------------------------------------------
   def self.search(search)
     if search
       Tweet.where('title Like(?)', "%#{search}%")
@@ -7,42 +7,44 @@ class Tweet < ApplicationRecord
       Tweet.all
     end
   end
-  # likes-------------------------------------------------------------------
+# likes-------------------------------------------------------------------
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
-
-  # 既にいいねしているか確認するメソッド
+  
+  #既にいいねしているか確認するメソッド
   def like_user(user_id)
     likes.find_by(user_id: user_id)
   end
 
-  # ランキングメソッド
+  #ランキングメソッド
   def self.create_all_ranks
-    Tweet.includes(%i[taggings user]).find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(10).pluck(:tweet_id))
+    Tweet.includes([:taggings, :user]).find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(10).pluck(:tweet_id))
   end
-  # tweets-------------------------------------------------------------------
+# tweets-------------------------------------------------------------------
   mount_uploader :image, ImageUploader
   validates :text, presence: true, length: { maximum: 65_535 }
   validates :title, presence: true, length: { maximum: 40 }
-  # users-------------------------------------------------------------------
+# users-------------------------------------------------------------------
   belongs_to :user
-  # comments-------------------------------------------------------------------
+# comments-------------------------------------------------------------------
   has_many :comments, dependent: :destroy
-  # notifications -------------------------------------------------------------------
+# notifications -------------------------------------------------------------------
   has_many :notifications, dependent: :destroy
 
   def create_notification_like!(current_user)
     # 既にいいねされてるか検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and tweet_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
-    # いいねされてなかったら通知を作成
+    #いいねされてなかったら通知を作成
     if temp.blank?
       notification = current_user.active_notifications.new(
         tweet_id: id,
         visited_id: user_id,
         action: 'like'
       )
-      # 自分の投稿にはいいね通知済みにする
-      notification.checked = true if notification.visitor_id == notification.visited_id
+      #自分の投稿にはいいね通知済みにする
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
       notification.save if notification.valid?
     end
   end
@@ -66,11 +68,14 @@ class Tweet < ApplicationRecord
       action: 'comment'
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
-    notification.checked = true if notification.visitor_id == notification.visited_id
+    if notification.visitor_id == notification.visited_id
+      notification.checked = true
+    end
     notification.save if notification.valid?
   end
-  # ActAsTaggable-------------------------------------------------------------------
+# ActAsTaggable-------------------------------------------------------------------
   acts_as_taggable
-  # donations-------------------------------------------------------------------
+# donations-------------------------------------------------------------------
   has_many :donations, dependent: :destroy
+
 end

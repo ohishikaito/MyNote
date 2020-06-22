@@ -1,26 +1,28 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: %i[edit destroy show update]
-  before_action :authenticate_user!, only: %i[new create edit update destroy]
-  before_action :blocking_edit_tweet, only: %i[edit update destroy]
-  before_action :set_available_tags_to_gon, only: %i[new edit]
+  before_action :set_tweet, only: [:edit, :destroy, :show, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :blocking_edit_tweet, only: [:edit, :update, :destroy]
+  before_action :set_available_tags_to_gon, only: [:new, :edit]
 
   def index
-    @tweets = Tweet.includes(%i[taggings user]).order('created_at desc').page(params[:page]).per(10)
-    @tweets = @tweets.tagged_with(params[:tag_name].to_s) if params[:tag_name]
+    @tweets = Tweet.includes([:taggings, :user]).order('created_at desc').page(params[:page]).per(10)
+    if params[:tag_name]
+      @tweets = @tweets.tagged_with("#{params[:tag_name]}")
+    end
     # ids = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').pluck(:tweet_id))
     # # ids = Tweet.where(id: Like.group(:tweet_id).limit(10).order('count(tweet_id) desc').pluck(:tweet_id))
     # @tweets = ids
     # @tweets = @tweets
-
+    
     # @tweets = Tweet.where(id: ids)
     # if params[:tag_nane]
-    # @tweets = @tweets.page(params[:page]).per(12)
+      # @tweets = @tweets.page(params[:page]).per(12)
   end
 
   def new
-    @tweet = Tweet.new
-    @tags = Tweet.includes([:taggings]).tag_counts_on(:tags)
-    # @tags = Tweet.tag_counts_on(:tags)
+      @tweet = Tweet.new
+      @tags = Tweet.includes([:taggings]).tag_counts_on(:tags)
+      # @tags = Tweet.tag_counts_on(:tags)
   end
 
   def create
@@ -67,18 +69,18 @@ class TweetsController < ApplicationController
     @tweets = Tweet.create_all_ranks
     # if params[:tag_nane]
     # @tweets = Tweet.find(Like.group(:tweet_id).limit(10).order('count(tweet_id) desc').pluck(:tweet_id))
-    # @tweets = @tweets.tagged_with("#{params[:tag_name]}")
+      # @tweets = @tweets.tagged_with("#{params[:tag_name]}")
     # end
     # ids = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').pluck(:tweet_id))
     # # ids = Tweet.where(id: Like.group(:tweet_id).limit(10).order('count(tweet_id) desc').pluck(:tweet_id))
     # @tweets = ids
     # @tweets = @tweets.page(params[:page]).per(12)
   end
-
+  
   def tags
     @tags = Tweet.includes(:taggings).tag_counts_on(:tags)
   end
-
+    
   private
 
   def tweet_params
@@ -91,11 +93,14 @@ class TweetsController < ApplicationController
 
   def blocking_edit_tweet
     unless current_user.admin?
-      redirect_to root_path, notice: "不正な操作です" if @tweet.user.id != current_user.id
+      if @tweet.user.id != current_user.id
+        redirect_to root_path, notice: "不正な操作です"
+      end
     end
   end
 
   def set_available_tags_to_gon
     gon.available_tags = Tweet.includes(:taggings).tags_on(:tags).pluck(:name)
   end
+
 end

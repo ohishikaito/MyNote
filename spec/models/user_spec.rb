@@ -1,6 +1,7 @@
 require 'rails_helper'
 describe User do
   describe '#create' do
+
     it "nickname、email、passwordとpassword_confirmationが存在すれば登録できること" do
       user = build(:user)
       user.valid?
@@ -58,5 +59,6 @@ describe User do
       user.valid?
       expect(user.errors[:password]).to include("は6文字以上で入力してください")
     end
+
   end
 end
