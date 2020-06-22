@@ -6,10 +6,9 @@ jobs:
       - image: circleci/mysql:5.7
 
     environment:
-      - MYSQL_ROOT_HOST: 'root'
-        MYSQL_USER: root
-        MYSQL_PASSWORD: password
-        MYSQL_ROOT_PASSWORD: password
+      - MYSQL_USER: root
+      - MYSQL_PASSWORD: <%= ENV['DATABASE_PASSWORD'] %>
+      - MYSQL_ROOT_PASSWORD: <%= ENV['DATABASE_PASSWORD'] %>
       - RAILS_ENV: 'test'
       - BUNDLER_VERSION: 2.1.4
 
