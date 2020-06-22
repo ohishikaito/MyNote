@@ -50,6 +50,7 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'capistrano-rails-console'
   gem 'bullet'
+  gem 'rspec_junit_formatter'
 end
 
 group :production do
