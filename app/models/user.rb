@@ -1,40 +1,41 @@
 class User < ApplicationRecord
-  # devise_login------------------------------           ------------------------------------
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+# devise_login------------------------------           ------------------------------------
+    # Include default devise modules. Others available are:
+    # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
-  validates :nickname, presence: true, uniqueness: true, length: { maximum: 10 }
-  validates :email, length: { maximum: 50 }, presence: true, uniqueness: true
+  validates :nickname, presence: true, uniqueness: true,  length: { maximum: 10 }
+  validates :email,  length: { maximum: 50 }, presence: true, uniqueness: true
   mount_uploader :avatar, AvatarUploader
-  # tweets-------------------------------------------------------------------
+# tweets-------------------------------------------------------------------
   has_many :tweets
-  # comments-------------------------------------------------------------------
+# comments-------------------------------------------------------------------
   has_many :comments
-  # likes-------------------------------------------------------------------
+# likes-------------------------------------------------------------------
   has_many :likes
   has_many :liked_tweets, through: :likes, source: :tweet
-  # messages-------------------------------------------------------------------
+# messages-------------------------------------------------------------------
   has_many :messages
   has_many :entries
   has_many :rooms, through: :entries
-  # follow------------------------------------------------------------------
+# follow------------------------------------------------------------------
   has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship"
   has_many :following, through: :following_relationships
   has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship"
   has_many :followers, through: :follower_relationships
 
-  # フォローしているかを確認するメソッド
+    #フォローしているかを確認するメソッド
   def following?(user)
     following_relationships.find_by(following_id: user.id)
   end
 
-  # フォローするときのメソッド
+    #フォローするときのメソッド
   def follow(user)
     following_relationships.create!(following_id: user.id)
   end
 
-  # フォローを外すときのメソッド
+    #フォローを外すときのメソッド
   def unfollow(user)
     following_relationships.find_by(following_id: user.id).destroy
   end
@@ -55,3 +56,5 @@ class User < ApplicationRecord
   # donations-------------------------------------------------------------------
   has_many :donations
 end
+
+

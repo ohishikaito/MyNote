@@ -9,20 +9,21 @@ class ImageUploader < CarrierWave::Uploader::Base
     storage :fog
   end
 
-  # Create different versions of your uploaded files:
+    # Create different versions of your uploaded files:
   version :thumb do
     process resize_to_fit: [800, 800]
   end
 
-  # 保存形式をJPGにする
-  process convert: 'jpg'
+    # 保存形式をJPGにする
+  process :convert => 'jpg'
 
-  # jpg,jpeg,gif,pngしか受け付けない
+    # jpg,jpeg,gif,pngしか受け付けない
   def extension_white_list
-    %w[jpg jpeg gif png]
+    %w(jpg jpeg gif png)
   end
 
-  # 拡張子が同じでないとGIFをJPGとかにコンバートできないので、ファイル名を変更
+
+    # 拡張子が同じでないとGIFをJPGとかにコンバートできないので、ファイル名を変更
   def filename
     super.chomp(File.extname(super)) + '.jpg' if original_filename.present?
   end
@@ -39,11 +40,11 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url(*args)
-    #   # For Rails 3.1+ asset pipeline compatibility:
+  #   # For Rails 3.1+ asset pipeline compatibility:
     # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-    # "image.png"
-    # "avatar.png"
-    #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+      # "image.png"
+      # "avatar.png"
+  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   end
 
   # Process files as they are uploaded:

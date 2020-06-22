@@ -1,44 +1,45 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: %i[index timeline]
-  before_action :blocking_edit_user, only: %i[edit update]
-  before_action :blocking_edit_test_user, only: %i[edit update]
-  before_action :user_join_room, only: %i[show likes]
-
+  before_action :set_user, except: [:index, :timeline]
+  before_action :blocking_edit_user, only: [:edit, :update]
+  before_action :blocking_edit_test_user, only: [:edit, :update]
+  before_action :user_join_room, only: [:show, :likes]
+  
   def index
     @users = User.all
   end
 
   def show
-    # 投稿一覧
+    #投稿一覧
     @tweets = @user.tweets.includes(:taggings).order('created_at desc').page(params[:page]).per(10)
   end
 
-  def edit; end
+  def edit
+  end 
 
   def update
     if current_user.update(user_params)
       redirect_to root_path, notice: 'ユーザー情報を更新しました'
-    else
+    else 
       render :edit
     end
   end
 
   def likes
-    @tweets = @user.liked_tweets.includes(%i[taggings user]).order('updated_at desc').page(params[:page]).per(10)
+    @tweets = @user.liked_tweets.includes([:taggings, :user]).order('updated_at desc').page(params[:page]).per(10)
   end
 
   def following
-    @users = @user.following
+      @users = @user.following
   end
 
   def followers
-    @users = @user.followers
+      @users = @user.followers
   end
 
   def timeline
     @user = User.find(current_user.id)
     @following_users = @user.following
-    @tweets = Tweet.includes(%i[taggings user]).where(user_id: @following_users).order('created_at desc').page(params[:page]).per(10)
+    @tweets = Tweet.includes([:taggings, :user]).where(user_id: @following_users).order('created_at desc').page(params[:page]).per(10)
   end
 
   private
@@ -47,9 +48,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def user_params
-    params.require(:user).permit(:nickname, :email, :avatar)
-  end
+    def user_params
+      params.require(:user).permit(:nickname, :email, :avatar)
+    end
 
   def blocking_edit_user
     unless current_user.admin?
@@ -87,4 +88,5 @@ class UsersController < ApplicationController
       end
     end
   end
+
 end
