@@ -66,14 +66,14 @@ jobs:
       #     path: /tmp/test-results
       #     destination: test-results
 
-      # - add_ssh_keys:
-      #     fingerprints:
-      #       - "1f:d3:9f:7d:ac:ed:40:b4:88:d1:7b:f2:61:d1:71:48"
+      - add_ssh_keys:
+          fingerprints:
+            - "1f:d3:9f:7d:ac:ed:40:b4:88:d1:7b:f2:61:d1:71:48"
 
-      # - deploy:
-      #     name: Capistrano deploy
-      #     command: |
-      #       if [ "${CIRCLE_BRANCH}" != "master" ]; then
-      #         exit 0
-      #       fi
-      #       bundle exec cap production deploy
+      - deploy:
+          name: Capistrano deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
+              exit 0
+            fi
+            bundle exec cap production deploy
