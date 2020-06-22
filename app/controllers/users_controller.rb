@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, except: [:index, :timeline]
   before_action :blocking_edit_user, only: [:edit, :update]
   before_action :blocking_edit_test_user, only: [:edit, :update]
-  before_action :user_joinRoom, only: [:show, :likes]
-
+  before_action :user_join_room, only: [:show, :likes]
+  
   def index
     @users = User.all
   end
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def user_joinRoom
+  def user_join_room
     if user_signed_in?
       @currentUserEntry = Entry.where(user_id: current_user.id)
       @userEntry = Entry.where(user_id: @user.id)

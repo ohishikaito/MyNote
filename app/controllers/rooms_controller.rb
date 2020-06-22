@@ -1,9 +1,7 @@
 class RoomsController < ApplicationController
 
     def index
-        # @rooms = current_user.rooms
         @rooms = current_user.rooms.includes(:messages).order("messages.created_at desc")
-        #joins消した
     end
 
     def create
