@@ -32,11 +32,11 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-      # - run: mv config/database.yml.ci config/database.yml 
+      - run: mv config/database.yml.ci config/database.yml 
 
-      # # Database setup
-      # - run: bundle exec rake db:create
-      # - run: bundle exec rake db:schema:load
+      # Database setup
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
 
       # - run:
       #     name: Rubocop
@@ -67,9 +67,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            # - "54:1c:6c:63:fb:78:34:85:0e:51:59:aa:98:b4:15:6a"
             - "1f:d3:9f:7d:ac:ed:40:b4:88:d1:7b:f2:61:d1:71:48"
-            # - "5d:5d:b6:4c:e8:a2:b8:c8:1c:e2:a9:b7:64:0c:9d:7f"
 
       - deploy:
           name: Capistrano deploy
