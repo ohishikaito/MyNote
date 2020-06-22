@@ -23,6 +23,9 @@ Style/Documentation:
 AsciiComments:
   Enabled: false
 
+  ClassAndModuleChildren:
+  Enabled: false
+
 # "Prefer single-quoted strings when you don't need string interpolation or special symbols."を無効
 Style/StringLiterals:
   Enabled: false
