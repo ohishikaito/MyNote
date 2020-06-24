@@ -1,0 +1,226 @@
+
+.tweet-show{
+  width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  border: 1px solid $header_border;
+  padding: 30px;
+  box-shadow: 0px 4px 6px #ccc;
+  &__title{
+    &__top{
+      display: flex;
+      justify-content: space-between;
+      &--user{
+        display: flex;
+      }
+      &:hover a{
+        color: #333;
+      }
+      &--edit a{
+        color: black;
+        font-size: 13px;
+      }
+    }
+    &--body{
+      display: block;
+      font-size: 20px;
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      padding: 10px 0;
+    }
+    &--date{
+      display: flex;
+      justify-content: flex-end;
+      color: $header_tags;
+      font-size: 13px;
+    }
+  }
+  &__content{
+    padding: 30px 0;
+    &--text{
+      font-size: 18px;
+      padding: 30px 0;
+      border-bottom: 1px solid $header_border;
+    }
+    &--imageBox{
+      width: 600px;
+      margin: 0 auto;
+    }
+    &--image{
+      object-fit: cover;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    &--tags{
+      padding: 40px 0;
+    }
+    &__donation{
+      display: flex;
+      justify-content: center;
+      &--text{
+        font-size: 20px;
+      }
+      &--submit{
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+      }
+    }
+    &__like{
+      display: flex;
+      justify-content: center;
+      padding: 30px 0;
+      &--link{
+        padding-left: 20px;
+        cursor: pointer;
+      }
+      &--bgc{
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0,0,0,.5);
+        opacity: 1;
+      }
+      &__modal{
+        width: 300px;
+        background-color: white;
+        border: 1px solid $header_border;
+        position: fixed;
+        padding: 30px;
+        border-radius: 10px;
+        z-index: 3;
+        top: 30%;
+        right: 39.5%;
+      }
+      &--user{
+        display: flex;
+        padding-bottom: 20px;
+        line-height: 39px;
+        &:hover{
+          color: #505050;
+        }
+        &--name{
+          padding-left: 10px;
+        }
+      }
+      &--close{
+        padding-top: 30px;
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+    &__user{
+      display: flex;
+      justify-content: center;
+      padding: 30px 0;
+      &--top{
+        display: flex;
+        &:hover{
+          color: #505050;
+        }
+      }
+      &--avatar{
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      &--names{
+        padding: 0 20px;
+        line-height: 60px;
+      }
+      &--follow{
+        padding-top: 10px;
+      }
+    }
+  }
+  &__comment{
+    border-top: 1px solid $header_border;
+    padding: 20px 0;
+    width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    &--text{
+      text-align: center;
+    }
+    &__form{
+      display: flex;
+      flex-direction: column;
+      &__top{
+        display: flex;
+        justify-content: center;
+      }
+      &--title{
+        padding: 10px 10px;
+      }
+      &--body{
+        margin: 20px;
+        height: 100px;
+        width: 100%;
+        color: #222;
+        background: white;
+        border: 1px solid #a8abb1;
+        border-radius: 5px;
+        padding: 5px;
+        outline: none;
+      }
+      &--submit{
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+      }
+    }
+    &__title{
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+    }
+    &--text{
+      padding-left: 50px;
+      padding-top: 3px;
+    }
+    &__items{
+      padding: 0px 20px;
+    }
+    &__item{
+      padding: 20px;
+      &__top{
+        display: flex;
+        justify-content: space-between;
+        &--user{
+          display: flex;
+          &:hover{
+            color: #505050;
+          }
+        }
+        &--nickname{
+          padding: 5px 10px;
+        }
+        &--date{
+        color: $header_tags;
+        font-size: 13px;
+        }
+      }
+      &--text{
+        padding: 10px;
+        font-size: 19px;
+      }
+      &--edit{
+        display: flex;
+        justify-content: flex-end;
+        font-size: 13px;
+        &--left{
+          padding-right: 10px;
+        }
+        & a, &:hover a{
+          color: #333;
+        }
+      }
+    }
+  }
+}
