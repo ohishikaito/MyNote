@@ -1,13 +1,1 @@
-.wrapper
-  %ul.tweet-index
-    .tweet-index__title
-      %p.tweet-index__title--text タイムライン
-    = render @tweets
-    .tweet-index--footer
-      = paginate @tweets
-= link_to new_tweet_path, class: "new-tweet" do
-  .new-tweet__btn
-    %p.new-tweet__text
-      投稿
-    .new-tweet__icon
-      %i.fas.fa-plus
+= render 'tweets/top'
