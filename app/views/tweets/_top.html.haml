@@ -1,5 +1,7 @@
 .wrapper
   %ul.tweet-index
+    .tweet-index__title
+      %p.tweet-index__title--text
     = render @tweets
     .tweet-index--footer
       = paginate @tweets

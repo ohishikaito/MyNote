@@ -54,7 +54,7 @@ class TweetsController < ApplicationController
   end
 
   def likes
-    @tweets = Tweet.create_all_ranks
+    @tweets = Tweet.includes(%i[taggings user]).order('likes_count desc').page(params[:page]).per(10)
   end
 
   def tags
