@@ -10,26 +10,3 @@
       .login__field
         .center
           = f.submit "更新する", class: "btn btn-success"
--# .account-page__inner--left.account-page__header
--#     %h5 アカウントの編集
--#     = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
--#     = link_to "戻る", :back, class: 'btn'
--# .account-page__inner--right.user-form
--#     = form_for(current_user) do |f|
--#         .field
--#             .field-label
--#             = f.label :nickname
--#             .field-input
--#             = f.text_field :nickname, autofocus: true
--#         .field
--#             .field-label
--#             = f.label :email
--#             .field-input
--#             = f.email_field :email
--#         .field
--#             .field-label
--#             = f.label :avatar
--#             .field-input
--#             = f.file_field :avatar
--#         .actions
--#             = f.submit "更新", class: 'btn'

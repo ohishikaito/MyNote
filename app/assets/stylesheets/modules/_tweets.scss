@@ -12,41 +12,9 @@
     justify-content: center;
     height: 50px;
     width: 100%;
-    &__left{
-      display: inline-block;
-      width: 100px;
-      text-align: center;
-      line-height: 50px;
-      background-color: white;
-      border: 1px solid $header_border;
-    }
-    &__right{
-      display: inline-block;
-      width: 100px;
-      text-align: center;
-      line-height: 50px;
-      background-color: white;
-      border: 1px solid $header_border;
-    }
     &--text{
-      font-size: 15px;
-    }
-    &--timeline{
       font-size: 20px;
       border-bottom: 1px solid $header_border;
-    }
-  }
-  &__active{
-    background-color: white;
-    &:hover{
-      color: #505050;
-    }
-  }
-  &__hide{
-    background-color: #EEEEEE;
-    &:hover{
-      background-color: #f6f6f6;
-      color: #505050;
     }
   }
   &__item{

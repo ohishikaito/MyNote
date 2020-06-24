@@ -1,22 +1,15 @@
 .wrapper
-  -# = form_with model: @tweet, local: true do |f|
   = form_with(model: @tweet, local: true) do |f|
     .tweet-form
       .tweet-form__title
         = f.text_field :title, class: "tweet-form__title--body", placeholder: "タイトルを入力して下さい(30文字以内)"
-        -# - if @tweet.errors.include?(:title)
-        -#   = @tweet.errors.full_messages_for(:title).first
       .tweet-form__text
         = f.label "内容", for: "md-textarea"
         = f.text_area :text, class: "tweet-form__text--body materialize-textarea", placeholder: "本文を入力して下さい", id: "md-textarea"
-        -# - if @tweet.errors.include?(:text)
-        -#   = @tweet.errors.full_messages_for(:text).first
       .tweet-form--tags
         タグを追加
       %div
         %ul#tweet-tags
-        -# = f.label :tag_list, "タグを追加"
-        -# = f.text_field :tag_list, value: @tweet.tag_list.join(','), class: "tweet-form__bonus__tags", placeholder: "1つのタグは10文字まで"
       .tweet-form__bonus__preview--title
         イメージ写真
       .tweet-form__bonus__preview

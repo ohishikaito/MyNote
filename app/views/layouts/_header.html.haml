@@ -23,7 +23,7 @@
                   %li.header-top__box--borderTop
                     = link_to "タイムライン", timeline_user_path(current_user), class: "header-top__box--content"
                   %li.header-top__box--borderTop
-                    = link_to "いいね！した投稿", likes_user_path(current_user), class: "header-top__box--content"
+                    = link_to "人気投稿", likes_tweets_path, class: "header-top__box--content"
                   %li.header-top__box--borderTop
                     = link_to 'ユーザー編集', edit_user_path(current_user.id), class: "header-top__box--content"
                   %li.header-top__box--borderTop

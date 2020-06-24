@@ -13,7 +13,6 @@
     - if tweet.image?
       = image_tag "#{tweet.image}", class: "tweet-index__item--image"
     - else
-      -# %image.icon{src: "/assets/default.png", class: "tweet-index__item--image"}
       = image_tag asset_path("default.png"), class: "tweet-index__item--image"
     .tweet-index__item--tags
       = render '/tweets/tag_list', tag_list: tweet.tag_list
