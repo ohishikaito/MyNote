@@ -23,19 +23,19 @@
                   %li.header-top__box--borderTop
                     = link_to "タイムライン", timeline_user_path(current_user), class: "header-top__box--content"
                   %li.header-top__box--borderTop
-                    = link_to "人気投稿", likes_tweets_path, class: "header-top__box--content"
+                    = link_to 'ユーザー一覧', users_path, class: "header-top__box--content"                           
+                  %li.header-top__box--borderTop
+                    = link_to "人気投稿", likes_tweets_path, class: "header-top__box--content"             
                   %li.header-top__box--borderTop
                     = link_to 'ユーザー編集', edit_user_path(current_user.id), class: "header-top__box--content"
                   %li.header-top__box--borderTop
                     = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-top__box--content"
-                  - if current_user.admin?
-                    %li.header-top__box--borderTop
-                      = link_to 'ユーザー一覧', users_path, class: "header-top__box--content"
           - else
             = link_to new_user_session_path do
               %input.btn.btn-success.header-top__right--box{type: "submit", value: "ログイン"}
             = link_to new_user_registration_path do
               %input.btn.btn-success.header-top__right--box{type: "submit", value: "新規登録"}
+
     .header-bottom
       %ul.header-bottom__list
         - @tags = ["テクノロジー","経済","マンガ","ファッション","エンタメ","スポーツ","国際","コラム"]
