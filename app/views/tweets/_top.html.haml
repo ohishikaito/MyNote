@@ -1,11 +1,9 @@
 .wrapper
   %ul.tweet-index
-    .tweet-index__title
-      %p.tweet-index__title--text タイムライン
     = render @tweets
     .tweet-index--footer
       = paginate @tweets
-= link_to new_tweet_path, class: "new-tweet" do
+= link_to new_tweet_path, class: "new-tweet color-black" do
   .new-tweet__btn
     %p.new-tweet__text
       投稿

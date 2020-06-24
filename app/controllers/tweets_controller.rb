@@ -7,20 +7,11 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.includes(%i[taggings user]).order('created_at desc').page(params[:page]).per(10)
     @tweets = @tweets.tagged_with(params[:tag_name].to_s) if params[:tag_name]
-    # ids = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').pluck(:tweet_id))
-    # # ids = Tweet.where(id: Like.group(:tweet_id).limit(10).order('count(tweet_id) desc').pluck(:tweet_id))
-    # @tweets = ids
-    # @tweets = @tweets
-
-    # @tweets = Tweet.where(id: ids)
-    # if params[:tag_nane]
-    # @tweets = @tweets.page(params[:page]).per(12)
   end
 
   def new
     @tweet = Tweet.new
     @tags = Tweet.includes([:taggings]).tag_counts_on(:tags)
-    # @tags = Tweet.tag_counts_on(:tags)
   end
 
   def create
@@ -30,7 +21,6 @@ class TweetsController < ApplicationController
       redirect_to root_path, notice: '投稿しました！'
     else
       flash.now[:alert] = "入力内容に誤りがあります。入力漏れ、文字数をご確認ください。"
-      # flash.now[:alert] = @tweet.errors.full_messages
       render :new
     end
   end
@@ -65,14 +55,6 @@ class TweetsController < ApplicationController
 
   def likes
     @tweets = Tweet.create_all_ranks
-    # if params[:tag_nane]
-    # @tweets = Tweet.find(Like.group(:tweet_id).limit(10).order('count(tweet_id) desc').pluck(:tweet_id))
-    # @tweets = @tweets.tagged_with("#{params[:tag_name]}")
-    # end
-    # ids = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').pluck(:tweet_id))
-    # # ids = Tweet.where(id: Like.group(:tweet_id).limit(10).order('count(tweet_id) desc').pluck(:tweet_id))
-    # @tweets = ids
-    # @tweets = @tweets.page(params[:page]).per(12)
   end
 
   def tags

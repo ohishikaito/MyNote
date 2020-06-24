@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   def index
     @rooms = current_user.rooms.includes(:messages).order("messages.created_at desc")
+    # binding.pry
   end
 
   def create

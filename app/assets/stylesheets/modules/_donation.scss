@@ -1,0 +1,50 @@
+.donation{
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.5);
+  opacity: 1;
+  &-modal{
+    // display: none;
+    width: 450px;
+    height: 300px;
+    border: 1px solid $header_border;
+    position: fixed;
+    z-index: 3;
+    top: 10%;
+    right: 34.2%;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    &--header{
+      height: 50px;
+      border-bottom: 1px solid $header_border;
+      font-size: 18px;
+      text-align: center;
+      line-height: 50px;
+    }
+    &--close{
+      display: flex;
+      justify-content: flex-end;
+    }
+    &--body{
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      &--input{
+        width: 300px;
+        padding: 20px 20px;
+        text-align: center;
+        border-radius: 10px;
+        border: 1px solid #e1e1e1;
+      }
+    }
+    &--submit{
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

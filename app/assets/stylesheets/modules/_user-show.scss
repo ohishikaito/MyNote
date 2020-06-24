@@ -109,32 +109,3 @@
     }
   }
 }
-
-.users{
-  width: 600px;
-  margin: 0 auto;
-  border: 1px solid $header_border;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0px 4px 6px #ccc;
-  &__title{
-    height: 80px;
-    text-align: center;
-    line-height: 80px;
-    font-size: 22px;
-  }
-  &__item{
-    height: 80px;
-    width: 100%;
-    display: flex;
-    padding: 30px;
-    border-bottom: 1px solid $header_border;
-    &:hover{
-      color: black;
-      background-color: $header_border;
-    }
-    &--nickname{
-      padding: 5px 15px;
-    }
-  }
-}

@@ -16,11 +16,8 @@
             通知はありません
       %ul.notification-top__activities
         - if @activities.exists?
-          -# = render @activities
-          - @activities.each do |activity|
-            = render '/activities/activities', activity: activity
-          .div
-            = paginate @activities
+          = render @activities
+          = paginate @activities
         - else
           %p.text-center
             通知はありません

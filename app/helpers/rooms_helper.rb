@@ -6,6 +6,6 @@ module RoomsHelper
 
   def get_most_new_message(room)
     last_message = room.messages.order(created_at: :desc).limit(1)
-    last_message[0].message
+    last_message[0]
   end
 end
