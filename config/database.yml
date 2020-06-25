@@ -28,7 +28,7 @@ production:
   username: root
   password: password
   encoding: utf8
-  # port: 3306
+  port: 3306
 
 # production:
 #   <<: *default
