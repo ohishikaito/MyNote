@@ -23,8 +23,17 @@ test:
 
 production:
   <<: *default
-  database: my_app_production
-  username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sock
+  database: my-note-production
+  username: admin
+  password: password
   encoding: utf8
+  host: my-note-production.cn8qmgv7wl1t.ap-northeast-1.rds.amazonaws.com
+  port: 3306
+
+# production:
+#   <<: *default
+#   database: my_app_production
+#   username: root
+#   password: <%= ENV['DATABASE_PASSWORD'] %>
+#   socket: /var/lib/mysql/mysql.sock
+#   encoding: utf8
