@@ -23,12 +23,12 @@ test:
 
 production:
   <<: *default
-  database: my-note-production
-  username: admin
+  host: my-note-production.cn8qmgv7wl1t.ap-northeast-1.rds.amazonaws.com
+  database: mynote
+  username: root
   password: password
   encoding: utf8
-  host: my-note-production.cn8qmgv7wl1t.ap-northeast-1.rds.amazonaws.com
-  port: 3306
+  # port: 3306
 
 # production:
 #   <<: *default
