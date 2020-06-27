@@ -24,10 +24,10 @@ test:
 production:
   <<: *default
   # RDSに接続するため
-  host: mynote-mysql.cn8qmgv7wl1t.ap-northeast-1.rds.amazonaws.com
   database: mynote_production
-  username: root
-  password: password
+  username: <%= Rails.application.credentials.rds[:DATABASE_USERNAME] %>
+  password: <%= Rails.application.credentials.rds[:DATABASE_PASSWORD] %>
+  host: <%= Rails.application.credentials.rds[:DATABASE_HOST] %>
   encoding: utf8
 
 # production:
