@@ -42,7 +42,7 @@ namespace :deploy do
         execute "mkdir -p #{shared_path}/config"
       end
       # circleCIでマスターキーを取得するためコメントアウト
-      # upload!('config/master.key', "#{shared_path}/config/master.key")
+      upload!('config/master.key', "#{shared_path}/config/master.key")
     end
   end
   before :starting, 'deploy:upload'
