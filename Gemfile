@@ -81,7 +81,7 @@ end
 # gem 'font-awesome-sass', '~> 5.4.1'
 # Use jquery as the JavaScript library
 gem 'acts-as-taggable-on', '~> 6.0'
-gem 'bcrypt_pbkdf'
+gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
 gem 'carrierwave'
 gem 'devise'
 gem 'ed25519', '>= 1.2', '< 2.0'
