@@ -81,6 +81,7 @@ end
 # gem 'font-awesome-sass', '~> 5.4.1'
 # Use jquery as the JavaScript library
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'bcrypt_pbkdf'
 gem 'carrierwave'
 gem 'devise'
 gem 'erb2haml'
@@ -94,4 +95,3 @@ gem 'mini_magick'
 gem 'redcarpet'
 gem 'slim-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem 'bcrypt_pbkdf'
