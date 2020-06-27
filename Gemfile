@@ -83,6 +83,7 @@ end
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'carrierwave'
 gem 'devise'
+gem 'ed25519', '>= 1.2', '< 2.0'
 gem 'erb2haml'
 gem 'fog-aws'
 gem 'gon'
