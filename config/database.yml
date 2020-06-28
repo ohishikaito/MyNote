@@ -25,6 +25,8 @@ test:
 production:
   <<: *default
   # RDSに接続
+  adapter: mysql2
+  charset: utf8
   database: mynote_production
   username: <%= Rails.application.credentials.rds[:DATABASE_USERNAME] %>
   password: <%= Rails.application.credentials.rds[:DATABASE_PASSWORD] %>
