@@ -416,7 +416,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   kaminari
-  listen (>= 3.0.5, < 3.2)
+  listen
   mini_magick
   mysql2 (>= 0.4.4, < 0.6.0)
   pry-rails
