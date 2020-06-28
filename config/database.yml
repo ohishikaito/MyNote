@@ -37,4 +37,5 @@ production:
   database: my_app_production
   username: root
   password: password
+  socket: /tmp/mysql.sock
   encoding: utf8
