@@ -22,30 +22,20 @@ test:
   <<: *default
   database: my_app_test
 
-# production:
-#   <<: *default
-#   # RDSに接続
-#   database: mynote_production
-#   username: <%= Rails.application.credentials.rds[:DATABASE_USERNAME] %>
-#   password: <%= Rails.application.credentials.rds[:DATABASE_PASSWORD] %>
-#   host: <%= Rails.application.credentials.rds[:DATABASE_HOST] %>
-#   encoding: utf8
-
 production:
-  # EC2内のMySQLに接続
   <<: *default
-  database: my_app_production
-  username: root
-  password: password
-  socket: /var/lib/mysql/mysql.sock
+  # RDSに接続
+  database: mynote_production
+  username: <%= Rails.application.credentials.rds[:DATABASE_USERNAME] %>
+  password: <%= Rails.application.credentials.rds[:DATABASE_PASSWORD] %>
+  host: <%= Rails.application.credentials.rds[:DATABASE_HOST] %>
   encoding: utf8
 
-# 2020/06/28 09:09:04 [crit] 6254#0: *12 connect() to unix:/var/www/MyNote/tmp/sockets/unicorn.sock 
-# failed (2: No such file or directory) while connecting to upstream, client: 220.109.45.228, server: 13.114.24.148
-# , request: "GET /favicon.ico HTTP/1.1", upstream: "http://unix:/var/www/MyNote/tmp/sockets/unicorn.sock:/500.html"
-# , host: "13.114.24.148", referrer: "http://13.114.24.148/"
-
-# 2020/01/18 07:39:19 [crit] 17617#0: *82 connect() to unix:/home/xxx/xxx/tmp/sockets/puma.sock failed
-# (13: Permission denied) while connecting to upstream, client: xxx.xx.xx.xx, server: xxxxxx.xxx
-# , request: \"GET / HTTP/1.1\", upstream: \"http://unix:/home/xxx/xxx/tmp/sockets/puma.sock:/500.html\"
-# , host: \"xxxxxxx.xxx\"
+# production:
+#   # EC2内のMySQLに接続
+#   <<: *default
+#   database: my_app_production
+#   username: root
+#   password: password
+#   socket: /var/lib/mysql/mysql.sock
+#   encoding: utf8
