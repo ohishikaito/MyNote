@@ -24,7 +24,7 @@ test:
 
 # production:
 #   <<: *default
-#   # RDSに接続するため
+#   # RDSに接続
 #   database: mynote_production
 #   username: <%= Rails.application.credentials.rds[:DATABASE_USERNAME] %>
 #   password: <%= Rails.application.credentials.rds[:DATABASE_PASSWORD] %>
@@ -32,6 +32,7 @@ test:
 #   encoding: utf8
 
 production:
+  # EC2内のMySQLに接続
   <<: *default
   database: my_app_production
   username: root
