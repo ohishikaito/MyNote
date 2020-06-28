@@ -1,5 +1,5 @@
 {
-  "name": "my_app",
+  "name": "MyNote",
   "private": true,
   "dependencies": {
     "marked": "^1.1.0",
