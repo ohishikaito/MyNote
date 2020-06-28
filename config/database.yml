@@ -27,7 +27,7 @@ test:
 #   # RDSに接続
 #   database: mynote_production
 #   username: <%= Rails.application.credentials.rds[:DATABASE_USERNAME] %>
-  password: <%= Rails.application.credentials.rds[:DATABASE_PASSWORD] %>
+# password: <%= Rails.application.credentials.rds[:DATABASE_PASSWORD] %>
 #   host: <%= Rails.application.credentials.rds[:DATABASE_HOST] %>
 #   encoding: utf8
 
