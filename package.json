@@ -1,5 +1,5 @@
 {
-  "name": "MyNote",
+  "name": "mynote",
   "private": true,
   "dependencies": {
     "marked": "^1.1.0",
