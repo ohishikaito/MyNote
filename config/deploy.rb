@@ -15,7 +15,7 @@ set :rbenv_ruby, '2.5.1'
 
 # chat-spaceで使ったpemを指定、どの公開鍵を利用してデプロイするか
 set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/mynote_key_rsa']
+                  keys: ['~/.ssh/kaitoaws.pem']
 
 # どの公開鍵を利用してデプロイするか
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
