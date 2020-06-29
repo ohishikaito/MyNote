@@ -20,11 +20,11 @@
         %strong
           = @user.nickname
       .user-show__bottom__follow
-        .user-show__bottom--following
+        .user-show__bottom__follow--people
           = link_to following_user_path(@user) do
             = @user.following.count
             フォロー
-        .user-show__bottom--followers
+        .user-show__bottom__follow--people
           = link_to followers_user_path(@user) do
             = @user.followers.count
             フォロワー
