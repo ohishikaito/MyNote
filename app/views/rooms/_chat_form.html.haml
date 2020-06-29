@@ -1,6 +1,6 @@
 .room-show__form
   .room-show__form__box
     = form_with(model: @message, id: "room-show__form") do |f|
-      = f.text_field :message, placeholder: "メッセージを入力して下さい" ,class: "room-show__form--input"
+      = f.text_field :message, placeholder: "メッセージを入力して下さい" ,class: "room-show__form--input common-sizing"
       = f.hidden_field :room_id, value: @room.id
       %button{type: "submit", class: "fa fa-send fa-2x room-show__form--btn"}       
