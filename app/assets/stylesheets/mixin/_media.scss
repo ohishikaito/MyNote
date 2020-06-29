@@ -3,3 +3,4 @@
 @mixin lg { @media (min-width: 1020px) { @content; } }
 
 @mixin md-max { @media (max-width: 768px) { @content; } }
+@mixin sm-max { @media (max-width: 580px) { @content; } }
