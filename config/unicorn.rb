@@ -1,6 +1,7 @@
 # ファイルが無いのでconfigフォルダにunicorn.rbを新規作成します
 
 # app_path = File.expand_path('../../../', __FILE__)
+# 上記からEC2からunicornを再起動可能にするために修正(6/29) 問題があれば上記に戻す
 app_path = File.expand_path('/var/www/MyNote')
 
 worker_processes 1
