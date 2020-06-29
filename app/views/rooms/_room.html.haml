@@ -9,6 +9,7 @@
         = user.nickname
       - if message.present?
         .room-index__items__item__content--message
-          = message.message
+          = truncate(message.message, length: 20)
+          -# = message.message
         .room-index__items__item__content--date
           = message.created_at.strftime("%Y-%m-%d %H:%M")

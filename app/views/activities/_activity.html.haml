@@ -35,7 +35,7 @@
             = activity.tweet.user.nickname + 'さんの投稿'
         にコメントしました
       .notification-top__items__item--message
-        = Comment.find_by(id: activity.comment_id)&.content
+        = truncate(Comment.find_by(id: activity.comment_id)&.content, length: 20)
       .notification-top__items__item--date
         = time_ago_in_words(activity.created_at).upcase
 
@@ -49,7 +49,7 @@
           = visited.nickname
         さんにメッセージを送信しました
       .notification-top__items__item--message
-        = Message.find_by(id: activity.message_id)&.message
+        = truncate(Message.find_by(id: activity.message_id)&.message, length: 20)
       .notification-top__items__item--date
         = time_ago_in_words(activity.created_at).upcase
 
