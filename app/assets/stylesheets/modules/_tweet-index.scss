@@ -2,7 +2,7 @@
   width: 460px;
   margin: 0px auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   @include lg{
     width: 1000px;
