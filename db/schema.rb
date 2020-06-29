@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_052105) do
     t.integer "taggable_id"
     t.string "tagger_type"
     t.integer "tagger_id"
-    t.string "context", limit: 25
+    t.string "context", limit: 20
     t.datetime "created_at"
     t.index ["context"], name: "index_taggings_on_context"
     t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true

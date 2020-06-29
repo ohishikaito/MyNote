@@ -16,8 +16,8 @@
  */
 
 @import "config/colors";
-@import "config/media";
 @import "reset";
+@import "mixin/media";
 @import "modules/common";
 @import "modules/tweet-index";
 @import "modules/tweet-show";
