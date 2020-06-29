@@ -5,7 +5,6 @@
 }
 
 .room-index{
-  width: 800px;
   margin: 0 auto;
   border: 1px solid $header_border;
   background-color: white;
@@ -20,7 +19,7 @@
     &__item{
       border-top: 1px solid $header_border;
       height: 100px;
-      width: 798px;
+      // width: 798px;
       color: #333;
       position: relative;
       &--icon{

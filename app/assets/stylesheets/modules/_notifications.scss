@@ -1,5 +1,4 @@
 .notification-top{
-  width: 800px;
   margin: 0  auto;
   border: 1px solid $header_border;
   background-color: white;
@@ -41,7 +40,7 @@
     &__item{
       display: block;
       height: 100px;
-      width: 798px;
+      // width: 798px;
       border-bottom: 1px solid $header_border;
       padding: 20px;
       color: #333;

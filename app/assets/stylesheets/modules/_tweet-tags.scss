@@ -4,10 +4,10 @@
 }
 
 .tweet-tags{
-  width: 1000px;
   margin: 30px auto;
   border: 1px solid $header_border;
   background-color: white;
+  box-shadow: 0px 4px 6px #ccc;
   &__title{
     height: 70px;
     text-align: center;
@@ -32,10 +32,10 @@
   }
   &__item{
     display: inline-block;
-    width: 25%;
+    // width: 33.3%;
     padding: 30px;
     &--btn{
-      width: 60%;
+      // width: 60%;
     }
     &--link{
       display: flex;

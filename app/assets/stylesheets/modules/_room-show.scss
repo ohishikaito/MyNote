@@ -1,6 +1,15 @@
 
+// chat_area のScss------------------------------------------------------
 .room-show{
-  width: 1000px;
+  @include sm{
+    width: 450px;
+  }
+  @include md{
+    width: 650px;
+  }
+  @include lg{
+    width: 1000px;
+  }
   min-height: 500px;
   margin: 30px auto;
   border: 1px solid $header_border;
@@ -49,36 +58,38 @@
       justify-content: flex-start;
     }
   }
-  &__form{
-    height: 70px;
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    border-top: 1px solid $header_border;
+}
+// chat_form のScss------------------------------------------------------
+.room-show__form{
+  height: 70px;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  border-top: 1px solid $header_border;
+  background-color: #bcbcbc;
+  position: fixed;
+  bottom: 0;
+  &__box{
+    position: relative;
+    margin: 0 auto;
+  }
+  &--input{
+    padding-left: 20px;
+    @include sm-max{
+      width: 300px;
+    }
+    height: 50px;
+    border-radius: 100px;
+    border: 1px solid #ccc;
+    outline: 0;
+  }
+  &--btn{
+    border: none;
+    font-size: 1.3rem;
+    color: #666;
     background-color: #bcbcbc;
-    position: fixed;
-    bottom: 0;
-    &__box{
-      position: relative;
-      margin: 0 auto;
-    }
-    &--input{
-      margin-left: 20px;
-      padding-left: 20px;
-      width: 800px;
-      height: 50px;
-      border-radius: 100px;
-      border: 1px solid #ccc;
-      outline: 0;
-    }
-    &--btn{
-      border: none;
-      font-size: 1.3rem;
-      color: #666;
-      background-color: #bcbcbc;
-      position: absolute;
-      bottom: 7px;
-      right: -40px;
-    }
+    position: absolute;
+    bottom: 7px;
+    right: -40px;
   }
 }

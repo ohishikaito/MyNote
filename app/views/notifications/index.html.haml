@@ -1,6 +1,6 @@
 .wrapper
   .container
-    .notification-top
+    .notification-top.common-sizing
       .notification-top__title
         .notification-top__title__left.notification-top__title--show
           %h2.notification-top__title--name
@@ -16,7 +16,10 @@
             通知はありません
       %ul.notification-top__activities
         - if @activities.exists?
-          = render @activities
+          -# 同ページで2回renderすると、正しく読み込まれないためeach文を使用しています
+          -# = render @activities
+          - @activities.each do |activity|
+            = render "activities/activity", activity: activity
           = paginate @activities
         - else
           %p.text-center

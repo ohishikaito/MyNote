@@ -4,3 +4,8 @@ User.create!(nickname:  "管理者",
              password:  "adaadaada",
              password_confirmation: "adaadaada",
              admin: true)
+
+Tweet.create!(title: "seed", text: "text", user_id: 1)
+Tweet.create!(title: "seed", text: "text", user_id: 1)
+Tweet.create!(title: "seed", text: "text", user_id: 1)
+Tweet.create!(title: "seed", text: "text", user_id: 1)

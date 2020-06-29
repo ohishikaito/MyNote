@@ -2,6 +2,10 @@
   width: 600px;
   margin: 0 auto;
   padding: 30px;
+  @include md-max{
+    width: 460px;
+    padding: 30px 0;
+  }
   border: 1px solid $header_border;
   background-color: white;
   border-radius: 5px;
@@ -63,22 +67,18 @@
     &__follow{
       padding-top: 5px;
       display: flex;
-    }
-    &--following{
-      padding-right: 20px;
-      & a{
-        color: black;
-      }
-      &:hover a{
-        color: #505050;
-      }
-    }
-    &--followers{
-      & a{
-        color: black;
-      }
-      &:hover a{
-        color: #505050;
+      width: 200px;
+      margin: 0 auto;
+      &--people{
+        &:first-of-type{
+          padding-right: 20px;
+        }
+        & a{
+          color: black;
+        }
+        &:hover a{
+          color: #505050;
+        }
       }
     }
   }

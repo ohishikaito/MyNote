@@ -6,8 +6,16 @@
   padding: 30px 0;
 }
 
-.container{
-  
+.common-sizing{
+  @include sm{
+    width: 450px;
+  }
+  @include md{
+    width: 650px;
+  }
+  @include lg{
+    width: 800px;
+  }
 }
 
 .avatar {
@@ -71,3 +79,4 @@
   height: 100%;
   cursor: pointer;
 }
+

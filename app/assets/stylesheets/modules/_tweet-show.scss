@@ -1,6 +1,14 @@
 
 .tweet-show{
-  width: 800px;
+  @include sm{
+    width: 450px;
+  }
+  @include md{
+    width: 650px;
+  }
+  @include lg{
+    width: 800px;
+  }
   margin: 0 auto;
   background-color: white;
   border: 1px solid $header_border;
@@ -135,91 +143,6 @@
       }
       &--follow{
         padding-top: 10px;
-      }
-    }
-  }
-  &__comment{
-    border-top: 1px solid $header_border;
-    padding: 20px 0;
-    width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    &--text{
-      text-align: center;
-    }
-    &__form{
-      display: flex;
-      flex-direction: column;
-      &__top{
-        display: flex;
-        justify-content: center;
-      }
-      &--title{
-        padding: 10px 10px;
-      }
-      &--body{
-        margin: 20px;
-        height: 100px;
-        width: 100%;
-        color: #222;
-        background: white;
-        border: 1px solid #a8abb1;
-        border-radius: 5px;
-        padding: 5px;
-        outline: none;
-      }
-      &--submit{
-        display: flex;
-        justify-content: center;
-        padding: 20px 0;
-      }
-    }
-    &__title{
-      padding: 20px 0;
-      display: flex;
-      justify-content: center;
-    }
-    &--text{
-      padding-left: 50px;
-      padding-top: 3px;
-    }
-    &__items{
-      padding: 0px 20px;
-    }
-    &__item{
-      padding: 20px;
-      &__top{
-        display: flex;
-        justify-content: space-between;
-        &--user{
-          display: flex;
-          &:hover{
-            color: #505050;
-          }
-        }
-        &--nickname{
-          padding: 5px 10px;
-        }
-        &--date{
-        color: $header_tags;
-        font-size: 13px;
-        }
-      }
-      &--text{
-        padding: 10px;
-        font-size: 19px;
-      }
-      &--edit{
-        display: flex;
-        justify-content: flex-end;
-        font-size: 13px;
-        &--left{
-          padding-right: 10px;
-        }
-        & a, &:hover a{
-          color: #333;
-        }
       }
     }
   }

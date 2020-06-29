@@ -12,9 +12,10 @@
             .header-top__right--bell
               = render 'layouts/circle'
             .header-top__right__user__info
-              %label.header-top__right__user__info--link
+              %label.header-top__right__user__info--link.display-flex
                 = image_tag "#{current_user.avatar}", class: "avatar"
-                = current_user.nickname
+                .header-top__right__user__info--nickname
+                  = current_user.nickname
                 %ul.header-top__box
                   %li
                     = link_to "マイページを表示", user_path(current_user), class: "header-top__box--content"
