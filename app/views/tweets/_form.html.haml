@@ -1,6 +1,6 @@
 .wrapper
   = form_with(model: @tweet, local: true) do |f|
-    .tweet-form.common-sizing
+    .tweet-form
       .tweet-form__title
         = f.text_field :title, class: "tweet-form__title--body", placeholder: "タイトルを入力して下さい(30文字以内)"
       .tweet-form__text__btn
