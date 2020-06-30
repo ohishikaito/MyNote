@@ -18,6 +18,23 @@
   }
 }
 
+@mixin common-sizing{
+  @include sm{
+    width: 450px;
+  }
+  @include md{
+    width: 650px;
+  }
+  @include lg{
+    width: 800px;
+  }
+}
+
+.jc-center{
+  display: flex;
+  justify-content: center;
+}
+
 .avatar {
   width: 39px;
   height: 39px;
