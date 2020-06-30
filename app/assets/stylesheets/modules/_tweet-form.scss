@@ -1,6 +1,6 @@
 
 .tweet-form{
-  width: 800px;
+  @include common-sizing;
   margin: 0px auto 30px;
   font-size: 15px;
   height: 600px;

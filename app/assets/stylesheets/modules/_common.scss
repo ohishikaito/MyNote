@@ -6,7 +6,7 @@
   padding: 30px 0;
 }
 
-.common-sizing{
+@mixin common-sizing{
   @include sm{
     width: 450px;
   }
