@@ -4,6 +4,7 @@
 }
 
 .tweet-tags{
+  @include common-sizing;
   margin: 30px auto;
   border: 1px solid $header_border;
   background-color: white;

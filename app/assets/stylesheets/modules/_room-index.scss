@@ -5,6 +5,7 @@
 }
 
 .room-index{
+  @include common-sizing;
   margin: 0 auto;
   border: 1px solid $header_border;
   background-color: white;

@@ -75,6 +75,7 @@
   }
   &--input{
     padding-left: 20px;
+    @include common-sizing;
     @include sm-max{
       width: 300px;
     }
