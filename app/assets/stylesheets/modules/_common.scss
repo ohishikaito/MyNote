@@ -6,7 +6,7 @@
   padding: 30px 0;
 }
 
-.common-sizing{
+@mixin common-sizing(){
   @include sm{
     width: 450px;
   }
@@ -16,6 +16,11 @@
   @include lg{
     width: 800px;
   }
+}
+
+.jc-center{
+  display: flex;
+  justify-content: center;
 }
 
 .avatar {

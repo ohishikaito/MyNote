@@ -1,6 +1,11 @@
 
+#preview-area{
+  min-height: 300px;
+  display: none;
+}
+
 .tweet-form{
-  width: 800px;
+  @include common-sizing();
   margin: 0px auto 30px;
   font-size: 15px;
   height: 600px;
@@ -28,6 +33,11 @@
       padding: 5px;
       border: 1px solid #e6e6e6;
       border-radius: 5px;
+    }
+    &__btn{
+      display: flex;
+      justify-content: space-around;
+      padding: 20px 0px;
     }
   }
   &--tags{

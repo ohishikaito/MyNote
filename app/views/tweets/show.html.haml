@@ -46,26 +46,28 @@
         = render "comments/comment"
 
 .tweet-show__content__like--bgc
-  %ul.tweet-show__content__like__modal
-    - @tweet.liked_users.each do |user|
-      %li
-        = link_to  user_path(user.id), class: "tweet-show__content__like--user" do
-          = image_tag "#{user.avatar}", class: "avatar"
-          .tweet-show__content__like--user--name
-            = user.nickname
-            さん
-    .tweet-show__content__like--close
-      %i.btn.btn-dark
-        閉じる
+  .jc-center
+    %ul.tweet-show__content__like__modal
+      - @tweet.liked_users.each do |user|
+        %li
+          = link_to  user_path(user.id), class: "tweet-show__content__like--user" do
+            = image_tag "#{user.avatar}", class: "avatar"
+            .tweet-show__content__like--user--name
+              = user.nickname
+              さん
+      .tweet-show__content__like--close
+        %i.btn.btn-dark
+          閉じる
 
 .donation
-  .donation-modal
-    .donation-modal--header
-      %strong
-        = @tweet.user.nickname
-      さんに寄付をする
-    #donation_form
-      = render "donations/form"
-    .donation-modal--close
-      %i.btn.btn-dark
-        閉じる
+  .jc-center
+    .donation-modal
+      .donation-modal--header
+        %strong
+          = @tweet.user.nickname
+        さんに寄付をする
+      #donation_form
+        = render "donations/form"
+      .donation-modal--close
+        %i.btn.btn-dark
+          閉じる

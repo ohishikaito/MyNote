@@ -1,14 +1,6 @@
 
 .tweet-show{
-  @include sm{
-    width: 450px;
-  }
-  @include md{
-    width: 650px;
-  }
-  @include lg{
-    width: 800px;
-  }
+  @include common-sizing;
   margin: 0 auto;
   background-color: white;
   border: 1px solid $header_border;
@@ -52,12 +44,10 @@
       border-bottom: 1px solid $header_border;
     }
     &--imageBox{
-      width: 600px;
-      margin: 0 auto;
     }
     &--image{
       object-fit: cover;
-      max-width: 600px;
+      width: 100%;
       margin: 0 auto;
     }
     &--tags{
@@ -95,14 +85,13 @@
       }
       &__modal{
         width: 300px;
+        top: 30%;
         background-color: white;
         border: 1px solid $header_border;
         position: fixed;
         padding: 30px;
         border-radius: 10px;
         z-index: 3;
-        top: 30%;
-        right: 39.5%;
       }
       &--user{
         display: flex;
