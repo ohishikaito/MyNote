@@ -8,8 +8,7 @@ executors:
       - image: circleci/mysql:5.7
     environment:
       - MYSQL_USER: root
-      - MYSQL_PASSWORD: <%= Rails.application.credentials.rds[:DATABASE_PASSWORD] %>
-      - MYSQL_ROOT_PASSWORD: <%= Rails.application.credentials.rds[:DATABASE_PASSWORD] %>
+      - MYSQL_ALLOW_EMPTY_PASSWORD: true
       - RAILS_ENV: 'test'
       - BUNDLER_VERSION: 2.1.4
 
