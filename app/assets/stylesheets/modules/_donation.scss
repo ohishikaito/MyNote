@@ -8,14 +8,10 @@
   background-color: rgba(0,0,0,.5);
   opacity: 1;
   &-modal{
-    // display: none;
-    width: 450px;
-    height: 300px;
     border: 1px solid $header_border;
     position: fixed;
     z-index: 3;
-    top: 10%;
-    right: 34.2%;
+    top: 30%;
     background-color: white;
     padding: 30px;
     border-radius: 10px;

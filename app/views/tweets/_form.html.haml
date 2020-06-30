@@ -3,9 +3,15 @@
     .tweet-form
       .tweet-form__title
         = f.text_field :title, class: "tweet-form__title--body", placeholder: "タイトルを入力して下さい(30文字以内)"
+      .tweet-form__text__btn
+        .btn.btn-secondary.rounded-pill#markdown.disabled 編集
+        .btn.btn-secondary.rounded-pill#preview プレビュー
       .tweet-form__text
-        = f.label "内容", for: "md-textarea"
-        = f.text_area :text, class: "tweet-form__text--body materialize-textarea", placeholder: "本文を入力して下さい", id: "md-textarea"
+        #preview-area
+        %div
+          = f.label "内容（マークダウン対応）", for: "md-textarea"
+          = f.text_area :text, class: "tweet-form__text--body", placeholder: "本文を入力して下さい", id: "md-textarea"
+      %br
       .tweet-form--tags
         タグを追加
       %div
@@ -27,7 +33,7 @@
           = f.file_field :image, class: "image", style: "display:none;", id: "file"
       .tweet-form__submit
         = f.submit '投稿する', class: "btn btn-success"
-
+-# tagitのJS
 :javascript
   $(function () {
     var i, len, ref, results, tag;
