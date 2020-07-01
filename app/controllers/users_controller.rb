@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: %i[edit update timeline]
   before_action :set_user, except: %i[index timeline]
   before_action :blocking_edit_user, only: %i[edit update]
   before_action :blocking_edit_test_user, only: %i[edit update]
@@ -37,9 +38,11 @@ class UsersController < ApplicationController
   end
 
   def timeline
-    @user = User.find(current_user.id)
-    @following_users = @user.following
-    @tweets = Tweet.includes(%i[taggings user]).where(user_id: @following_users).order('created_at desc').page(params[:page]).per(10)
+    if user_signed_in?
+      @user = User.find(current_user.id)
+      @following_users = @user.following
+      @tweets = Tweet.includes(%i[taggings user]).where(user_id: @following_users).order('created_at desc').page(params[:page]).per(10)
+    end
   end
 
   private

@@ -3,7 +3,7 @@
     .user-show__top
       .user-show__top--icon
         = image_tag "#{@user.avatar}", class: "user-show__top--avatar"
-      - if current_user.id == @user.id
+      - if user_signed_in? && current_user.id == @user.id
         .user-show__top__body
           .user-show__top--follow
             = link_to 'ユーザー編集', edit_user_path(current_user.id), class: "user-show__top--btn"
