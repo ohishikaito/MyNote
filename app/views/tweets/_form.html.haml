@@ -34,23 +34,3 @@
           = f.file_field :image, class: "image", style: "display:none;", id: "file"
       .tweet-form__submit
         = f.submit '投稿する', class: "btn btn-success"
--# tagitのJS
-:javascript
-  $(function () {
-    var i, len, ref, results, tag;
-
-    $('#tweet-tags').tagit({
-      fieldName: 'tweet[tag_list]',
-      singleField: true,
-      availableTags: gon.available_tags
-    });
-    if (gon.tweet_tags != null) {
-      ref = gon.tweet_tags;
-      results = [];
-      for (i = 0, len = ref.length; i < len; i++) {
-        tag = ref[i];
-        results.push($('#tweet-tags').tagit('createTag', tag));
-      }
-      return results;
-    }
-  });
