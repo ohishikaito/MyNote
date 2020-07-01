@@ -25,7 +25,7 @@ $(function () {
     $("#tweet-text-count").text($(this).val().length + '/1000');
   });
 
-  if (document.location.href.match(/\/tweets\/\d/)) {
+  if (document.location.href.match(/\/tweets\/\d+\/edit/)) {
     $("#tweet-text-count").text($("#md-textarea").val().length + '/1000');
   }
   console.log($("#md-textarea").val().length);
