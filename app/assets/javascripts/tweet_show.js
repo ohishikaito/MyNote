@@ -3,7 +3,6 @@ $(function () {
   $(document).on('click', '.donation-btn', function () {
     // $('.donation').removeClass('donation');
     // $('.wrapper').addClass('donation');
-    console.log("aaa");
     $('.donation').fadeToggle();
   });
   $('.donation-modal--close').click(function () {
