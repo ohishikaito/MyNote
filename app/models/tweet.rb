@@ -18,7 +18,7 @@ class Tweet < ApplicationRecord
 
   # tweets-------------------------------------------------------------------
   mount_uploader :image, ImageUploader
-  validates :text, presence: true, length: { maximum: 1000 }
+  validates :text, presence: true
   validates :title, presence: true, length: { maximum: 40 }
   # users-------------------------------------------------------------------
   belongs_to :user

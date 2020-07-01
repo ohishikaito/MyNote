@@ -5,6 +5,10 @@ $(function () {
     if (text == "") {
       return;
     }
+    if ($("#md-textarea").val().length > 1000) {
+      alert('本文を1,000文字以内で入力してください。');
+      return false;
+    }
     $.ajax({
       url: '/api/tweets/preview',
       type: 'GET',
@@ -20,7 +24,7 @@ $(function () {
         $('#preview').addClass('disabled');
       })
       .fail(function () {
-        alert('failed for markdown preview');
+        alert('1,000文字以内で入力してください。');
       })
   })
 
