@@ -28,7 +28,6 @@ $(function () {
   if (document.location.href.match(/\/tweets\/\d+\/edit/)) {
     $("#tweet-text-count").text($("#md-textarea").val().length + '/1000');
   }
-  console.log($("#md-textarea").val().length);
 
   $("#tweet-form").submit(function () {
     if ($("#md-textarea").val().length > 1000) {
