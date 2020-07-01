@@ -20,7 +20,7 @@ class TweetsController < ApplicationController
     if @tweet.save
       redirect_to root_path, notice: '投稿しました！'
     else
-      flash.now[:alert] = "入力内容に誤りがあります。入力漏れ、文字数をご確認ください。"
+      flash.now[:alert] = "文字数を1000文字以内で入力してください。"
       render :new
     end
   end
@@ -35,7 +35,7 @@ class TweetsController < ApplicationController
     if @tweet.save
       redirect_to tweet_path(@tweet.id), notice: '投稿を編集しました！'
     else
-      flash.now[:alert] = "入力内容に誤りがあります。入力漏れ、文字数をご確認ください。"
+      flash.now[:alert] = "文字数を1000文字以内で入力してください。"
       render :edit
     end
   end

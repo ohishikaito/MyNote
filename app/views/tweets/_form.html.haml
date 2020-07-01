@@ -2,15 +2,16 @@
   = form_with(model: @tweet, local: true) do |f|
     .tweet-form
       .tweet-form__title
-        = f.text_field :title, class: "tweet-form__title--body", placeholder: "タイトルを入力して下さい(30文字以内)"
+        = f.text_field :title, class: "tweet-form__title--body", placeholder: "タイトルを入力して下さい(30文字以内)", required: "require"
       .tweet-form__text__btn
         .btn.btn-secondary.rounded-pill#markdown.disabled 編集
         .btn.btn-secondary.rounded-pill#preview プレビュー
       .tweet-form__text
         #preview-area
         %div
-          = f.label "内容（マークダウン対応）", for: "md-textarea"
-          = f.text_area :text, class: "tweet-form__text--body", placeholder: "本文を入力して下さい", id: "md-textarea"
+          = f.label "0/1000", for: "md-textarea", id: "tweet-text-count"
+          -# #tweet-text-count 0文字
+          = f.text_area :text, class: "tweet-form__text--body", placeholder: "本文を入力して下さい（マークダウン対応）", id: "md-textarea", required: "require"
       %br
       .tweet-form--tags
         タグを追加

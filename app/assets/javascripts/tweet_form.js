@@ -21,49 +21,19 @@ $(function () {
     reader.readAsDataURL(file);
   });
 
-  $("#tag-submit").on("click", function () {
-    let input = $("#tag-input").val();
-    window.location.href = `http://localhost:3000/tweets?tag_name=${input}`
+  $("#md-textarea").keyup(function () {
+    $("#tweet-text-count").text($(this).val().length + '/1000');
   });
-  //     .tag_search
-  // タグ検索
-  //   % input{ type: "text", id: "tag" }
-  //       % input{ type: "submit", class: 'tag-submit' }
 
-  //   let tags = ["aa", "bb", "cc"];
-  //   let list = $(".tag-form");
-  //   function appendList(input) {
-  //     let html = `
-  //       <input value="${input}" class="tag-form" type="text" name="tweet[tag_list]" id="tweet_tag_list">
-  //       `;
-  //     return html;
-  //   }
-  //   list.on("keyup", function () {
-  //     let input = list.val();
-  //     // let reg = new RegExp("^" + input);
-  //     // $.each(tags, function (i, tag) {
-  //     //   if (tag.match(reg)) {
-  //     //     console.log("ok");
-  //     var html = appendList(input);
-  //     list.append(html);
-  //     // return false;
-  //     //     }
-  //     //   });
-  //     // });
-  //   });
-
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#img_prev').attr('src', e.target.result);
-      }
-      reader.readAsDataURL(input.files[0]);
-    }
+  if (document.location.href.match(/\/tweets\/\d/)) {
+    $("#tweet-text-count").text($("#md-textarea").val().length + '/1000');
   }
-  $("#tweet_img").change(function () {
-    console.log("aaa");
-    readURL(this);
-  });
+
+  // 実装予定のタグ検索機能です！
+  // $("#tag-submit").on("click", function () {
+  //   let input = $("#tag-input").val();
+  //   window.location.href = `http://localhost:3000/tweets?tag_name=${input}`
+  // });
+
 });
 
