@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   def timeline
     if user_signed_in?
-      @user = User.find(current_user.id) 
+      @user = User.find(current_user.id)
       @following_users = @user.following
       @tweets = Tweet.includes(%i[taggings user]).where(user_id: @following_users).order('created_at desc').page(params[:page]).per(10)
     end
