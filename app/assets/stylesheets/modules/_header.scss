@@ -67,6 +67,9 @@
         &__info{
           line-height: 40px;
           position: relative;
+          &--avatar{
+            padding-left: 15px;
+          }
           &--link{
             cursor: pointer;
           }
@@ -81,7 +84,9 @@
         }
       }
       &--bell{
-        padding: 8px 20px 0;
+        display: block;
+        padding: 8px 15px;
+        color: #333
       }
     }
   }
