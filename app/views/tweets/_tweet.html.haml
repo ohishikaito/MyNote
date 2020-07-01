@@ -7,7 +7,7 @@
           = tweet.user.nickname
     = link_to tweet_path(tweet.id) do
       .tweet-index__item--sub
-        = tweet.updated_at.strftime("%Y-%m-%d")
+        = tweet.created_at.strftime("%Y-%m-%d")
   = link_to  tweet_path(tweet.id) do
     %p.tweet-index__item--title
       = tweet.title
