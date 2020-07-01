@@ -1,9 +1,14 @@
 .tweet-index{
-  width: 460px;
   margin: 0px auto;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  @include sm{
+    width: 360px;
+  }
+  @include md{
+    width: 460px;
+  }
   @include lg{
     width: 1000px;
   }
@@ -22,6 +27,9 @@
   &__item{
     display: inline-block;
     width: 460px;
+    @include sm-max{
+      width: 360px;
+    }
     padding: 30px;
     margin: 5% 0;
     border: 1px solid $header_border;
@@ -32,6 +40,9 @@
     &--image{
       height: 300px;
       width: 400px;
+      @include sm-max{
+        width: 300px;
+      }
       object-fit: cover;
       background-color: black;
       margin: 20px 0;
