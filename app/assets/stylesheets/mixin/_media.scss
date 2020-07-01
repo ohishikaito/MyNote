@@ -1,4 +1,4 @@
-@mixin sm { @media (min-width: 500px) { @content; } }
+@mixin sm { @media (min-width: 0px) { @content; } }
 @mixin md { @media (min-width: 768px) { @content; } }
 @mixin lg { @media (min-width: 1020px) { @content; } }
 
