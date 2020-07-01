@@ -1,17 +1,12 @@
 .tweet-index{
   margin: 0px auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
-  @include sm{
-    width: 360px;
+  @include lg-max{
+    @include tweet-items;
   }
-  @include md{
-    width: 460px;
-  }
-  @include lg{
-    width: 1000px;
-  }
+  width: 1000px;
   &__title{
     display: none;
     height: 50px;
@@ -26,10 +21,10 @@
   }
   &__item{
     display: inline-block;
-    width: 460px;
-    @include sm-max{
-      width: 360px;
+    @include lg-max{
+      @include tweet-items;
     }
+    width: 460px;
     padding: 30px;
     margin: 5% 0;
     border: 1px solid $header_border;
@@ -39,10 +34,7 @@
     box-shadow: 0px 4px 6px #ccc;
     &--image{
       height: 300px;
-      width: 400px;
-      @include sm-max{
-        width: 300px;
-      }
+      width: 100%;
       object-fit: cover;
       background-color: black;
       margin: 20px 0;
