@@ -1,5 +1,5 @@
 .wrapper
-  = form_with(model: @tweet, local: true) do |f|
+  = form_with(model: @tweet, local: true, id: "tweet-form") do |f|
     .tweet-form
       .tweet-form__title
         = f.text_field :title, class: "tweet-form__title--body", placeholder: "タイトルを入力して下さい(30文字以内)", required: "require"

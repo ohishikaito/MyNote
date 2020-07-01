@@ -28,6 +28,14 @@ $(function () {
   if (document.location.href.match(/\/tweets\/\d/)) {
     $("#tweet-text-count").text($("#md-textarea").val().length + '/1000');
   }
+  console.log($("#md-textarea").val().length);
+
+  $("#tweet-form").submit(function () {
+    if ($("#md-textarea").val().length > 1000) {
+      alert('本文を1,000文字以内で入力してください。');
+      return false;
+    }
+  });
 
   // 実装予定のタグ検索機能です！
   // $("#tag-submit").on("click", function () {
