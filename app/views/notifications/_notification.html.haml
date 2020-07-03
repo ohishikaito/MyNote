@@ -26,12 +26,14 @@
           = visitor.nickname
         さんが
         - if notification.tweet.user_id == visited.id
-          あなたの投稿
+          あなたの投稿にコメントしました
+        - elsif notification.tweet.user_id == visitor.id
+          あなたのコメントに返信しました
         - else
           = image_tag "#{notification.tweet.user.avatar}", class: "avatar"
           %strong
             = notification.tweet.user.nickname + 'さんの投稿'
-        にコメントしました
+          にコメントしました
       .notification-top__items__item--message
         = truncate(Comment.find_by(id: notification.comment_id)&.content, length: 20)
       .notification-top__items__item--date
