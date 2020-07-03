@@ -50,6 +50,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
+  gem 'rails-controller-testing'
 end
 
 group :production do
