@@ -3,12 +3,12 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
 
   def create
-    @comment = @tweet.comments.create(comment_params)
+    @comment = @tweet.comments.new(comment_params)
     if @comment.save
       @tweet.create_notification_comment!(current_user, @comment.id)
-      gets_all_comments
       @comment = Comment.new
     end
+    gets_all_comments
   end
 
   def edit; end

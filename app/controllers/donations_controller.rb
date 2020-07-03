@@ -5,10 +5,10 @@ class DonationsController < ApplicationController
     @donation = @tweet.donations.create(donation_params)
     if @donation.save
       # @donation.create_notification_donation!(current_user, @donation.id)
-      gets_all_donations
       @donation = Donation.new
       # redirect_to tweet_path(@tweet.id)
     end
+    gets_all_donations
   end
 
   private
