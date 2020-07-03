@@ -1,5 +1,4 @@
 #donation_form
-  -# = form_with(model: [@tweet, @donation], local: true) do |f| 
   = form_with(model: [@tweet, @donation], data: { confirm: '本当に寄付しますか？（一度寄付したら取り消せません）' }, id: "donation-form") do |f| 
     .donation-modal--body
       = f.number_field :amount, placeholder: "金額を入力して下さい", class: "donation-modal--body--input"

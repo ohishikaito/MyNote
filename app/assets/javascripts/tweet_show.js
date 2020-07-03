@@ -1,22 +1,15 @@
 $(function () {
-  // $('.donation-btn').on('click', function () {
   $(document).on('click', '.donation-btn', function () {
-    // $('.donation').removeClass('donation');
-    // $('.wrapper').addClass('donation');
     $('.donation').fadeToggle();
   });
   $('.donation-modal--close').click(function () {
     $('.donation').fadeToggle();
   });
-  $('#donation-form').on('submit', function () {
-    // $(document).on('submit', '#donation-form', function () {
-    $('.donation').fadeOut(500);
-    // $('.donation').fadeToggle();
-    // $('.donation-modal').fadeOut(500);
-    // $('.donation').hide();
-    // $('.donation-modal--submit--btn').prop("disabled", false);
-    // $('.donation-btn').prop("disabled", false);
-    // $('.donation').fadeToggle();
+  $(document).on('submit', '#donation-form', function () {
+    if ($(".donation-modal--body--input").val() == 0) {
+      alert("1円以上で入力してください");
+    }
+    $('.donation').fadeToggle();
   });
 
   $('.tweet-show__content__like--link').on('click', function () {
