@@ -38,10 +38,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content).merge(user_id: current_user.id)
   end
-
-  def blocking_edit_comment
-    unless current_user.admin?
-      redirect_to root_path, notice: "不正な操作です" if @comment.user_id != current_user.id
-    end
-  end
 end

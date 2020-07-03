@@ -4,9 +4,9 @@ class DonationsController < ApplicationController
   def create
     @donation = @tweet.donations.create(donation_params)
     if @donation.save
+      # 寄付の通知を実装予定！
       # @donation.create_notification_donation!(current_user, @donation.id)
       @donation = Donation.new
-      # redirect_to tweet_path(@tweet.id)
     end
     gets_all_donations
   end
