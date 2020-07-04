@@ -1,8 +1,10 @@
 FactoryBot.define do
   factory :user do
-    nickname              { "abe" }
-    sequence(:email) {Faker::Internet.email}
-    password              { "00000000" }
-    password_confirmation { "00000000" }
+    password = Faker::Internet.password(min_length: 8)
+    nickname              {Faker::Name.last_name}
+    email                 {Faker::Internet.email}
+    password              {password}
+    password_confirmation {password}
+    avatar                {File.open("#{Rails.root}/app/assets/images/default.png")}
   end
 end

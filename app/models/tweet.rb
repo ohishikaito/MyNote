@@ -18,7 +18,7 @@ class Tweet < ApplicationRecord
 
   # tweets-------------------------------------------------------------------
   mount_uploader :image, ImageUploader
-  # RailsとPumaの仕様上1500文字制限（おそらく空白も含まれるため）
+  # RailsとPumaの仕様上1500文字制限（おそらく空白も含まれるため）1000文字制限だと思わぬ不具合が発生する
   validates :text, presence: true, length: { maximum: 1500 }
   validates :title, presence: true, length: { maximum: 40 }
   # users-------------------------------------------------------------------
