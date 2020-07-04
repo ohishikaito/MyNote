@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
-  # before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :set_tweet, only: %i[edit destroy show update]
-  # before_action :blocking_edit_tweet, only: %i[edit update destroy]
+  before_action :blocking_edit_tweet, only: %i[edit update destroy]
   before_action :set_available_tags_to_gon, only: %i[new edit]
 
   def index
