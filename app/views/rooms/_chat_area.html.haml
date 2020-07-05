@@ -15,7 +15,7 @@
         - @messages.each do |m|
           %div.room-show__item{id: "message_#{m.id}"}
             -# 右側にくるように
-            - if current_user.id == m.user.id
+            - if current_user_has?(m)
               .room-show__item__right
                 = form_with(model: @message, url: message_path(m.id), class: "room-show__item__right--btn", remote: true, method: :delete, data: { confirm: '削除してよろしいですか？' }) do |f|
                   = f.hidden_field :room_id, value: @room.id

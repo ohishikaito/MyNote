@@ -1,15 +1,14 @@
 %li.room-index__items__item.room-index-hover
   - user = opened_user(room)
-  - message = get_most_new_message(room)
   = link_to user_path(user.id) do
     = image_tag "#{user.avatar}", class: "room-index__items__item--icon"
   = link_to room_path(room), class: 'room-index__items__item__content' do
     .room-index__items__item__content--body
       %strong.room-index__items__item__content--nickname
         = user.nickname
+      - message = get_most_new_message(room)
       - if message.present?
         .room-index__items__item__content--message
           = truncate(message.message, length: 20)
-          -# = message.message
         .room-index__items__item__content--date
           = message.created_at.strftime("%Y-%m-%d %H:%M")

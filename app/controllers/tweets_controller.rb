@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: %i[edit destroy show update]
   before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :set_tweet, only: %i[edit destroy show update]
   before_action :blocking_edit_tweet, only: %i[edit update destroy]
   before_action :set_available_tags_to_gon, only: %i[new edit]
 
@@ -20,7 +20,7 @@ class TweetsController < ApplicationController
     if @tweet.save
       redirect_to root_path, notice: '投稿しました！'
     else
-      flash.now[:alert] = "文字数を1000文字以内で入力してください。"
+      flash.now[:alert] = "文字数を確認してください。"
       render :new
     end
   end
@@ -35,7 +35,7 @@ class TweetsController < ApplicationController
     if @tweet.save
       redirect_to tweet_path(@tweet.id), notice: '投稿を編集しました！'
     else
-      flash.now[:alert] = "文字数を1000文字以内で入力してください。"
+      flash.now[:alert] = "文字数を確認してください。"
       render :edit
     end
   end
@@ -72,9 +72,7 @@ class TweetsController < ApplicationController
   end
 
   def blocking_edit_tweet
-    unless current_user.admin?
-      redirect_to root_path, notice: "不正な操作です" if @tweet.user.id != current_user.id
-    end
+    redirect_to root_path, alert: "不正な操作です" unless (@tweet.user == current_user) || current_user.admin?
   end
 
   def set_available_tags_to_gon

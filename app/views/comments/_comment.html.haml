@@ -1,13 +1,16 @@
-.tweet-show__comment__title
-  .tweet-show__comment--count
-    コメント(
-    = @comments.count
-    )
-%ul.tweet-show__comment__items
-  - @comments.first(2).each do |comment|
-    = render "comments/comment_area", comment: comment
-  .center
-    %i.fas.fa-angle-down.more.cursor-pointer.center{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample", "data-toggle" => "collapse"}
-  #collapseExample.collapse
-    - @comments.offset(2).each do |comment|
-      = render "comments/comment_area", comment: comment
+%li.tweet-show__comment__item
+  %div{id: "comment_#{comment.id}"}
+    .tweet-show__comment__item__top
+      = link_to user_path(comment.user.id) do
+        .tweet-show__comment__item__top--user
+          = image_tag "#{comment.user.avatar}", class: "avatar"
+          .tweet-show__comment__item__top--nickname
+            = comment.user.nickname
+      .tweet-show__comment__item__top--date
+        = comment.created_at.strftime("%Y-%m-%d %H:%M")
+    .tweet-show__comment__item--text
+      = simple_format(comment.content)
+    .tweet-show__comment__item--edit
+      - if current_user_has?(comment)
+        = link_to "編集", edit_tweet_comment_path(@tweet.id, comment), remote: true, class: "tweet-show__comment__item--edit--left"
+        = link_to "削除", tweet_comment_path(@tweet, comment.id), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' }

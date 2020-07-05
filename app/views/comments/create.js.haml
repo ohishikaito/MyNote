@@ -1,6 +1,7 @@
+$('#comment_area').html("#{ j(render 'comments/top') }");
+$('#comment_form').html("#{ j(render 'comments/form') }");
+-# 省略する前の形
 -# $('#comment_area').html("<%= j(render 'comments/comment', comments: @comments) %>");
 -# $('#comment_form').html("<%= j(render 'comments/form', tweet: @tweet, comment: @comment) %>");
 
-$('#comment_area').html("#{ j(render 'comments/comment') }");
-$('#comment_form').html("#{ j(render 'comments/form') }");
 

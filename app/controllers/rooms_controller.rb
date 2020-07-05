@@ -1,7 +1,6 @@
 class RoomsController < ApplicationController
   def index
     @rooms = current_user.rooms.includes(:messages).order("messages.created_at desc")
-    # binding.pry
   end
 
   def create
@@ -19,6 +18,7 @@ class RoomsController < ApplicationController
       @message = Message.new
       @entries = @room.entries.includes(:user)
     else
+      flash[:alert] = "不正な操作です"
       redirect_back(fallback_location: root_path)
     end
   end
