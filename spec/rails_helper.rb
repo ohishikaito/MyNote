@@ -33,10 +33,10 @@ end
 # テストでdeviseを使ってログインできるようにする
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 RSpec.configure do |config|
-  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include ControllerMacros, type: :controller
-  #〜省略〜
+  # 〜省略〜
 end
 
 # テストでdeviseを使用可能にする
@@ -44,7 +44,6 @@ require 'devise'
 require File.expand_path("spec/support/controller_macros.rb")
 
 RSpec.configure do |config|
-
   # deviseをcontroller内で使用可能にする
   # RSpec.configure do |config|
   #   config.include Devise::TestHelpers, type: :controller

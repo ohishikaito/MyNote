@@ -1,7 +1,6 @@
 require 'rails_helper'
 describe Tweet do
-  describe '#create'do
-  
+  describe '#create' do
     # tweetを保存できる場合
     context 'Can save tweet' do
       # 正しく保存できるか
@@ -11,10 +10,9 @@ describe Tweet do
 
       # imageがnilの場合でも保存できる
       it "image can be saved as nil" do
-        tweet = build(:tweet, image: nil)
+        @tweet = build(:tweet, image: nil)
         expect(build(:tweet)).to be_valid
       end
-
     end
 
     # tweetを保存できない場合
@@ -61,6 +59,5 @@ describe Tweet do
         expect(tweet.errors[:user]).to include("を入力してください")
       end
     end
-
   end
 end

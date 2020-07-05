@@ -1,7 +1,6 @@
 require 'rails_helper'
 describe User do
   describe '#create' do
-
     before do
       @user = build(:user)
     end
@@ -28,11 +27,10 @@ describe User do
 
       # passwordが6文字以上であれば登録できる
       it "You can register if password is 6 characters or more" do
-        @user.password =  "1" * 6
-        @user.password_confirmation =  "1" * 6
+        @user.password = "1" * 6
+        @user.password_confirmation = "1" * 6
         expect(@user).to be_valid
       end
-
     end
 
     # userが保存できない場合
@@ -90,7 +88,7 @@ describe User do
 
     describe '一意性の検証' do
       it 'メールアドレスは大文字小文字を区別せず扱うこと' do
-        user = create(:user, email: 'sample@example.com')
+        @user = create(:user, email: 'sample@example.com')
         another_user = build(:user, email: 'SAMPLE@EXAMPLE.COM')
         another_user.valid?
         expect(another_user.errors).to be_added(:email, :taken, value: 'sample@example.com')
@@ -110,17 +108,15 @@ describe User do
       end
     end
 
-  describe 'フォーマットの検証' do
-    it 'メールアドレスが正常なフォーマットの場合、有効であること' do
-      valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
-                          first.last@foo.jp alice+bob@baz.cn]
-      valid_addresses.each do |valid_address|
-        @user.email = valid_address
-        expect(@user).to be_valid
+    describe 'フォーマットの検証' do
+      it 'メールアドレスが正常なフォーマットの場合、有効であること' do
+        valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
+                             first.last@foo.jp alice+bob@baz.cn]
+        valid_addresses.each do |valid_address|
+          @user.email = valid_address
+          expect(@user).to be_valid
+        end
       end
     end
-  end
-
-
   end
 end

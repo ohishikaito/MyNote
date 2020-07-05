@@ -46,13 +46,13 @@ group :development, :test do
   gem 'capistrano-rails-console'
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
+  gem 'capybara', '>= 2.15'
   gem 'factory_bot_rails'
+  gem 'faker', "~> 2.8"
   gem 'pry-rails'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
-  gem 'rails-controller-testing'
-  gem 'capybara', '>= 2.15'
-  gem 'faker', "~> 2.8"
 end
 
 group :production do
