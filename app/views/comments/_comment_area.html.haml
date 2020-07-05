@@ -11,6 +11,6 @@
     .tweet-show__comment__item--text
       = simple_format(comment.content)
     .tweet-show__comment__item--edit
-      - if user_signed_in? && comment.user_id == current_user.id || user_signed_in? && current_user.admin?
+      - if current_user_has?(comment)
         = link_to "編集", edit_tweet_comment_path(@tweet.id, comment), remote: true, class: "tweet-show__comment__item--edit--left"
         = link_to "削除", tweet_comment_path(@tweet, comment.id), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' }
