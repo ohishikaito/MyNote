@@ -25,11 +25,9 @@
                   %li.header-top__box--borderTop
                     = link_to "タイムライン", timeline_users_path, class: "header-top__box--content"
                   %li.header-top__box--borderTop
-                    = link_to 'ユーザー一覧', users_path, class: "header-top__box--content"                           
+                    = link_to 'ユーザー一覧', users_path, class: "header-top__box--content"
                   %li.header-top__box--borderTop
-                    = link_to "人気投稿", likes_tweets_path, class: "header-top__box--content"             
-                  %li.header-top__box--borderTop
-                    = link_to 'ユーザー編集', edit_user_path(current_user.id), class: "header-top__box--content"
+                    = link_to "人気投稿", likes_tweets_path, class: "header-top__box--content"
                   %li.header-top__box--borderTop
                     = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-top__box--content"
           - else

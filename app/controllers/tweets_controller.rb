@@ -72,9 +72,7 @@ class TweetsController < ApplicationController
   end
 
   def blocking_edit_tweet
-    unless current_user.admin?
-      redirect_to root_path, notice: "不正な操作です" if @tweet.user.id != current_user.id
-    end
+    redirect_to root_path, alert: "不正な操作です" unless (@tweet.user == current_user) || current_user.admin?
   end
 
   def set_available_tags_to_gon

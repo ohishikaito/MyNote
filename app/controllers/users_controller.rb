@@ -56,19 +56,11 @@ class UsersController < ApplicationController
   end
 
   def blocking_edit_user
-    unless current_user.admin?
-      if @user.id != current_user.id
-        redirect_back(fallback_location: root_path)
-        flash[:notice] = "不正な操作です"
-      end
-    end
+    redirect_to root_path, alert: "不正な操作です" unless (@user == current_user) || current_user.admin?
   end
 
   def blocking_edit_test_user
-    if current_user.email == "guest@user"
-      flash[:notice] = "ゲストユーザーのため編集できません"
-      redirect_back(fallback_location: root_path)
-    end
+    redirect_to root_path, alert: "ゲストユーザーのため編集できません" if current_user.email == "guest@user"
   end
 
   def join_room
