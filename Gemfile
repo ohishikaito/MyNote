@@ -52,6 +52,7 @@ group :development, :test do
   gem 'rspec_junit_formatter'
   gem 'rails-controller-testing'
   gem 'capybara', '>= 2.15'
+  gem 'faker', "~> 2.8"
 end
 
 group :production do
@@ -75,7 +76,6 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  gem 'faker', "~> 2.8"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
