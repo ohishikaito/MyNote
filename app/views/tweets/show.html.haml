@@ -6,7 +6,7 @@
           = image_tag "#{@tweet.user.avatar}", class: "avatar"
           = @tweet.user.nickname
         .tweet-show__title__top--edit
-          - if user_signed_in? && current_user.id == @tweet.user_id || user_signed_in? && current_user.admin?
+          - if current_user_has?(@tweet)
             = link_to '編集', edit_tweet_path(@tweet.id)
             = link_to '削除', tweet_path(@tweet.id), method: :delete, data: { confirm: '削除してよろしいですか？' }
       %h1.tweet-show__title--body
