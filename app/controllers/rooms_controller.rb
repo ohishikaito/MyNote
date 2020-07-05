@@ -19,6 +19,7 @@ class RoomsController < ApplicationController
       @message = Message.new
       @entries = @room.entries.includes(:user)
     else
+      flash[:alert] = "不正な操作です"
       redirect_back(fallback_location: root_path)
     end
   end
