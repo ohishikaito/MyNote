@@ -6,7 +6,7 @@
           %h1.header-top__left--title My Note
       .header-top__right
         = form_with(url: tweets_searches_path, local: true, method: :get) do |f|
-          = f.text_field :keyword, placeholder: 'タイトルを検索する', placeholder: "検索する", class: "header-top__right--search"
+          = f.text_field :keyword, placeholder: "検索する", class: "header-top__right--search"
         .header-top__right__user
           - if user_signed_in?
             %div
