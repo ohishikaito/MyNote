@@ -19,6 +19,7 @@ https://mynote.world/
 
 # デモ
 ![sample](https://user-images.githubusercontent.com/61116343/86710699-35c45080-c056-11ea-9b3d-47b2d922ed63.gif)
+![ttt](https://user-images.githubusercontent.com/61116343/86717276-fbaa7d00-c05c-11ea-85f5-b7b1b1a2f585.gif)
 
 
 ## 工夫したポイント
