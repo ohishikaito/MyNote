@@ -17,7 +17,7 @@ https://mynote.world/
 直感で「これだ」と感じ、その人の方法を実践した結果、自分の性格変わっていくのを実感しました。<br />
 自分と同じ人見知りを改善したいと思ってる人に「変わるきっかけ」を作れたら、と思います。
 
-# DEMO
+# デモ
 ![sample](https://user-images.githubusercontent.com/61116343/86710699-35c45080-c056-11ea-9b3d-47b2d922ed63.gif)
 
 
