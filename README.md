@@ -21,8 +21,8 @@ https://mynote.world/
 ![demo](https://user-images.githubusercontent.com/61116343/85198025-44093180-b320-11ea-974d-4981a224eb95.gif)
 
 ## 工夫したポイント
-* 開発環境にDocker、CircleCIを用いた自動テスト、デプロイを導入しました
-* 主要機能を非同期通信で実装しました
+* 開発環境にDocker、CircleCIを用いた自動テスト、デプロイを導入しました。
+* 主要機能を非同期通信で実装しました。
 * デザインを統一して直感的に分かりやすいレイアウトを意識しました。
 
 ## 課題や今後実装したい機能
@@ -35,8 +35,9 @@ https://mynote.world/
 ## 使用技術（開発環境）
 * Ruby 2.5.1, Rails 5.2.4
 * Nginx, unicorn, Puma
-* RSpec
+* MySQL
 * Sass, jQuery
+* RSpec
 * Docker
 * CircleCI CI/CD
 * Capistrano
