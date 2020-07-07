@@ -18,7 +18,8 @@ https://mynote.world/
 自分と同じ人見知りを改善したいと思ってる人に「変わるきっかけ」を作れたら、と思います。
 
 # DEMO
-![demo](https://user-images.githubusercontent.com/61116343/85198025-44093180-b320-11ea-974d-4981a224eb95.gif)
+![sample](https://user-images.githubusercontent.com/61116343/86710699-35c45080-c056-11ea-9b3d-47b2d922ed63.gif)
+
 
 ## 工夫したポイント
 * 開発環境にDocker、CircleCIを用いた自動テスト、デプロイを導入しました。
