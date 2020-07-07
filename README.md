@@ -32,16 +32,17 @@ https://mynote.world/
 * 画像の複数投稿対応
 * タグ登録時の利便性向上
 
-# 使用技術（開発環境）
+## 使用技術（開発環境）
 * Ruby 2.5.1, Rails 5.2.4
-* Nginx, unicorn
-* AWS (EC2, RDS for MySQL, S3, VPC, Route53, ALB, ACM)
-* Docker
-* Capistrano
+* Nginx, unicorn, Puma
 * RSpec
-* SASS, JQuery
+* Sass, jQuery
+* Docker
 * CircleCI CI/CD
+* Capistrano
+* AWS (EC2, RDS for MySQL, S3, VPC, Route53, ALB, ACM)
 
+## 機能一覧
 - ユーザー機能
   - deviseと言うgemを使用
   - 新規登録、ログイン、ログアウト、編集機能
