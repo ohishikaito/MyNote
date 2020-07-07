@@ -1,5 +1,5 @@
 - if user_signed_in?
-  = form_with(model: [@tweet, @comment], class: "tweet-show__comment__form") do |form| 
+  = form_with(model: [@tweet, @comment], class: "tweet-show__comment__form") do |form|
     .tweet-show__comment__form__top
       = image_tag "#{current_user.avatar}", class: "avatar"
       .tweet-show__comment__form--title
