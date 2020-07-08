@@ -6,7 +6,7 @@ $(function () {
   }
 
   // タイムラインが呼ばれたら表示
-  if (document.location.href.match(/\/users\/\d+\/timeline/)) {
+  if (document.location.href.match(/\/users\/timeline/)) {
     $(".tweet-index__title").show();
     $(".tweet-index__title--text").append("タイムライン");
   }
