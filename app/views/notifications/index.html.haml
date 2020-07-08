@@ -12,7 +12,8 @@
           = render @notifications
           = paginate @notifications
         - else
-          %p.text-center
+          -# %p.text-center
+          %p.text-center.notification-top__items--none
             通知はありません
       %ul.notification-top__activities
         - if @activities.exists?
@@ -22,5 +23,5 @@
             = render "activities/activity", activity: activity
           = paginate @activities
         - else
-          %p.text-center
-            通知はありません
+          %p.text-center.notification-top__items--none
+            活動はありません

@@ -8,19 +8,19 @@
 */
 
 html {
-  color: #000;
+  color: #333;
   background-color: $body_color;
 }
 body {
   background-color: $body_color;
-} 
+}
 
 a,
 a:visited,
 a:focus,
 a:hover {
   text-decoration: none !important;
-  color: black;
+  color: #333;
 }
 
 li{
@@ -30,8 +30,8 @@ li{
 
 * {
     margin: 0px;
-    padding: 0px; 
-} 
+    padding: 0px;
+}
 
 /*
 */
