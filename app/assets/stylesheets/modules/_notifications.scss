@@ -38,10 +38,14 @@
   }
   &__items{
     display: block;
+    &--none{
+      height: 100px;
+      line-height: 100px;
+      border-bottom: 1px solid $header_border;
+    }
     &__item{
       display: block;
       height: 100px;
-      // width: 798px;
       border-bottom: 1px solid $header_border;
       padding: 20px;
       color: #333;
