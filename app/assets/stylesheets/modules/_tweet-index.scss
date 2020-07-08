@@ -89,6 +89,7 @@
     }
   }
   &--footer{
-    padding: 0 400px;
+    // justify-contents: centerが効かないので追加していた。効くは聞くため削除
+    // padding: 0 400px;
   }
 }
