@@ -2,19 +2,11 @@
   - if tweet.like_user(current_user.id)
     = link_to tweet_like_path(tweet.likes, tweet_id: tweet.id), method: :delete, remote: true do
       %i.fa.fa-heart{"aria-hidden" => "true", style: "color: red;"}
-        -# = tweet.likes.count
         = tweet.likes_count
   - else
     = link_to tweet_likes_path(tweet.id), method: :post, remote: true do
       %i.fa.fa-heart{"aria-hidden" => "true", style: "color: #C0C0C0;"}
         = tweet.likes_count
-        -# = tweet.likes.count
 - else
   %i.fa.fa-heart{"aria-hidden" => "true"}
     = tweet.likes_count
-    
--# tweet_id: tweet.id ,tweet.likes[0].id　0ってなんだよ
--# tweet.id ,tweet.likes　これが一番分かりやすい。コメントとも同じ
--# tweet, tweet.likes　超短い
--# tweet.likes, tweet_id: tweet.id　王道
--# tweet_id: tweet.id, tweet.likes　これはダメなんだよなあ
