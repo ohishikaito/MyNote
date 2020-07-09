@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    # 投稿一覧
     @tweets = @user.tweets.includes(:taggings).order('created_at desc').page(params[:page]).per(10)
   end
 
