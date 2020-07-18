@@ -281,6 +281,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    rb-readline (0.5.5)
     redcarpet (3.5.0)
     regexp_parser (1.7.0)
     request_store (1.5.0)
@@ -428,8 +429,9 @@ DEPENDENCIES
   mysql2 (>= 0.4.4, < 0.6.0)
   pry-rails
   puma (~> 3.11)
-  rails (~> 5.2.4, >= 5.2.4.2)
+  rails (= 5.2.4.2)
   rails-controller-testing
+  rb-readline
   redcarpet
   rspec-rails
   rspec_junit_formatter

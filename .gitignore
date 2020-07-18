@@ -28,4 +28,5 @@
 public/uploads/*
 .DS_Store
 
-/vendor/bundle/*
+/.bundle
+/vendor/bundle
