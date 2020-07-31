@@ -38,12 +38,12 @@ https://mynote.world/
 * Ruby 2.5.1, Rails 5.2.4
 * Nginx, unicorn, Puma
 * MySQL
-* Sass, jQuery
+* SCSS, jQuery
 * RSpec
 * Docker
 * CircleCI CI/CD
 * Capistrano
-* AWS (EC2, RDS for MySQL, S3, VPC, Route53, ALB, ACM
+* AWS （EC2, RDS for MySQL, S3, VPC, Route53, ALB, ACM）
 
 ## AWS構成図
 ![aws-infra](https://user-images.githubusercontent.com/61116343/87843208-a2a8d780-c8ed-11ea-921d-fe6a9dd45b6e.png)
