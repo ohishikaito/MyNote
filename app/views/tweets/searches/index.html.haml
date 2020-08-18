@@ -2,9 +2,9 @@
   - if @tweets.present?
     %ul.tweet-index
       = render partial: 'tweets/tweet', collection: @tweets
+    .tweet-index--footer
+      = paginate @tweets
   - else
     .text-center
       一致する投稿はありませんでした
-    .tweet-index--footer
-      = paginate @tweets
 = render 'tweets/new_btn'
