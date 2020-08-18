@@ -5,10 +5,4 @@
     = render @tweets
     .tweet-index--footer
       = paginate @tweets
-- if user_signed_in?
-  = link_to new_tweet_path, class: "new-tweet color-black" do
-    .new-tweet__btn
-      %p.new-tweet__text
-        投稿
-      .new-tweet__icon
-        %i.fas.fa-plus
+= render 'tweets/new_btn'

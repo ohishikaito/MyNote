@@ -1,12 +1,6 @@
 .wrapper
   %ul.tweet-index
-    - @tweets.each do |tweet|
-      = render 'tweets/tweet', tweet: tweet
+    = render partial: 'tweets/tweet', collection: @tweets
     .tweet-index--footer
       = paginate @tweets
-= link_to new_tweet_path, class: "new-tweet" do
-  .new-tweet__btn
-    %p.new-tweet__text
-      投稿
-    .new-tweet__icon
-      %i.fas.fa-plus
+= render 'tweets/new_btn'
