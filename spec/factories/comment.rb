@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    user
-    tweet
+    association :tweet
+    user { tweet.user }
+    content { Faker::Lorem.word }
   end
 end

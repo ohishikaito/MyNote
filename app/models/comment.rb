@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
   # users-------------------------------------------------------------------
   belongs_to :user
   # comments-------------------------------------------------------------------
-  validates :content, presence: true
+  validates :content, presence: true, length: { maximum: 1000 }
   # notifications-------------------------------------------------------------------
   has_many :notifications, dependent: :destroy
 end
