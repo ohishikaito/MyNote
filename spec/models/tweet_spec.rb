@@ -11,7 +11,7 @@ describe Tweet do
       # imageがnilの場合でも保存できる
       it "image can be saved as nil" do
         @tweet = build(:tweet, image: nil)
-        expect(build(:tweet)).to be_valid
+        expect(@tweet).to be_valid
       end
     end
 
