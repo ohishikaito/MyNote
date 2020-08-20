@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :donation do
-    user
-    tweet
+    association :tweet
+    user { tweet.user }
+    amount  { 10000 }
   end
 end
