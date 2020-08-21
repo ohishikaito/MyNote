@@ -60,4 +60,51 @@ describe Tweet do
       end
     end
   end
+
+  describe "#search" do
+    # 各テストの前にTweetを作成
+    before do
+      user = create(:user)
+      @tweet = create(
+        :tweet,
+        title: "天気が良い",
+        text: "今日は快晴です",
+        user: user,
+      )
+
+      @other_tweet = create(
+        :tweet,
+        title: "天気が悪い",
+        text: "今日は雨です",
+        user: user,
+      )
+    end
+
+    context "「晴」で検索した場合、曖昧検索できているか" do
+      it "@tweetを返すこと" do
+        expect(Tweet.search("晴")).to include(@tweet)
+      end
+
+      it "@other_tweetを返さないこと" do
+        expect(Tweet.search("晴")).to_not include(@other_tweet)
+      end
+    end
+
+    context "「快晴」で検索した場合、一致検索できているか" do
+      it "@tweetを返すこと" do
+        expect(Tweet.search("快晴")).to include(@tweet)
+      end
+
+      it "@other_tweetを返さないこと" do
+        expect(Tweet.search("快晴")).to_not include(@other_tweet)
+      end
+    end
+
+    context "検索に一致しないものは表示されないこと" do
+      it "「曇り」で検索した場合、0件であること" do
+        expect(Tweet.search("曇り")).to be_empty6
+      end
+    end
+  end
+
 end
