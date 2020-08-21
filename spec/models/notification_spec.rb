@@ -37,7 +37,6 @@ RSpec.describe Notification, type: :model do
         expect(notification).to be_valid
       end
     end
-
   end
 
   describe "アソシエーションのテスト" do

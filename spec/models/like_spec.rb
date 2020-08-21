@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Like, type: :model do
   describe '正常値と異常値の確認' do
-
     context 'likeモデルのバリデーション' do
       it "user_idとtweet_idがあれば保存できる" do
         # expect(FactoryBot.build_stubbed(:like)).to be_valid

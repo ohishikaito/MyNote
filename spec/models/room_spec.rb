@@ -4,7 +4,7 @@ RSpec.describe Room, type: :model do
   describe "アソシエーションのテスト" do
     context "各モデルとのアソシエーションを確認" do
       it "Userとの関連付けはhas_manyであること" do
-      User.reflect_on_all_associations(:has_many)
+        User.reflect_on_all_associations(:has_many)
       end
 
       it "Roomとの関連付けはbelongs_toであること" do

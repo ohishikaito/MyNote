@@ -6,8 +6,8 @@ FactoryBot.define do
     # association :room
     # user_id   { user.id }
     # room_id   { room.id }
-    user_id{FactoryBot.create(:user).id}
-    room_id{FactoryBot.create(:room).id}
-    message   { Faker::Lorem.word }
+    user_id { FactoryBot.create(:user).id }
+    room_id { FactoryBot.create(:room).id }
+    message { Faker::Lorem.word }
   end
 end

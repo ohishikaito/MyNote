@@ -69,14 +69,14 @@ describe Tweet do
         :tweet,
         title: "天気が良い",
         text: "今日は快晴です",
-        user: user,
+        user: user
       )
 
       @other_tweet = create(
         :tweet,
         title: "天気が悪い",
         text: "今日は雨です",
-        user: user,
+        user: user
       )
     end
 
@@ -106,5 +106,4 @@ describe Tweet do
       end
     end
   end
-
 end
