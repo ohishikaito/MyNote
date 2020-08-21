@@ -102,7 +102,7 @@ describe Tweet do
 
     context "検索に一致しないものは表示されないこと" do
       it "「曇り」で検索した場合、0件であること" do
-        expect(Tweet.search("曇り")).to be_empty6
+        expect(Tweet.search("曇り")).to be_empty
       end
     end
   end
