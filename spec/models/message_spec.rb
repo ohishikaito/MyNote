@@ -66,5 +66,19 @@ RSpec.describe Message, type: :model do
         expect(association.macro).to  eq :belongs_to
       end
     end
+
+    context "Notificationモデルとのアソシエーション" do
+      let(:target) { :notifications }
+
+      it "Notificationとの関連付けはhas_manyであること" do
+        expect(association.macro).to  eq :has_many
+      end
+
+      it "Messageが削除されたらNotificationも削除されること" do
+        message = create(:message)
+        notification = create(:notification, message_id: message.id, visitor_id: 1, visited_id: 1)
+        expect { message.destroy }.to change(Notification, :count).by(-1)
+      end
+    end
   end
 end

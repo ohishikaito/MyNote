@@ -45,4 +45,24 @@ RSpec.describe Comment, type: :model do
       end
     end
   end
+
+  describe "各モデルとのアソシエーション" do
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+
+    context "Notificationモデルとのアソシエーション" do
+      let(:target) { :notifications }
+
+      it "Notificationとの関連付けはhas_manyであること" do
+        expect(association.macro).to eq :has_many
+      end
+
+      it "Commentが削除されたらNotificationも削除されること" do
+        comment = create(:comment)
+        notification = create(:notification, comment_id: comment.id, visitor_id: 1, visited_id: 1)
+        expect { comment.destroy }.to change(Comment, :count).by(-1)
+      end
+    end
+  end
 end
