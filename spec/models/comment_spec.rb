@@ -8,6 +8,11 @@ RSpec.describe Comment, type: :model do
         expect(comment).to be_valid
       end
 
+      it "contentが1文字以上なら保存できる" do
+        comment.content = "A" * 1
+        expect(comment).to be_valid
+      end
+
       it "contentが1,000文字以内なら保存できる" do
         comment.content = "A" * 1000
         expect(comment).to be_valid

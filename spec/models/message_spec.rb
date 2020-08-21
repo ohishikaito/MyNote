@@ -8,6 +8,11 @@ RSpec.describe Message, type: :model do
         expect(message).to be_valid
       end
 
+      it "messageが1文字以上なら保存できる" do
+        message.message = "A" * 1
+        expect(message).to be_valid
+      end
+
       it "messageが1,000文字以内なら保存できる" do
         message.message = "A" * 1000
         expect(message).to be_valid

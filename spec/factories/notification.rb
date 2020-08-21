@@ -10,7 +10,5 @@
 FactoryBot.define do
   factory :notification do
     # ページ遷移するとcheckedが変わるテストしてみたい
-    # visitor_id { FactoryBot.create(:user).id }
-    # visited_id { FactoryBot.create(:user).id }
   end
 end
