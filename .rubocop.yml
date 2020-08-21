@@ -64,5 +64,6 @@ Style/GuardClause:
 Naming/HeredocDelimiterNaming:
   Enabled: false
 
+# テストコードを追加したら、tweetなどの変数名が規約違反で引っかかるため無効
 Lint/UselessAssignment:
   Enabled: false
