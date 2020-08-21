@@ -1,5 +1,4 @@
 FactoryBot.define do
-  factory :relationship do
-    user
+  factory :notification do
   end
 end
