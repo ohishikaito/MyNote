@@ -1,8 +1,9 @@
 require 'rails_helper'
 
+# RSpec.describe 'Tweets', type: :request do
 describe TweetsController do
-  context 'ログインしていない場合' do
-    describe 'GET #index' do
+  describe 'ログインしていない場合' do
+    context 'GET #index' do
       before do
         get :index
       end
@@ -15,16 +16,24 @@ describe TweetsController do
       it "indexに遷移できる" do
         expect(response).to render_template :index
       end
+
+      it 'リクエストは200 OKとなること' do
+        expect(response.status).to eq 200
+      end
     end
 
-    describe 'GET #show' do
+    context 'GET #show' do
       it "showに遷移できる" do
         @tweet = create(:tweet)
         get :show, params: { id: @tweet.id }
       end
+
+      it 'リクエストは200 OKとなること' do
+        expect(response.status).to eq 200
+      end
     end
 
-    describe 'GET #new' do
+    context 'GET #new' do
       before do
         get :new
       end
@@ -32,9 +41,13 @@ describe TweetsController do
       it 'ログイン画面にリダイレクトする' do
         expect(response).to redirect_to(new_user_session_path)
       end
+
+      it 'リクエストは302 OKとなること' do
+        expect(response.status).to eq 302
+      end
     end
 
-    describe 'GET #edit' do
+    context 'GET #edit' do
       before do
         @tweet = create(:tweet)
         get :edit, params: { id: @tweet }
@@ -43,18 +56,22 @@ describe TweetsController do
       it 'ログイン画面にリダイレクトする' do
         expect(response).to redirect_to(new_user_session_path)
       end
+
+      it 'リクエストは302 OKとなること' do
+        expect(response.status).to eq 302
+      end
     end
     # ログインしていない場合
   end
 
   # -------------------------------------------------------
-  context 'ログインしている場合' do
+  describe 'ログインしている場合' do
     let(:user) { create(:user) }
     before do
       login_user user
     end
 
-    describe 'GET #new' do
+    context 'GET #new' do
       before do
         get :new
       end
@@ -68,7 +85,7 @@ describe TweetsController do
       end
     end
 
-    describe 'GET #edit' do
+    context 'GET #edit' do
       before do
         @tweet = create(:tweet, user_id: user.id)
         get :edit, params: { id: @tweet.id }
@@ -83,7 +100,7 @@ describe TweetsController do
       end
     end
 
-    describe "POST #create" do
+    context "POST #create" do
       let(:params) { { user_id: user.id, tweet: attributes_for(:tweet) } }
 
       context '保存に成功した場合' do
