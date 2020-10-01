@@ -1,22 +1,23 @@
 default: &default
   adapter: mysql2
-  encoding: utf8
+  encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  socket: /tmp/mysql.sock
-
-development:
-  <<: *default
-  #my_appはローカルのDB
-  database: my_app_development
-  encoding: utf8
-
-  #以下はdockerのDB
-  # database: mynote_development     
   # username: root
-  # password: password
-  # host: db
+  # password:
+  # socket: /tmp/mysql.sock
+
+# # my_appはローカルのDB
+# development:
+#   <<: *default
+#   database: my_app_development
+#   encoding: utf8
+
+# 以下はdockerのDB
+development:
+  database: mynote_development
+  username: root
+  password: password
+  host: db
 
 test:
   <<: *default
@@ -32,7 +33,6 @@ production:
   password: <%= Rails.application.credentials.rds[:DATABASE_PASSWORD] %>
   host: <%= Rails.application.credentials.rds[:DATABASE_HOST] %>
   encoding: utf8
-
 # production:
 #   # EC2内のMySQLに接続
 #   <<: *default
