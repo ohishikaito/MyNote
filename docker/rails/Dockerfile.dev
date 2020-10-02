@@ -1,0 +1,30 @@
+# ローカルはこれでok
+FROM ruby:2.5.1
+
+RUN apt-get update -qq && \
+  apt-get install -y apt-utils \
+  build-essential \
+  libpq-dev \
+  nodejs \
+  vim \
+  default-mysql-client
+
+RUN mkdir /myapp
+WORKDIR /myapp
+COPY Gemfile /myapp/Gemfile
+COPY Gemfile.lock /myapp/Gemfile.lock
+# bundlerのバージョンを2系にする
+ENV BUNDLER_VERSION='2.1.4'
+RUN gem install bundler --no-document -v '2.1.4'
+
+# Gemfileのbundle install
+RUN bundle install
+ADD . /myapp
+# RUN mkdir -p /myapp/tmp/sockets
+# さっきはRUN ありだったけど今はなしで2
+
+# ADD不溶接
+# COPY . /myapp
+
+EXPOSE 3000
+
