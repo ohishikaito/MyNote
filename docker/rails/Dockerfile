@@ -19,7 +19,8 @@ RUN gem install bundler --no-document -v '2.1.4'
 # Gemfileのbundle install
 RUN bundle install
 ADD . /myapp
-RUN mkdir -p /myapp/tmp/sockets
+# RUN mkdir -p /myapp/tmp/sockets
+# さっきはRUN ありだったけど今はなしで
 
 # ADD不溶接
 # COPY . /myapp
