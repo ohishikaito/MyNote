@@ -3,38 +3,47 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  password: password
+  host: db
 
 development:
   <<: *default
-  #my_appはローカルのDB
-  database: my_app_development
-  encoding: utf8
+  database: mynote_development
 
-  #以下はdockerのDB
-  # database: mynote_development     
-  # username: root
-  # password: password
-  # host: db
+# # my_appはローカルのDB
+# development:
+#   <<: *default
+#   database: my_app_development
+#   encoding: utf8
 
 test:
   <<: *default
-  database: my_app_test
+  database: app_test
 
+# ECSからRDSに接続
 production:
   <<: *default
-  # RDSに接続
+  database: <%= ENV['DB_DATABASE'] %>
   adapter: mysql2
-  charset: utf8
-  database: mynote_production
-  username: <%= Rails.application.credentials.rds[:DATABASE_USERNAME] %>
-  password: <%= Rails.application.credentials.rds[:DATABASE_PASSWORD] %>
-  host: <%= Rails.application.credentials.rds[:DATABASE_HOST] %>
-  encoding: utf8
-
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+# EC2からRDSに接続
 # production:
-#   # EC2内のMySQLに接続
+#   <<: *default
+#   adapter: mysql2
+#   charset: utf8
+#   database: mynote_production
+#   username: <%= Rails.application.credentials.rds[:DATABASE_USERNAME] %>
+#   password: <%= Rails.application.credentials.rds[:DATABASE_PASSWORD] %>
+#   host: <%= Rails.application.credentials.rds[:DATABASE_HOST] %>
+#   encoding: utf8
+
+# EC2内のMySQLに接続
+# production:
 #   <<: *default
 #   database: my_app_production
 #   username: root

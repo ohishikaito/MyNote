@@ -12,6 +12,7 @@ AllCops:
     - "config/**/*"
     - "script/**/*"
     - "test/**"
+    - "docker/rails/puma.rb" # app_rootのディレクトリを変えてはいけないため
   # Rails向けのRails copsを実行。"rubocop -R"と同じ
   Rails:
     enabled: true
