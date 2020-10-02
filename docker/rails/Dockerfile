@@ -1,4 +1,4 @@
-FROM ruby:2.6.3
+FROM ruby:2.5.1
 
 RUN apt-get update -qq && \
   apt-get install -y apt-utils \
@@ -6,16 +6,23 @@ RUN apt-get update -qq && \
   libpq-dev \
   nodejs \
   vim \
-  default-mysql-client 
+  default-mysql-client
 
-WORKDIR /app
+RUN mkdir /myapp
+WORKDIR /myapp
+COPY Gemfile /myapp/Gemfile
+COPY Gemfile.lock /myapp/Gemfile.lock
+# bundlerのバージョンを2系にする
+ENV BUNDLER_VERSION='2.1.4'
+RUN gem install bundler --no-document -v '2.1.4'
 
-ADD Gemfile .
-ADD Gemfile.lock .
-RUN bundle install -j4
+# Gemfileのbundle install
+RUN bundle install
+ADD . /myapp
+RUN mkdir -p /myapp/tmp/sockets
 
-ADD . /app
-
+# ADD不溶接
+# COPY . /myapp
 
 EXPOSE 3000
 
