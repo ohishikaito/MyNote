@@ -2,8 +2,8 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # trueだと本番環境でもエラーを表示させる
-  # config.consider_all_requests_local       = false
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
+  # config.consider_all_requests_local       = true
   config.action_controller.perform_caching = true
 
   # Code is not reloaded between requests.
