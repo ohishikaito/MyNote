@@ -18,6 +18,8 @@ services:
     extends:
       file: ./docker/mysql/password.yml
       service: password
+    environment:
+      - EDITOR=vim
   db:
     build:
       context: .

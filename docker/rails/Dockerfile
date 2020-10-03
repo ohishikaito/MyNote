@@ -26,5 +26,8 @@ RUN gem install bundler --no-document -v '2.1.4'
 RUN bundle install
 ADD . $APP_ROOT
 
+RUN mkdir -p $APP_ROOT/tmp/sockets
+# やっぱこれがないとだめ？
+
 EXPOSE 3000
 
