@@ -11,10 +11,12 @@ development:
   database: mynote_development
 
 # # my_appはローカルのDB
-# development:
-#   <<: *default
-#   database: my_app_development
-#   encoding: utf8
+development:
+  <<: *default
+  database: my_app_development
+  username: root
+  password:
+  socket: /tmp/mysql.sock
 
 test:
   <<: *default
