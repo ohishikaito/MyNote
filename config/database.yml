@@ -5,22 +5,23 @@ default: &default
   username: root
   password:
 
+# my_appはローカルのDB
+development:
+  <<: *default
+  database: mynote_development
+  socket: /tmp/mysql.sock
+# docker-compose環境
 # development:
 #   <<: *default
 #   database: mynote_development
 #   username: root
 #   password: password
 #   host: db
+#
+# test:
+#   <<: *default
+# database: app_test
 
-# # my_appはローカルのDB
-development:
-  <<: *default
-  database: my_app_development
-  socket: /tmp/mysql.sock
-
-test:
-  <<: *default
-database: app_test
 # ECSからRDSに接続
 # production:
 #   <<: *default
@@ -32,6 +33,7 @@ database: app_test
 #   host: <%= ENV['DB_HOST'] %>
 #   username: <%= ENV['DB_USERNAME'] %>
 #   password: <%= ENV['DB_PASSWORD'] %>
+#
 # EC2からRDSに接続
 # production:
 #   <<: *default
