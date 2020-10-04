@@ -3,34 +3,37 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: password
-  host: db
+  password:
 
+# my_appはローカルのDB
 development:
   <<: *default
   database: mynote_development
-
-# # my_appはローカルのDB
+  socket: /tmp/mysql.sock
+# docker-compose環境
 # development:
 #   <<: *default
-#   database: my_app_development
-#   encoding: utf8
-
-test:
-  <<: *default
-  database: app_test
+#   database: mynote_development
+#   username: root
+#   password: password
+#   host: db
+#
+# test:
+#   <<: *default
+# database: app_test
 
 # ECSからRDSに接続
-production:
-  <<: *default
-  database: <%= ENV['DB_DATABASE'] %>
-  adapter: mysql2
-  encoding: utf8mb4
-  charset: utf8mb4
-  collation: utf8mb4_general_ci
-  host: <%= ENV['DB_HOST'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: <%= ENV['DB_DATABASE'] %>
+#   adapter: mysql2
+#   encoding: utf8mb4
+#   charset: utf8mb4
+#   collation: utf8mb4_general_ci
+#   host: <%= ENV['DB_HOST'] %>
+#   username: <%= ENV['DB_USERNAME'] %>
+#   password: <%= ENV['DB_PASSWORD'] %>
+#
 # EC2からRDSに接続
 # production:
 #   <<: *default

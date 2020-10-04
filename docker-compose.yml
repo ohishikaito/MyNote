@@ -18,6 +18,9 @@ services:
     extends:
       file: ./docker/mysql/password.yml
       service: password
+    environment:
+      - EDITOR=vim
+      - RAILS_MASTER_KEY
   db:
     build:
       context: .
