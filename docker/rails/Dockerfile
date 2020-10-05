@@ -27,7 +27,6 @@ RUN bundle install
 ADD . $APP_ROOT
 
 RUN mkdir -p $APP_ROOT/tmp/sockets
-# やっぱこれがないとだめ？
 
 EXPOSE 3000
 
