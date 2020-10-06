@@ -10,7 +10,6 @@ development:
   <<: *default
   database: mynote_development
   socket: /tmp/mysql.sock
-
 # docker環境(docker-compose upで起動)
 # development:
 #   <<: *default
@@ -28,11 +27,10 @@ development:
 #   <<: *default
 #   adapter: mysql2
 #   charset: utf8
-#   database: <%= Rails.application.credentials.rds[:DATABASE_NAME] %>
-#   username: <%= Rails.application.credentials.rds[:DATABASE_USERNAME] %>
-#   password: <%= Rails.application.credentials.rds[:DATABASE_PASSWORD] %>
-#   host: <%= Rails.application.credentials.rds[:DATABASE_HOST] %>
-#   encoding: utf8
+#   database: <%= Rails.application.credentials.aws[:rds][:DATABASE_NAME] %>
+#   username: <%= Rails.application.credentials.aws[:rds][:DATABASE_USERNAME] %>
+#   password: <%= Rails.application.credentials.aws[:rds][:DATABASE_PASSWORD] %>
+#   host: <%= Rails.application.credentials.aws[:rds][:DATABASE_HOST] %>
 
 # EC2内のMySQLに接続
 # production:
@@ -41,7 +39,6 @@ development:
 #   username: root
 #   password: password
 #   socket: /var/lib/mysql/mysql.sock
-#   encoding: utf8
 
 # ECSからRDSに接続
 # production:
