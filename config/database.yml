@@ -5,11 +5,12 @@ default: &default
   username: root
   password:
 
-ローカル環境（rails sで起動）
+# ローカル環境（rails sで起動）
 development:
   <<: *default
   database: mynote_development
   socket: /tmp/mysql.sock
+
 # docker環境(docker-compose upで起動)
 # development:
 #   <<: *default
@@ -22,24 +23,12 @@ development:
 #   <<: *default
 # database: app_test
 
-# ECSからRDSに接続
-# production:
-#   <<: *default
-#   database: <%= ENV['DB_DATABASE'] %>
-#   adapter: mysql2
-#   encoding: utf8mb4
-#   charset: utf8mb4
-#   collation: utf8mb4_general_ci
-#   host: <%= ENV['DB_HOST'] %>
-#   username: <%= ENV['DB_USERNAME'] %>
-#   password: <%= ENV['DB_PASSWORD'] %>
-#
 # EC2からRDSに接続
 # production:
 #   <<: *default
 #   adapter: mysql2
 #   charset: utf8
-#   database: mynote_production
+#   database: <%= Rails.application.credentials.rds[:DATABASE_NAME] %>
 #   username: <%= Rails.application.credentials.rds[:DATABASE_USERNAME] %>
 #   password: <%= Rails.application.credentials.rds[:DATABASE_PASSWORD] %>
 #   host: <%= Rails.application.credentials.rds[:DATABASE_HOST] %>
@@ -53,3 +42,15 @@ development:
 #   password: password
 #   socket: /var/lib/mysql/mysql.sock
 #   encoding: utf8
+
+# ECSからRDSに接続
+# production:
+#   <<: *default
+#   database: <%= ENV['DB_DATABASE'] %>
+#   adapter: mysql2
+#   encoding: utf8mb4
+#   charset: utf8mb4
+#   collation: utf8mb4_general_ci
+#   host: <%= ENV['DB_HOST'] %>
+#   username: <%= ENV['DB_USERNAME'] %>
+#   password: <%= ENV['DB_PASSWORD'] %>
