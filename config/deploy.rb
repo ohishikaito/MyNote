@@ -1,6 +1,8 @@
 # Gemfile.lockを見てcapistranoのバージョンを入れる
 lock "~> 3.14.1"
 
+set :deploy_to, '/var/www/MyNote'
+
 # 自身のアプリ名、リポジトリ名を記述
 set :application, 'MyNote'
 
