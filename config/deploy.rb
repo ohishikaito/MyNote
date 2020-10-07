@@ -15,7 +15,7 @@ set :rbenv_ruby, '2.5.1'
 
 # chat-spaceで使ったpemを指定、どの公開鍵を利用してデプロイするか
 set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/kaitoaws.pem']
+                  keys: ['~/.ssh/kaito_key_rsa']
 
 # どの公開鍵を利用してデプロイするか
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
@@ -42,7 +42,7 @@ namespace :deploy do
         execute "mkdir -p #{shared_path}/config"
       end
       # circleCIでマスターキーを取得するためコメントアウト
-      # upload!('config/master.key', "#{shared_path}/config/master.key")
+      upload!('config/master.key', "#{shared_path}/config/master.key")
     end
   end
   before :starting, 'deploy:upload'
