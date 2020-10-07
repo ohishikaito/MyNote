@@ -2,14 +2,14 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
 
 # ローカル環境（rails sで起動）
 development:
   <<: *default
   database: mynote_development
-  socket: /tmp/mysql.sock
+  username: root
+  password:
+  # socket: /tmp/mysql.sock
 # docker環境(docker-compose upで起動)
 # development:
 #   <<: *default
@@ -23,15 +23,14 @@ development:
 # database: app_test
 
 # EC2からRDSに接続
-# production:
-#   <<: *default
-#   adapter: mysql2
-#   charset: utf8
-#   database: <%= Rails.application.credentials.aws[:rds][:DATABASE_NAME] %>
-#   username: <%= Rails.application.credentials.aws[:rds][:DATABASE_USERNAME] %>
-#   password: <%= Rails.application.credentials.aws[:rds][:DATABASE_PASSWORD] %>
-#   host: <%= Rails.application.credentials.aws[:rds][:DATABASE_HOST] %>
-
+production:
+  <<: *default
+  adapter: mysql2
+  charset: utf8
+  database: <%= Rails.application.credentials.aws[:rds][:DATABASE_NAME] %>
+  username: <%= Rails.application.credentials.aws[:rds][:DATABASE_USERNAME] %>
+  password: <%= Rails.application.credentials.aws[:rds][:DATABASE_PASSWORD] %>
+  host: <%= Rails.application.credentials.aws[:rds][:DATABASE_HOST] %>
 # EC2内のMySQLに接続
 # production:
 #   <<: *default
