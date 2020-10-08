@@ -5,40 +5,43 @@
   color: #ff2f58;
 }
 
-.fa-bell:hover{
+.fa-bell:hover {
   color: $header-tags;
 }
 
-.header{
+.header {
   width: 100%;
   height: 135px;
-  box-shadow:0px 0px 5px;
+  box-shadow: 0px 0px 5px;
   position: relative;
-  &-contents{
+  &-contents {
     max-width: 1000px;
     margin: 0 auto;
   }
-  &-top{
+  &-top {
     height: 75px;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid $header_border;
-    &__left{
+    &__left {
       padding-top: 25px;
-      &--title{
+      & h1 {
+        color: #333;
+      }
+      &--title {
         font-weight: bold;
         font-family: serif;
-        &:hover{
-          color: black;
+        &:hover {
+          color: #333;
         }
       }
     }
-    
-    &__right{
+
+    &__right {
       padding-top: 30px;
       display: flex;
       margin-bottom: 5px;
-      &--search{
+      &--search {
         color: #222;
         background: white;
         border: 1px solid #e6e6e6;
@@ -48,77 +51,77 @@
         font-size: 14px;
         outline: none;
         text-align: center;
-        &:hover{
+        &:hover {
           border: 1px solid #a8abb1;
           outline: none;
         }
-        @include sm-max{
+        @include sm-max {
           display: none;
         }
       }
-      &--box{
+      &--box {
         margin-left: 20px;
-        &:hover{
+        &:hover {
           outline: 0;
         }
       }
-      &__user{
+      &__user {
         display: flex;
-        &__info{
+        &__info {
           line-height: 40px;
           position: relative;
-          &--avatar{
+          &--avatar {
             padding: 0 15px;
           }
-          &--link{
+          &--link {
             cursor: pointer;
           }
-          & a:hover{
+          & a:hover {
             color: black;
           }
-          &--nickname{
-            @include sm-max{
+          &--nickname {
+            @include sm-max {
               display: none;
             }
           }
         }
       }
-      &--bell{
+      &--bell {
         display: block;
         padding: 8px 15px;
-        color: #333
+        color: #333;
       }
     }
   }
-  &-bottom{
+  &-bottom {
     height: 60px;
     line-height: 60px;
     position: relative;
-    &__list{
-    display: flex;
-    @include md-max{
-      justify-content: space-around;
-    }
-    font-size: 15px;
-      & a{
+    &__list {
+      display: flex;
+      @include md-max {
+        justify-content: space-around;
+      }
+      font-size: 15px;
+      & a {
         color: $header_tags;
-        @include sm{
+        @include sm {
           padding: 20px 2px;
         }
-        @include md{
+        @include md {
           padding: 20px 13px;
         }
-        @include lg{
+        @include lg {
           padding: 20px;
         }
-        &:hover{
+        &:hover {
           color: black;
         }
       }
-      &__tags{
+      &__tags {
         position: absolute;
         right: 0;
-        @include md-max{
+        @include md-max {
           display: none;
         }
       }
@@ -126,7 +129,7 @@
   }
 }
 
-.header-top__box{
+.header-top__box {
   position: absolute;
   top: 44px;
   right: 0px;
@@ -136,15 +139,15 @@
   background-color: white;
   font-size: 15px;
   display: none;
-  &--borderTop{
-    border-top: 1px solid #EEEEEE;
+  &--borderTop {
+    border-top: 1px solid #eeeeee;
   }
-  &--content{
+  &--content {
     display: block;
     min-height: 30px;
     padding: 5px;
     color: black;
-    &:hover{
+    &:hover {
       background-color: #c8c8c8;
     }
   }
