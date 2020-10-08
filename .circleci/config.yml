@@ -1,49 +1,88 @@
 version: 2.1
-orbs:
-  aws-ecr: circleci/aws-ecr@6.7.0
-  aws-ecs: circleci/aws-ecs@1.1.0
+
+executors:
+  default:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
+      - image: circleci/mysql:5.7
+    environment:
+      - MYSQL_USER: root
+      - MYSQL_ALLOW_EMPTY_PASSWORD: true
+      - RAILS_ENV: "test"
+      - BUNDLER_VERSION: 2.1.4
+
+commands:
+  setup:
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+      - run:
+          name: install dependencies
+          command: |
+            gem install bundler -v 2.1.4
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+jobs:
+  test:
+    executor: default
+    environment:
+      RAILS_ENV: test
+    steps:
+      - setup
+      - run: mv config/database.yml.ci config/database.yml
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
+
+      - run:
+          name: run tests
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+              circleci tests split --split-by=timings)"
+            bundle exec rspec \
+              --format progress \
+              --format RspecJunitFormatter \
+              --out /tmp/test-results/rspec.xml \
+              --format progress \
+              $TEST_FILES
+
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+  deploy:
+    executor: default
+    steps:
+      - setup
+      - add_ssh_keys:
+          fingerprints:
+            # - "14:28:71:a6:db:41:f5:9c:f6:45:de:72:59:b6:49:c7"
+            - "33:33:a8:e3:91:b6:5d:59:10:1d:0f:dc:a6:fe:29:db"
+      - deploy:
+          name: Capistrano deploy
+          command: bundle exec cap production deploy
+
 workflows:
-  # Nginxのデプロイ
-  nginx-deploy:
+  test_and_deploy:
     jobs:
-      - aws-ecr/build-and-push-image:
-          account-url: AWS_ECR_ACCOUNT_URL
-          region: AWS_REGION
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          create-repo: true
-          dockerfile: ./docker/nginx/Dockerfile
-          repo: nginx
-          tag: "${CIRCLE_SHA1}"
+      - test
+      - deploy:
+          requires:
+            - test
           filters:
             branches:
               only: master
-      - aws-ecs/deploy-service-update:
-          requires:
-            - aws-ecr/build-and-push-image
-          family: "nginx-rails-app" # ECSのタスク定義名
-          cluster-name: "${ECS_ARN}" #ECSのクラスターのARN
-          service-name: "ecs-rails-service" #サービス名
-          container-image-name-updates: "container=nginx,tag=${CIRCLE_SHA1}"
-  # Railsのデプロイ
-  rails-deploy:
-    jobs:
-      - aws-ecr/build-and-push-image:
-          account-url: AWS_ECR_ACCOUNT_URL
-          region: AWS_REGION
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          create-repo: true
-          dockerfile: ./docker/rails/Dockerfile
-          repo: rails-api
-          tag: "${CIRCLE_SHA1}"
-          filters:
-            branches:
-              only: master
-      - aws-ecs/deploy-service-update:
-          requires:
-            - aws-ecr/build-and-push-image
-          family: "nginx-rails-app" # ECSのタスク定義名
-          cluster-name: "${ECS_ARN}" #ECSのクラスターのARN
-          service-name: "ecs-rails-service" #サービス名
-          container-image-name-updates: "container=rails,tag=${CIRCLE_SHA1}"
