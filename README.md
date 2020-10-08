@@ -46,7 +46,7 @@ https://mynote.world/
 * AWS （EC2, RDS for MySQL, S3, VPC, Route53, ALB, ACM）
 
 ## AWS構成図
-<img width="926" alt="ec34ce9ff5702ec75d02ec759434ad6d" src="https://user-images.githubusercontent.com/61116343/95416671-3084e380-096e-11eb-906e-f4a13868f702.png">
+![MyNote AWS構成図](https://user-images.githubusercontent.com/61116343/95417165-4b0b8c80-096f-11eb-9d50-ed260078dc87.png)
 
 ## 機能一覧
 - ユーザー機能
