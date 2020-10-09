@@ -9,7 +9,7 @@ development:
   database: mynote_development
   username: root
   password:
-  # socket: /tmp/mysql.sock
+  socket: /tmp/mysql.sock
 # docker環境(docker-compose upで起動)
 # development:
 #   <<: *default
