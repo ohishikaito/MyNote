@@ -13,9 +13,9 @@ https://mynote.world/
 
 ゲストユーザーとしてログインすることができます。
 
-# 制作背景
+# このアプリを開発した背景
 **「変わるきっかけ」を作れたら、と言う想いでこちらのアプリを開発しました。**
-<br />
+
 私は1年前会話がとても苦手で、いわゆる人見知りでした。
 変わりたいと思っても何をしていいか分からず行動できませんでした。
 
@@ -43,14 +43,15 @@ https://mynote.world/
 * 画像の複数投稿対応
 * タグ登録時の利便性向上
 
-## 使用技術（開発環境）
-* Ruby 2.5.1, Rails 5.2.4
-* Nginx, unicorn, Puma
+## 使用技術
+* Ruby 2.5.1, Rails 5.2.4.2
+* Puma（開発環境）
+* Nginx、unicorn（本番環境）
 * MySQL
-* SCSS, jQuery
+* SCSS, JavaScript（jQuery）
 * RSpec
 * Docker
-* CircleCI CI/CD
+* CircleCI CI/CDパイプラインを構築
 * Capistrano
 * AWS （EC2, RDS for MySQL, S3, VPC, Route53, ALB, ACM）
 
