@@ -73,6 +73,7 @@ https://mynote.world/
 - 通知機能
 - 活動履歴の保存機能
 
+# 機能詳細
 ## ユーザー機能
   - deviseを使用
   - 新規登録、ログイン、ログアウト、編集機能
@@ -129,7 +130,7 @@ https://mynote.world/
   - いいね、コメント、フォロー、ダイレクトメッセージを送信した履歴を確認可能
 
 ## テスト機能
-  - RSpecを使用（テスト数は100以上）
+  - RSpecを使用（テスト件数は100以上）
 
 
 # 使用した主なgem
@@ -144,5 +145,5 @@ https://mynote.world/
 * faker ：ダミーデータ作成
 
 
-## DB設計
+# DB設計
 <img width="1241" alt="70f4485f173d3d889da434b5ce52faf7" src="https://user-images.githubusercontent.com/61116343/85198895-cc8ad080-b326-11ea-9f81-68be47d1f8a9.png">
