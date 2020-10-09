@@ -3,9 +3,8 @@ $(function () {
   $("#preview").on("click", function () {
     var text = $("#md-textarea").val();
     if (text == "") {
-      return;
-    }
-    if ($("#md-textarea").val().length > 1000) {
+      return false;
+    } else if ($("#md-textarea").val().length > 1000) {
       alert("本文を1,000文字以内で入力してください。");
       return false;
     }
