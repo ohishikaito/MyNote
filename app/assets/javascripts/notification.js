@@ -24,8 +24,4 @@ $(function () {
     nt_left.removeClass("notification-top__title--show");
     nt_left.addClass("notification-top__title--down");
   });
-
-  $(".notification").fadeIn("slow", function () {
-    $(this).delay(3000).fadeOut("slow");
-  });
 });
