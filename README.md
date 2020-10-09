@@ -43,17 +43,17 @@ https://mynote.world/
 * 画像の複数投稿対応
 * タグ登録時の利便性向上
 
-## 使用技術
-* Ruby 2.5.1, Rails 5.2.4.2
-* Puma（開発環境）
-* Nginx、unicorn（本番環境）
-* MySQL
-* SCSS, JavaScript（jQuery）
-* RSpec
-* Docker
-* CircleCI CI/CDパイプラインを構築
-* Capistrano
-* AWS （EC2, RDS for MySQL, S3, VPC, Route53, ALB, ACM）
+## 使用技術等
+* マークアップ：haml、Sass
+* バックエンド：Ruby 2.5（Ruby on Rails 5.2）
+* テスト：RSpec
+* フロントエンド：JavaScript（jQuery）
+* データベース：MySQL 5.6
+* インフラ：AWS（VPC | ALB | EC2 | S3 | Route53 | ACM）
+* ソースコード管理：GitHub
+* 開発環境：Docker
+* CI：CircleCI
+* その他：Capistranoによる自動デプロイ
 
 ## AWS構成図
 ![MyNote AWS構成図](https://user-images.githubusercontent.com/61116343/95417165-4b0b8c80-096f-11eb-9d50-ed260078dc87.png)
@@ -95,7 +95,8 @@ https://mynote.world/
 ## タグ付け機能
   - acts_as_taggableというgemと、jQueryプラグインのtag-itを使用
   - 記事に複数のタグをつけられる機能
-  - タグ名は自由に入力可能（自動補完機能付き）
+  - タグ名は自由に入力可能
+  - 入力時に自動補完機能付き（gonというgemを使用）
 
 ## 寄付機能（非同期）
   - 記事に数字を入力して寄付ができる機能
@@ -130,6 +131,17 @@ https://mynote.world/
 ## テスト機能
   - RSpecを使用（テスト数は100以上）
 
+
+# 使用した主なgem
+* devise ：ユーザーログイン機能
+* kaminari ：ページネーション機能
+* carrierwave：画像投稿
+* act-as-taggalbe-on：タグ機能
+* gon：タグ入力時の自動補完機能
+* redcarpet：マークアップ記法の導入
+* rspec-rails ：テストコード
+* factory_bot_rails ：テストデータ作成
+* faker ：ダミーデータ作成
 
 
 ## DB設計
