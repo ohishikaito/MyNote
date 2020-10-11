@@ -6,6 +6,5 @@
       .new-tweet__icon
         %i.fas.fa-plus
 - else
-  -# = form_for(resource, as: resource_name, url: session_path(resource_name), id: 'guestForm') do |f|
   = link_to users_guest_sign_in_path, method: :post do
     ゲスト
