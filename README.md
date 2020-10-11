@@ -118,8 +118,9 @@ Rails側の記述忘れでアプリケーションサーバのUnicornが起動�
 * Webサーバ：Nginx（本番環境）
 * アプリケーションサーバ：Puma（開発環境）、Unicorn（本番環境）
 * 開発環境：Docker　Nginx、Rails、MySQLコンテナを用意して、docker-composeで起動します。
-* CI/CD：CircleCI　rubucopとRSpecが自動で実行されます。
-* その他：Capistranoによる自動デプロイ　GitHubのマスターブランチにマージされた時のみcapistranoが実行します。
+* CI/CD：CircleCI 
+    * CI：プルリク発行時にrubucopとRSpecが自動で実行されます。
+    * CD：GitHubのマスターブランチにマージされた時のみcapistranoが実行して自動デプロイされます。
 
 # AWS構成図
 ![MyNote AWS構成図](https://user-images.githubusercontent.com/61116343/95417165-4b0b8c80-096f-11eb-9d50-ed260078dc87.png)
