@@ -1,10 +1,15 @@
 - if user_signed_in?
-  = link_to new_tweet_path, class: "new-tweet color-black" do
-    .new-tweet__btn
-      %p.new-tweet__text
+  = link_to new_tweet_path, class: "new-btn" do
+    .new-btn__tweet
+      %p.new-btn__tweet--text
         投稿
-      .new-tweet__icon
+      .new-btn__tweet--icon
         %i.fas.fa-plus
 - else
-  = link_to users_guest_sign_in_path, method: :post do
-    ゲスト
+  -# = link_to users_guest_sign_in_path, method: :post do
+  -#   ゲスト
+  = link_to users_guest_sign_in_path, method: :post, class: "new-btn" do
+    .new-btn__session
+      .new-btn__session--text
+        %p ゲストユーザー
+        でログイン
