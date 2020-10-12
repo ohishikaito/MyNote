@@ -1,0 +1,56 @@
+@mixin new-btn($color) {
+  right: 5%;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 20px;
+  background-color: $color;
+  border: 1px solid #ccc;
+  opacity: 1;
+  box-shadow: 0px 4px 6px #ccc;
+  transition: all 0.3s ease 0s;
+  &:hover {
+    color: #333;
+  }
+}
+
+@mixin new-btn--text($top, $left) {
+  top: $top;
+  left: $left;
+  font-weight: bold;
+  position: absolute;
+  font-size: 16px;
+  text-align: center;
+}
+
+.new-btn {
+  display: block;
+  &__tweet {
+    @include new-btn($new_green);
+    &--text {
+      @include new-btn--text($top: 25px, $left: 53px);
+      & p {
+        color: #333;
+      }
+    }
+    &--icon {
+      color: #333;
+      position: absolute;
+      left: 35%;
+      top: 30%;
+      font-size: 3rem;
+    }
+  }
+  &__session {
+    @include new-btn($login_yellow);
+    &--text {
+      @include new-btn--text($top: 55px, $left: 15px);
+      & p {
+        color: #333;
+      }
+    }
+  }
+}
