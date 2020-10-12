@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest' # ゲストログイン用メソッド
   end
 
-  root to: 'tweets#index'
+  root to: 'tweets#index' # トップページ
     namespace :tweets do
       resources :searches, only: :index # 検索機能
     end
