@@ -6,10 +6,7 @@
       .new-btn__tweet--icon
         %i.fas.fa-plus
 - else
-  -# = link_to users_guest_sign_in_path, method: :post do
-  -#   ゲスト
   = link_to users_guest_sign_in_path, method: :post, class: "new-btn" do
     .new-btn__session
       .new-btn__session--text
-        %p ゲストユーザー
-        でログイン
+        %p ゲストログイン

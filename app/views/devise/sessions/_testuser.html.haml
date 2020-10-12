@@ -1,6 +1,2 @@
-= form_for(resource, as: resource_name, url: session_path(resource_name), id: 'guestForm') do |f|
-    .div
-        = f.hidden_field :email ,value: "guest@user", id: "guestUser"
-        = f.hidden_field :password, value: "adaadaada", id: "guestpass"
-    .actions
-        = f.submit "ゲストユーザーでログイン", class: "btn btn-warning"
+= link_to users_guest_sign_in_path, method: :post, class: "btn btn-warning" do
+    ゲストユーザーでログイン

@@ -47,7 +47,7 @@
   &__session {
     @include new-btn($login_yellow);
     &--text {
-      @include new-btn--text($top: 40px, $left: 15px);
+      @include new-btn--text($top: 55px, $left: 15px);
       & p {
         color: #333;
       }
