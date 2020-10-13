@@ -61,7 +61,7 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'listen'
+  # gem 'listen'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "better_errors"
@@ -99,3 +99,4 @@ gem 'rb-readline'
 gem 'redcarpet'
 gem 'slim-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'listen' # 10/13 unicornでエラー吐いたから全体に追加
