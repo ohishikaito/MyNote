@@ -94,9 +94,9 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'kaminari'
+gem 'listen' # 10/13 unicornでエラー吐いたから全体に追加
 gem 'mini_magick'
 gem 'rb-readline'
 gem 'redcarpet'
 gem 'slim-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem 'listen' # 10/13 unicornでエラー吐いたから全体に追加
