@@ -1,5 +1,7 @@
 # ../が一つ増えている
 app_path = File.expand_path('../../../', __FILE__)
+# unicornがエラー吐いたので直接ディレクトリを指定
+# app_path = File.expand_path('/var/www/MyNote')
 
 worker_processes 1
 # currentを指定
