@@ -36,4 +36,3 @@ $(function () {
     $("#markdown").addClass("disabled");
   });
 });
-//
