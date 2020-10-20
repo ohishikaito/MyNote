@@ -123,7 +123,7 @@ Rails側の記述忘れでアプリケーションサーバのUnicornが起動�
 * データベース：MySQL 5.6
 * インフラ：AWS（VPC | ALB | EC2 | S3 | Route53 | ACM）
 * ソースコード管理：GitHub
-* Webサーバ：Nginx（本番環境）
+* Webサーバ：Nginx
 * アプリケーションサーバ：Puma（開発環境）、Unicorn（本番環境）
 * 開発環境：Docker　Nginx、Rails、MySQLコンテナを用意して、docker-composeで起動します。
 * CI/CD：CircleCI 
