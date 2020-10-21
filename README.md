@@ -224,3 +224,4 @@ Rails側の記述忘れでアプリケーションサーバのUnicornが起動�
 # DB設計
 <img width="1241" alt="70f4485f173d3d889da434b5ce52faf7" src="https://user-images.githubusercontent.com/61116343/85198895-cc8ad080-b326-11ea-9f81-68be47d1f8a9.png">
 
+
