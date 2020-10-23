@@ -116,10 +116,10 @@ Rails側の記述忘れでアプリケーションサーバのUnicornが起動�
 
 # 使用技術等
 * マークアップ：haml、Sass
-* バックエンド：Ruby 2.5（Ruby on Rails 5.2）
-* テスト：RSpec
-* 静的コード解析：Rubocop
 * フロントエンド：JavaScript（jQuery）
+* バックエンド：Ruby 2.5（Ruby on Rails 5.2）
+    * テスト：RSpec
+    * 静的コード解析：Rubocop
 * データベース：MySQL 5.6
 * インフラ：AWS（VPC | ALB | EC2 | S3 | Route53 | ACM）
 * ソースコード管理：GitHub
