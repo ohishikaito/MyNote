@@ -24,10 +24,11 @@
         = render '/tweets/tag_list', tag_list: @tweet.tag_list
       .tweet-show__content__user
         = link_to  user_path(@tweet.user.id), class: "tweet-show__content__user--top" do
-          = image_tag "#{@tweet.user.avatar}", class: "tweet-show__content__user--avatar"
-          .tweet-show__content__user--names
-            %strong
-              = @tweet.user.nickname
+          .display-flex
+            = image_tag "#{@tweet.user.avatar}", class: "tweet-show__content__user--avatar"
+            .tweet-show__content__user--names
+              %strong
+                = @tweet.user.nickname
           .tweet-show__content__user--follow
             = render "relationships/follow"
       .tweet-show__content__donation
