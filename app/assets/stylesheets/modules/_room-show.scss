@@ -11,6 +11,9 @@
   &__title{
     height: 100px;
     font-size: 25px;
+    @include md-max{
+      font-size: 18px;
+    }
     text-align: center;
     line-height: 100px;
     border-bottom: 1px solid $header_border;
@@ -24,28 +27,31 @@
       color: #505050;
     }
   }
-  &__item{
+  &__item {
+    margin-top: 10px;
     &--message{
       font-size: 15px;
       background-color: #F5F5F5;
       padding: 0.4rem 1rem;
       border-radius: 1.2rem;
       display: inline-block;
-      margin: 0.5rem;
       max-width: 80%;
+      margin: 0.5rem;
     }
     &--date{
       padding: 5px 10px;
       color: $header_tags;
     }
-    &__right{
+    &__right {
+      margin: 0.5rem;
       display: flex;
       justify-content: flex-end;
       &--btn{
         padding-top: 8px;
       }
     }
-    &__left{
+    &__left {
+      margin: 0.5rem;
       display: flex;
       justify-content: flex-start;
     }
@@ -69,7 +75,7 @@
     padding-left: 20px;
     @include common-sizing;
     @include sm-max{
-      width: 300px;
+      width: 250px;
     }
     height: 50px;
     border-radius: 100px;
