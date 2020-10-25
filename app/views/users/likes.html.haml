@@ -8,4 +8,6 @@
         .user-show__select--active.cursor-pointer
           いいねした投稿
     = render @tweets
+    - unless @tweets.present? # @tweetsがなければtrue（下記を表示）
+      いいねした投稿がありません
     = paginate @tweets

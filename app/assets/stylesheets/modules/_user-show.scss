@@ -1,3 +1,15 @@
+@mixin user-show-btn{
+  @include md-max {
+    width: 154px;
+  }
+
+  @include sm-max {
+    width: 200px;
+  }
+
+  width: 200px;
+}
+
 .user-show{
   width: 600px;
   margin: 0 auto;
@@ -53,14 +65,7 @@
     &--contact{
       padding: 30px;
       &--btn{
-        @include md-max{
-          width: 154px;
-        }
-        @include sm-max{
-          width: 200px;
-        }
-        width: 200px;
-        // width: 154px;
+        @include user-show-btn();
       }
     }
     &--btn{
@@ -72,7 +77,8 @@
       border-radius: 1rem;
       font-size: 0.8rem;
       display: block;
-      width: 100%;
+      // width: 100%;
+      @include user-show-btn(); // witdthを指定
       margin-bottom: 1rem;
     }
   }
