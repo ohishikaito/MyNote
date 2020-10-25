@@ -6,7 +6,7 @@
         .user-show__select--active
           最近の投稿
       .user-show__select__right
-        = link_to "いいね！した投稿", likes_user_path, class: "a-hover"
+        = link_to "いいねした投稿", likes_user_path, class: "a-hover"
     = render @tweets
     = paginate @tweets
 
