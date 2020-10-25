@@ -15,6 +15,11 @@
     background-color: white;
     padding: 30px;
     border-radius: 10px;
+
+    .form{
+      display: flex;
+      justify-content: space-between;
+    }
     &--header{
       height: 50px;
       border-bottom: 1px solid $header_border;
