@@ -4,10 +4,5 @@
     = @comments.count
     )
 %ul.tweet-show__comment__items
-  - @comments.first(2).each do |comment|
+  - @comments.each do |comment|
     = render "comments/comment", comment: comment
-  .center
-    %i.fas.fa-angle-down.more.cursor-pointer.center{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample", "data-toggle" => "collapse"}
-  #collapseExample.collapse
-    - @comments.offset(2).each do |comment|
-      = render "comments/comment", comment: comment
