@@ -2,7 +2,8 @@ $(function () {
   $(document).on("click", ".donation-btn", function () {
     $(".donation").fadeIn(200);
   });
-  $(".donation-modal--close--btn").click(function () {
+  $(document).on("click", ".donation-modal--close--btn", function () {
+    console.log("a");
     $(".donation").fadeOut(200);
   });
   $(document).on("submit", "#donation-form", function () {
