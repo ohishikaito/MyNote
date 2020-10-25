@@ -7,9 +7,6 @@
             = image_tag "#{e.user.avatar}", class:"avatar"
             = e.user.nickname
             さんとのメッセージ
-      .room-show__title--btn
-        = link_to rooms_path do
-          %i.fas.fa-angle-left.cursor-pointer
     .room-show__items
       - if @messages.present?
         - @messages.each do |m|
@@ -29,7 +26,7 @@
             - else
               .room-show__item__left
                 = link_to user_path(m.user.avatar) do
-                  = image_tag "#{m.user.avatar}", class:"avatar"
+                  = image_tag "#{m.user.avatar}", class:"avatar mt05rem"
                 %span.room-show__item--message
                   = m.message
               .room-show__item__left

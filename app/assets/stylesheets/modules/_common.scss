@@ -8,7 +8,10 @@
 
 @mixin common-sizing{
   @include sm{
-    width: 400px;
+    width: 450px;
+  }
+  @include sm-max{
+    width: 300px;
   }
   @include md{
     width: 650px;
@@ -87,4 +90,8 @@
 
 .pdw-15{
   padding: 0 15px;
+}
+
+.mt05rem{
+  margin-top: 0.5rem;
 }

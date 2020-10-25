@@ -58,6 +58,9 @@
       cursor: pointer;
       height: 300px;
       width: 400px;
+      @include md-max {
+        @include tweet-items(); // 画面縮小時のwidthを指定
+      }
       object-fit: cover;
       transition: 0.3s ease-out;
       text-align: center;
@@ -72,6 +75,9 @@
         border-radius: 5px;
         height: 300px;
         width: 400px;
+        @include md-max{
+          @include tweet-items(); // 画面縮小時のwidthを指定
+        }
         object-fit: cover;
       }
       &--icon{

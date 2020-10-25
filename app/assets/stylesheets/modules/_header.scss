@@ -105,14 +105,18 @@
       font-size: 15px;
       & a {
         color: $header_tags;
-        @include sm {
-          padding: 20px 2px;
+        @include sm{
+          padding: 20px 5px;
+        }
+        @include sm-max {
+          font-size: 8px;
+          padding: 20px 1px;
         }
         @include md {
           padding: 20px 13px;
         }
         @include lg {
-          padding: 20px;
+          padding: 20px 20px;
         }
         &:hover {
           color: black;
@@ -124,6 +128,9 @@
         @include md-max {
           display: none;
         }
+        // @include sm-max{
+        //   display: block;
+        // }
       }
     }
   }

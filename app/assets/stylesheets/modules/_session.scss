@@ -1,5 +1,8 @@
 .login{
   width: 400px;
+  @include md-max{
+    width: 300px;
+  }
   margin: 0 auto;
   padding: 30px;
   background-color: white;

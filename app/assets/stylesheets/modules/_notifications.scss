@@ -69,6 +69,9 @@
         top: 62px;
         left: 125px;
         color: $header_tags;
+        @include md-max{
+          display: none;
+        }
       }
       &--date{
         position: absolute;

@@ -1,6 +1,11 @@
 .tweet-show__comment{
   border-top: 1px solid $header_border;
-  padding: 20px 40px;
+  @include md{
+    padding: 20px 40px;
+  }
+  @include md-max{
+    padding: 20px 0px;
+  }
   display: flex;
   flex-direction: column;
   &--text{
@@ -9,7 +14,8 @@
   &__form{
     display: flex;
     flex-direction: column;
-    &__top{
+    &__top {
+      margin-top: 20px;
       display: flex;
       justify-content: center;
     }
@@ -45,10 +51,9 @@
     padding-top: 3px;
   }
   &__items{
-    padding: 0px 20px;
   }
   &__item{
-    padding: 20px;
+    padding: 20px 0px;
     &__top{
       display: flex;
       justify-content: space-between;
@@ -59,7 +64,7 @@
         }
       }
       &--nickname{
-        padding: 5px 10px;
+        padding: 0px 10px;
       }
       &--date{
       color: $header_tags;

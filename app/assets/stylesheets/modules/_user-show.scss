@@ -1,3 +1,15 @@
+@mixin user-show-btn{
+  @include md-max {
+    width: 154px;
+  }
+
+  @include sm-max {
+    width: 200px;
+  }
+
+  width: 200px;
+}
+
 .user-show{
   width: 600px;
   margin: 0 auto;
@@ -6,21 +18,31 @@
     width: 460px;
     padding: 30px 0;
   }
+  @include sm-max{
+    width: 300px;
+  }
   border: 1px solid $header_border;
   background-color: white;
   border-radius: 5px;
   box-shadow: 0px 4px 6px #ccc;
   &__top{
-    height: 200px;
     padding: 20px;
+    height: 200px;
     display: flex;
+    @include sm-max{
+      height: auto;
+      display: block;
+    }
     &--icon{
       height: 200px;
       width: 200px;
+      @include sm-max {
+        margin: 0 auto;
+      }
     }
     &--avatar{
-      height: 200px;
-      width: 200px;
+      height: 100%;
+      width: 100%;
       border-radius: 50%;
       object-fit: cover;
       border: 1px solid $header_border;
@@ -28,7 +50,11 @@
     &__body{
       display: flex;
       flex-direction: column;
-      width: 300px;
+      // width: 100%;
+      width: 200px;
+      @include sm-max {
+        width: auto;
+      }
       &:hover a{
         color: #555;
       }
@@ -39,7 +65,7 @@
     &--contact{
       padding: 30px;
       &--btn{
-        width: 154px;
+        @include user-show-btn();
       }
     }
     &--btn{
@@ -51,21 +77,29 @@
       border-radius: 1rem;
       font-size: 0.8rem;
       display: block;
-      width: 100%;
+      // width: 100%;
+      @include user-show-btn(); // witdthを指定
       margin-bottom: 1rem;
     }
   }
+
   &__bottom{
     padding: 30px;
     display: flex;
     justify-content: space-between;
+    @include sm-max{
+      display: block;
+    }
     &--name{
       width: 200px;
+      @include sm-max {
+        width: auto;
+      }
       text-align: center;
-      font-size: 25px;
+      font-size: 20px;
     }
     &__follow{
-      padding-top: 5px;
+      // padding-top: 5px;
       display: flex;
       width: 200px;
       margin: 0 auto;
