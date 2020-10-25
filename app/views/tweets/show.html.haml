@@ -37,9 +37,9 @@
       .tweet-show__content__like
         %div{id: "like_#{@tweet.id}"}
           = render 'likes/like', tweet: @tweet
-        .tweet-show__content__like--link
-          - if @tweet.liked_users.present?
-            この記事にいいねした人を見る
+        -# .tweet-show__content__like--link
+        -#   - if @tweet.liked_users.present?
+        -#     この記事にいいねした人を見る
     .tweet-show__comment
       #comment_form
         = render "comments/form"
@@ -70,5 +70,5 @@
       #donation_form
         = render "donations/form"
       .donation-modal--close
-        %i.btn.btn-dark
+        %i.btn.btn-dark.donation-modal--close--btn
           閉じる
