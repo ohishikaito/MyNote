@@ -8,7 +8,7 @@
 
 @mixin common-sizing{
   @include sm{
-    width: 400px;
+    width: 300px;
   }
   @include md{
     width: 650px;

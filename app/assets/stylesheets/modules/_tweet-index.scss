@@ -4,7 +4,7 @@
   justify-content: space-around;
   flex-wrap: wrap;
   @include lg-max{
-    @include tweet-items;
+    @include tweet-items; // widthを指定
   }
   width: 1000px;
   &__title{

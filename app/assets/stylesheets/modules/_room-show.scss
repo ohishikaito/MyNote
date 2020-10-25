@@ -1,15 +1,7 @@
 
 // chat_area のScss------------------------------------------------------
 .room-show{
-  @include sm{
-    width: 450px;
-  }
-  @include md{
-    width: 650px;
-  }
-  @include lg{
-    width: 1000px;
-  }
+  @include common-sizing();
   min-height: 500px;
   margin: 30px auto;
   border: 1px solid $header_border;
