@@ -10,7 +10,7 @@ development:
   username: root
   password:
   socket: /tmp/mysql.sock
-# docker環境(docker-compose upで起動)
+# docker環境(docker-compose upで起動) config/puma.rbも変更すること
 # development:
 #   <<: *default
 #   database: mynote_development
