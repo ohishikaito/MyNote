@@ -38,7 +38,11 @@
     &__body{
       display: flex;
       flex-direction: column;
-      width: 100%;
+      // width: 100%;
+      width: 200px;
+      @include sm-max {
+        width: auto;
+      }
       &:hover a{
         color: #555;
       }
@@ -49,8 +53,14 @@
     &--contact{
       padding: 30px;
       &--btn{
-        width: 154px;
-        margin: 0 auto;
+        @include md-max{
+          width: 154px;
+        }
+        @include sm-max{
+          width: 200px;
+        }
+        width: 200px;
+        // width: 154px;
       }
     }
     &--btn{
@@ -76,11 +86,14 @@
     }
     &--name{
       width: 200px;
+      @include sm-max {
+        width: auto;
+      }
       text-align: center;
       font-size: 20px;
     }
     &__follow{
-      padding-top: 5px;
+      // padding-top: 5px;
       display: flex;
       width: 200px;
       margin: 0 auto;
