@@ -115,7 +115,7 @@ Rails側の記述忘れでアプリケーションサーバのUnicornが起動�
 * タグ登録時の利便性向上
 
 # 使用技術等
-* マークアップ：haml、Sass
+* マークアップ：haml、Scss
 * フロントエンド：JavaScript（jQuery）
 * バックエンド：Ruby（Ruby on Rails）
     * テスト：RSpec
